@@ -1,0 +1,9 @@
+﻿CREATE TABLE dbo.Users (
+    UserId BIGINT NOT NULL PRIMARY KEY IDENTITY
+    , RoleId BIGINT NOT NULL
+    , UserName NVARCHAR(250) NULL
+    , CreatedBy BIGINT NULL
+    , UpdatedBy BIGINT NULL
+    , CreatedAt DATETIME2 NULL
+    , UpdatedAt DATETIME2 NULL CONSTRAINT FK_Users_Roles FOREIGN KEY (RoleId) REFERENCES Roles(RoleId)
+    )

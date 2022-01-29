@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>BaseLineSurveyDB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{1cb4f1b7-0b69-47f7-a56e-eb015da3b5bc}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>BaseLineSurvey</RootNamespace>
+    <AssemblyName>BaseLineSurvey</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(NetCoreBuild)' != 'true' AND '$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(NetCoreBuild)' != 'true' AND '$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Scripts" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Tables\KhanaSection" />
+    <Folder Include="dbo\Tables\MemberSection" />
+    <Folder Include="dbo\Tables\DiseaseSection" />
+    <Folder Include="dbo\Tables\WaterAndToiletSection" />
+    <Folder Include="dbo\Tables\VitaminSection" />
+    <Folder Include="dbo\Tables\EducationSection" />
+    <Folder Include="dbo\Tables\FoodAndSaftySection" />
+    <Folder Include="dbo\Tables\IncomeAndExpenseSection" />
+    <Folder Include="dbo\Tables\ChildRightForParentSection" />
+    <Folder Include="dbo\Tables\ChildRightForChildSection" />
+    <Folder Include="dbo\Tables\SocialAndCooperativeSection" />
+    <Folder Include="dbo\Stored Procedures\MemberSection" />
+    <Folder Include="dbo\Stored Procedures\DiseaseSection" />
+    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection" />
+    <Folder Include="dbo\Stored Procedures\VitaminSection" />
+    <Folder Include="dbo\Stored Procedures\EducationSection" />
+    <Folder Include="dbo\Stored Procedures\FoodAndSaftySection" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForChildSection" />
+    <Folder Include="dbo\Scripts\WaterAndToiletSection" />
+    <Folder Include="dbo\Scripts\VitaminSection" />
+    <Folder Include="dbo\Tables\Authentication" />
+    <Folder Include="dbo\Scripts\KhanaSection" />
+    <Folder Include="dbo\Stored Procedures\Authentication" />
+    <Folder Include="dbo\Scripts\Authentication" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection" />
+    <Folder Include="dbo\Scripts\MemberSection" />
+    <Folder Include="dbo\Scripts\DiseaseSection" />
+    <Folder Include="dbo\Scripts\EducationSection" />
+    <Folder Include="dbo\Scripts\FoodAndSaftySection" />
+    <Folder Include="dbo\Scripts\IncomeAndExpenseSection" />
+    <Folder Include="dbo\Scripts\ChildRightForParentSection" />
+    <Folder Include="dbo\Scripts\ChildRightForChildSection" />
+    <Folder Include="dbo\Stored Procedures\MemberSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\MemberSection\Configurations\DisableTypes" />
+    <Folder Include="dbo\Stored Procedures\MemberSection\Configurations\Genders" />
+    <Folder Include="dbo\Stored Procedures\MemberSection\Configurations\MaritalStatuses" />
+    <Folder Include="dbo\Stored Procedures\MemberSection\Configurations\Relationships" />
+    <Folder Include="dbo\Stored Procedures\MemberSection\Configurations\Professions" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations\Districts" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations\Villages" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations\Upazilas" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations\ServiceCenters" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations\Religions" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations\Races" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations\Parises" />
+    <Folder Include="dbo\Stored Procedures\DiseaseSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\DiseaseSection\Configurations\Diseases" />
+    <Folder Include="dbo\Stored Procedures\DiseaseSection\Configurations\DoctorTypes" />
+    <Folder Include="dbo\Stored Procedures\DiseaseSection\Configurations\TreatmentCenters" />
+    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterOptions" />
+    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterQuestions" />
+    <Folder Include="dbo\Stored Procedures\VitaminSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\EducationSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\EducationSection\Configurations\DropOutReasons" />
+    <Folder Include="dbo\Stored Procedures\EducationSection\Configurations\EducationHelpTypes" />
+    <Folder Include="dbo\Stored Procedures\EducationSection\Configurations\HelpingOrganizations" />
+    <Folder Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations\Foods" />
+    <Folder Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations\Months" />
+    <Folder Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations\ShortageSolutions" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\ChildAssetTypes" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\CropTypes" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\ExpenseSources" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\IncomeSources" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\LandOwnershipTypes" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\ParentAssetTypes" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\TreeTypes" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseOptions" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseQuestions" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\TorturedReasons" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightOptions" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightQuestions" />
+    <Folder Include="dbo\Scripts\SocialAndCooperativeSection" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection" />
+    <Folder Include="dbo\Tables\ChildRightForChildSection\Configurations" />
+    <Folder Include="dbo\Tables\ChildRightForParentSection\Configurations" />
+    <Folder Include="dbo\Tables\DiseaseSection\Configurations" />
+    <Folder Include="dbo\Tables\EducationSection\Configurations" />
+    <Folder Include="dbo\Tables\FoodAndSaftySection\Configurations" />
+    <Folder Include="dbo\Tables\IncomeAndExpenseSection\Configurations" />
+    <Folder Include="dbo\Tables\KhanaSection\Configurations" />
+    <Folder Include="dbo\Tables\MemberSection\Configurations" />
+    <Folder Include="dbo\Tables\SocialAndCooperativeSection\Configurations" />
+    <Folder Include="dbo\Tables\VitaminSection\Configurations" />
+    <Folder Include="dbo\Tables\WaterAndToiletSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\SleepingPlaces" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\MemberRiskProfessions" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\MemberTorturedReasions" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\ParentsResponsibilityToChilds" />
+    <Folder Include="dbo\Stored Procedures\ChildRightForChildSection\ChildRights" />
+    <Folder Include="dbo\Stored Procedures\DiseaseSection\MemberDiseases" />
+    <Folder Include="dbo\Stored Procedures\MemberSection\Configurations\EducationStatuses" />
+    <Folder Include="dbo\Stored Procedures\EducationSection\MemberEducationHelps" />
+    <Folder Include="dbo\Stored Procedures\EducationSection\MemberEducations" />
+    <Folder Include="dbo\Stored Procedures\EducationSection\SchoolDropouts" />
+    <Folder Include="dbo\Stored Procedures\FoodAndSaftySection\FoodSecurities" />
+    <Folder Include="dbo\Stored Procedures\FoodAndSaftySection\FoodShortageMonths" />
+    <Folder Include="dbo\Stored Procedures\FoodAndSaftySection\RunFamilyWhenShortages" />
+    <Folder Include="dbo\Stored Procedures\FoodAndSaftySection\YesterdaysFoods" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyAssets" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyExpenses" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyIncomes" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyTreeAssets" />
+    <Folder Include="dbo\Stored Procedures\IncomeAndExpenseSection\FarmingLands" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations\ParishesServicenters" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Configurations\ParishServiceCenterVillages" />
+    <Folder Include="dbo\Stored Procedures\KhanaSection\Khanas" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeLists" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\DefaulderReasons" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\SocialWorkTypes" />
+    <Folder Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeOptions" />
+    <Folder Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeQuestions" />
+    <Folder Include="dbo\Stored Procedures\VitaminSection\VitaminKnowledges" />
+    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection\ToiletAndWaterInfos" />
+    <Folder Include="dbo\Stored Procedures\MemberSection\Members" />
+    <Folder Include="dbo\Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\KhanaSection\Khanas.sql" />
+    <Build Include="dbo\Tables\MemberSection\Members.sql" />
+    <Build Include="dbo\Tables\WaterAndToiletSection\ToiletAndWaterInfos.sql" />
+    <Build Include="dbo\Tables\VitaminSection\VitaminKnowledges.sql" />
+    <Build Include="dbo\Tables\Authentication\InformationStatuses.sql" />
+    <Build Include="dbo\Tables\Authentication\Roles.sql" />
+    <Build Include="dbo\Tables\Authentication\SupervisorsEmployees.sql" />
+    <Build Include="dbo\Tables\Authentication\Users.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\InsertRole.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\InsertSupervisorsEmployee.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\InsertUser.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Districts\SelectDistricts.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Upazilas\SelectUpazilasByDistrictId.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Parises\SelectParishesByUpazilaId.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\ServiceCenters\SelectServiceCentersByParisId.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Villages\SelectVillagesByServiceCenterParisId.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Races\SelectRaces.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Religions\SelectReligions.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\DisableTypes\SelectDisableTypes.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\Genders\SelectGenders.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\MaritalStatuses\SelectMaritalStatuses.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\Professions\SelectProfessions.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\Relationships\SelectRelationships.sql" />
+    <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\Diseases\SelectDiseases.sql" />
+    <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\DoctorTypes\SelectDoctorTypes.sql" />
+    <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\TreatmentCenters\SelectTreatmentCenters.sql" />
+    <Build Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterOptions\SelectToiletAndWaterOptionsByQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\DropOutReasons\SelectDropOutReasions.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\EducationHelpTypes\SelectEducationHelpTypes.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\HelpingOrganizations\SelectHelpingOrganizations.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations\Foods\SelectFoods.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations\Months\SelectMonths.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations\ShortageSolutions\SelectShortageSolutions.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\ChildAssetTypes\SelectAssetTypes.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\CropTypes\SelectCropTypes.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\ExpenseSources\SelectExpenseSources.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\IncomeSources\SelectIncomeSources.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\LandOwnershipTypes\SelectLandOwnershipTypes.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\TreeTypes\SelectTreeTypes.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\TorturedReasons\SelectTorturedReasons.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseOptions\SelectParentResponseOptionsByQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightOptions\SelectChildRightOptionsByQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Districts\InsertDistrict.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Parises\InsertParish.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Races\InsertRace.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Religions\InsertReligion.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Upazilas\InsertUpazila.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Villages\InsertVillage.sql" />
+    <Build Include="dbo\Tables\ChildRightForChildSection\Configurations\ChildRightOptions.sql" />
+    <Build Include="dbo\Tables\ChildRightForChildSection\Configurations\ChildRightQuestions.sql" />
+    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\TorturedReasions.sql" />
+    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\ParResOptions.sql" />
+    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\ParResponseQuestions.sql" />
+    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\SleepingPlaces.sql" />
+    <Build Include="dbo\Tables\DiseaseSection\Configurations\TreatmentCenters.sql" />
+    <Build Include="dbo\Tables\DiseaseSection\Configurations\Diseases.sql" />
+    <Build Include="dbo\Tables\DiseaseSection\Configurations\DoctorTypes.sql" />
+    <Build Include="dbo\Tables\EducationSection\Configurations\DropOutReasons.sql" />
+    <Build Include="dbo\Tables\EducationSection\Configurations\EducationHelpTypes.sql" />
+    <Build Include="dbo\Tables\EducationSection\Configurations\HelpingOrganizations.sql" />
+    <Build Include="dbo\Tables\FoodAndSaftySection\Configurations\Foods.sql" />
+    <Build Include="dbo\Tables\FoodAndSaftySection\Configurations\Months.sql" />
+    <Build Include="dbo\Tables\FoodAndSaftySection\Configurations\ShortageSolutions.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\Configurations\ChildAssetTypes.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\Configurations\CropTypes.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\Configurations\ExpenseSources.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\Configurations\IncomeSources.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\Configurations\LandOwnershipTypes.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\Configurations\ParentAssetTypes.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\Configurations\Trees.sql" />
+    <Build Include="dbo\Tables\KhanaSection\Configurations\Districts.sql" />
+    <Build Include="dbo\Tables\MemberSection\Configurations\Relationships.sql" />
+    <Build Include="dbo\Tables\MemberSection\Configurations\DisabaledTypes.sql" />
+    <Build Include="dbo\Tables\MemberSection\Configurations\Genders.sql" />
+    <Build Include="dbo\Tables\MemberSection\Configurations\MaritalStatuses.sql" />
+    <Build Include="dbo\Tables\MemberSection\Configurations\Professions.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\Configurations\CooperativeList.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\Configurations\DefaulderReasons.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\Configurations\SocialWorkTypes.sql" />
+    <Build Include="dbo\Tables\VitaminSection\Configurations\VitaminKnowledgeOptions.sql" />
+    <Build Include="dbo\Tables\VitaminSection\Configurations\VitaminKnowledgeQuestions.sql" />
+    <Build Include="dbo\Tables\WaterAndToiletSection\Configurations\ToiletAndWaterQuestions.sql" />
+    <Build Include="dbo\Tables\WaterAndToiletSection\Configurations\ToiletAndWaterOptions.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\FMDefaulderReasons.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\CooperativeInfos.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\FamilyAssets.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\FamilyExpenses.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\FamilyIncomes.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\FarmingLands.sql" />
+    <Build Include="dbo\Tables\IncomeAndExpenseSection\FamilyTreeAssets.sql" />
+    <Build Include="dbo\Tables\FoodAndSaftySection\YesterdaysFoods.sql" />
+    <Build Include="dbo\Tables\FoodAndSaftySection\RunFamilyWhenShortages.sql" />
+    <Build Include="dbo\Tables\FoodAndSaftySection\FoodShortageMonths.sql" />
+    <Build Include="dbo\Tables\FoodAndSaftySection\FoodSecurities.sql" />
+    <Build Include="dbo\Tables\EducationSection\SchoolDropouts.sql" />
+    <Build Include="dbo\Tables\EducationSection\MemberEducations.sql" />
+    <Build Include="dbo\Tables\EducationSection\MemberEducationHelps.sql" />
+    <Build Include="dbo\Tables\DiseaseSection\MemberDiseases.sql" />
+    <Build Include="dbo\Tables\ChildRightForParentSection\ParentsResponsibilityToChilds.sql" />
+    <Build Include="dbo\Tables\ChildRightForParentSection\MemberRiskProfessions.sql" />
+    <Build Include="dbo\Tables\ChildRightForChildSection\ChildRights.sql" />
+    <Build Include="dbo\Tables\MemberSection\Configurations\EducationalStatuses.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\SocialOrganizations.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\OrganizationWorks.sql" />
+    <Build Include="dbo\Tables\ChildRightForParentSection\MemberTorturedReasions.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightOptions\InsertChildRightOption.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightQuestions\InsertChildRightQuestion.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\TorturedReasons\InsertTorturedReasion.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseQuestions\InsertParResponseQuestion.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseOptions\InsertParentResponseOption.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\SleepingPlaces\InsertSleepingPlace.sql" />
+    <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\Diseases\InsertDisease.sql" />
+    <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\DoctorTypes\InsertDoctorTypes.sql" />
+    <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\TreatmentCenters\InsertTreatmentCenter.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\DropOutReasons\InsertDropOutReason.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\EducationHelpTypes\InsertEducationHelpType.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\HelpingOrganizations\InsertHelpingOrganization.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\EducationStatuses\InsertEducationStatus.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\EducationStatuses\SelectEducationStatuses.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations\Foods\InsertFood.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations\Months\InsertMonth.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\Configurations\ShortageSolutions\InsertShortageSolution.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\ChildAssetTypes\InsertChildAssetType.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\CropTypes\InsertCropType.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\ExpenseSources\InsertExpenseSource.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\IncomeSources\InsertIncomeSource.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\LandOwnershipTypes\InsertLandOwnershipType.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\ParentAssetTypes\InsertParentAssetType.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\TreeTypes\InsertTree.sql" />
+    <Build Include="dbo\Tables\KhanaSection\Configurations\ParishServiceCenterVillages.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\ParishServiceCenterVillages\InsertParishServiceCenterVillages.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\ParishesServicenters\InsertParishesServicenter.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\ServiceCenters\InsertServiceCenters.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\DisableTypes\InsertDisableType.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\Genders\InsertGender.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\MaritalStatuses\InsertMaritalStatus.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\Professions\InsertProfessions.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Configurations\Relationships\InsertRelationship.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeLists\InsertCooperativeList.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\DefaulderReasons\InsertDefaulderReason.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\SocialWorkTypes\InsertSocialWorkType.sql" />
+    <Build Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeOptions\InsertVitaminKnowledgeOptions.sql" />
+    <Build Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeOptions\SelectVitaminKnowledgeOptionsByQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeQuestions\InsertVitaminKnowledgeQuestions.sql" />
+    <Build Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterOptions\InsertToiletAndWaterOptions.sql" />
+    <Build Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterQuestions\InsertToiletAndWaterQuestions.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Members\InsertMember.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Members\UpdateMember.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Members\SelectMembersByKhanaId.sql" />
+    <Build Include="dbo\Views\View_Khanas.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Khanas\InsertKhana.sql" />
+    <Build Include="dbo\Views\View_Khanas.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Khanas\SelectKhanasByUserId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Scripts\WaterAndToiletSection\insert_toilet_and_water_source_question_answers.sql" />
+    <None Include="dbo\Scripts\VitaminSection\insert_vitamin_knowledge_question_and_answers.sql" />
+    <None Include="dbo\Scripts\Authentication\insert_roles_users_supervisors_employees.sql" />
+    <None Include="dbo\Scripts\KhanaSection\insert_districts_upazilas_parises.sql" />
+    <None Include="dbo\Scripts\MemberSection\Insert_disable_types.sql" />
+    <None Include="dbo\Scripts\MemberSection\insert_genders.sql" />
+    <None Include="dbo\Scripts\MemberSection\Insert_marital_statuses.sql" />
+    <None Include="dbo\Scripts\MemberSection\insert_relationship.sql" />
+    <None Include="dbo\Scripts\MemberSection\insert_professions.sql" />
+    <None Include="dbo\Scripts\DiseaseSection\insert_diseases.sql" />
+    <None Include="dbo\Scripts\DiseaseSection\insert_treatment_centers.sql" />
+    <None Include="dbo\Scripts\DiseaseSection\insert_doctor_types.sql" />
+    <None Include="dbo\Scripts\EducationSection\insert_education_statuses.sql" />
+    <None Include="dbo\Scripts\EducationSection\Insert_drop_out_reason_codes.sql" />
+    <None Include="dbo\Scripts\EducationSection\insert_education_help_types.sql" />
+    <None Include="dbo\Scripts\EducationSection\insert_helping_organizations.sql" />
+    <None Include="dbo\Scripts\FoodAndSaftySection\insert_foods.sql" />
+    <None Include="dbo\Scripts\FoodAndSaftySection\insert_months.sql" />
+    <None Include="dbo\Scripts\FoodAndSaftySection\insert_shortage_solutions.sql" />
+    <None Include="dbo\Scripts\IncomeAndExpenseSection\insert_child_parent_assest_types.sql" />
+    <None Include="dbo\Scripts\IncomeAndExpenseSection\insert_crop_types.sql" />
+    <None Include="dbo\Scripts\IncomeAndExpenseSection\insert_trees.sql" />
+    <None Include="dbo\Scripts\IncomeAndExpenseSection\insert_income_sources.sql" />
+    <None Include="dbo\Scripts\IncomeAndExpenseSection\insert_expense_sources.sql" />
+    <None Include="dbo\Scripts\IncomeAndExpenseSection\insert_land_ownership_types.sql" />
+    <None Include="dbo\Scripts\ChildRightForParentSection\insert_parent_response_question_options.sql" />
+    <None Include="dbo\Scripts\ChildRightForChildSection\Insert_child_right_question_options.sql" />
+    <None Include="dbo\Scripts\ChildRightForParentSection\insert_tortured_reasions.sql" />
+    <None Include="dbo\Scripts\KhanaSection\insert_villages.sql" />
+    <None Include="dbo\Scripts\SocialAndCooperativeSection\insert_defaulder_reasons.sql" />
+    <None Include="dbo\Scripts\SocialAndCooperativeSection\insert_social_work_types.sql" />
+    <None Include="dbo\Scripts\ChildRightForParentSection\insert_sleeping_places.sql" />
+    <None Include="dbo\Scripts\KhanaSection\insert_service_centers.sql" />
+    <None Include="dbo\Scripts\KhanaSection\insert_paris_junction_service_centers.sql" />
+    <None Include="dbo\Scripts\KhanaSection\insert_paris_service_id_with_village.sql" />
+    <None Include="dbo\Scripts\SocialAndCooperativeSection\insert_cooperative_lists.sql" />
+    <None Include="dbo\Scripts\KhanaSection\insert_religions.sql" />
+    <None Include="dbo\Scripts\KhanaSection\insert_races.sql" />
+    <None Include="BaseLineSurveyDevServer.publish.xml" />
+    <None Include="BaseLineSurveyDB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <Import Condition="'$(NetCoreBuild)' == 'true'" Project="$(NETCoreTargetsPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <PackageReference Condition="'$(NetCoreBuild)' == 'true'" Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\KhanaSection\Configurations\Parishes.sql" />
+    <Build Include="dbo\Tables\KhanaSection\Configurations\ParishesServicenters.sql" />
+    <Build Include="dbo\Tables\KhanaSection\Configurations\Races.sql" />
+    <Build Include="dbo\Tables\KhanaSection\Configurations\Religions.sql" />
+    <Build Include="dbo\Tables\KhanaSection\Configurations\ServiceCenters.sql" />
+    <Build Include="dbo\Tables\KhanaSection\Configurations\Upazilas.sql" />
+    <Build Include="dbo\Tables\KhanaSection\Configurations\Villages.sql" />
+  </ItemGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+</Project>
