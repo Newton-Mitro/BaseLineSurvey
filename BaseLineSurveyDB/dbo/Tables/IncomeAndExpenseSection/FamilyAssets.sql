@@ -11,6 +11,7 @@ Script Description            : This procedure will create Family Assets table.
 CREATE TABLE dbo.FamilyAssets (
     FamilyAssetId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , KhanaId BIGINT NOT NULL
+    , ParentAssetId BIGINT NOT NULL
     , ChildAssetId BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL
     , Quantity INT NULL

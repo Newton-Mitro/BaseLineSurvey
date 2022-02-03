@@ -19,6 +19,6 @@ CREATE TABLE dbo.FamilyExpenses (
     , CreatedAt DATETIME2 NULL
     , UpdatedAt DATETIME2 NULL
     , CONSTRAINT FK_FamilyExpenses_Khanas FOREIGN KEY (KhanaId) REFERENCES Khanas(KhanaId)
-    , CONSTRAINT FK_FamilyExpenses_ExpenseSources FOREIGN KEY (ExpenseSourceId) REFERENCES ExpenseSources(ExpenseSourcesId)
+    , CONSTRAINT FK_FamilyExpenses_ExpenseSources FOREIGN KEY (ExpenseSourceId) REFERENCES ExpenseSources(ExpenseSourceId)
     , CONSTRAINT FK_FamilyExpenses_InformationStatuses FOREIGN KEY (InformationStatusCode) REFERENCES InformationStatuses(InformationStatusCode)
     )

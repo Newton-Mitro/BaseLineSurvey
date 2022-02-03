@@ -9,7 +9,7 @@ Script Description            : This procedure will create Expense Sources table
 --------------------------------------------------------------------------------------
 */
 CREATE TABLE dbo.ExpenseSources (
-    ExpenseSourcesId BIGINT NOT NULL PRIMARY KEY IDENTITY
+    ExpenseSourceId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , SourceName NVARCHAR(250) NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL

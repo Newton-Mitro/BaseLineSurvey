@@ -55,6 +55,9 @@
     <Compile Include="Base\BasicModel.cs" />
     <Compile Include="Base\OptionAndSelectedOptionModel.cs" />
     <Compile Include="Base\ResponseObject.cs" />
+    <Compile Include="FamilyAssets\FamilyAssetRepository.cs" />
+    <Compile Include="FamilyAssets\Models\ChildAssetModel.cs" />
+    <Compile Include="FamilyAssets\Models\FamilyAssetModel.cs" />
     <Compile Include="FamilyExpense\FamilyExpenseRepository.cs" />
     <Compile Include="FamilyExpense\Models\ExpenseSourceModel.cs" />
     <Compile Include="FamilyExpense\Models\FamilyExpenseModel.cs" />

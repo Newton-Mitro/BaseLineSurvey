@@ -24,7 +24,7 @@ BEGIN
         , ExpenseSources.SourceName
         FROM dbo.FamilyExpenses
         LEFT JOIN ExpenseSources
-        ON FamilyExpenses.ExpenseSourceId = ExpenseSources.ExpenseSourcesId
+        ON FamilyExpenses.ExpenseSourceId = ExpenseSources.ExpenseSourceId
         WHERE KhanaId = @KhanaId
 
 
