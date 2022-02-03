@@ -7,27 +7,35 @@ using System.Data.SqlClient;
 
 namespace DataAccessLib.KhanaSection.District
 {
+    /// <summary>
+    /// Developer    : Newton Mitro
+    /// Created At   : 29 January 2022
+    /// Updated By   : Newton Mitro
+    /// Updated At   : 29 January 2022
+    /// Description  : Data access repository for District
+    /// </summary>
     public class DistrictRepository
     {
-        string conStringName = "BS_DB_Connection"; //Database Connection String Name
-
-        //-- =========================================================================
-        //-- Author       : Newton Mitro
-        //-- Create Date  : January 29, 2022
-        //-- Updated By   : Newton Mitro
-        //-- Updated Date : January 29, 2022
-        //-- Description  : Function for getting khanas by user id
-        //-- Version      : 1.0
-        //-- ============================================================================
-
+        ResponseObject responseObject;
+        public DistrictRepository()
+        {
+            responseObject = new ResponseObject();
+        }
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 29 January 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 29 January 2022 
+        /// Description  : Function for getting districts
+        /// </summary>
+        /// <returns>ResponseObject</returns>
         public ResponseObject GetDistricts()
         {
             var parameters = new DynamicParameters();
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
-            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString(conStringName)))
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
-                var districts = connetion.Query<District>(@"SelectDistricts", parameters, commandType: CommandType.StoredProcedure);
-                ResponseObject responseObject = new ResponseObject();
+                var districts = connetion.Query<DistrictModel>(@"SelectDistricts", parameters, commandType: CommandType.StoredProcedure);
                 responseObject.Data = JsonConvert.SerializeObject(districts);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;

@@ -9,7 +9,7 @@ Script Description            : This procedure will create Vitamin Knowledge Que
 --------------------------------------------------------------------------------------
 */
 CREATE TABLE dbo.VitaminKnowledgeQuestions (
-    QuestionId BIGINT NOT NULL PRIMARY KEY IDENTITY
+    VitaminKnowledgeQuestionId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , QuestionText NVARCHAR(250) NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL

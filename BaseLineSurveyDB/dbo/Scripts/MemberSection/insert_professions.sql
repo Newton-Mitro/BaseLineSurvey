@@ -169,4 +169,9 @@ BEGIN
         , NULL -- @ScopeId BIGINT = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 -- @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+    EXEC InsertProfession N'প্রযোজ্য নয়' -- @DisabledTypeName NVARCHAR(250)
+        , NULL -- @ScopeId BIGINT = NULL OUTPUT
+        , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 -- @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
 END

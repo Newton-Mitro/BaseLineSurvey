@@ -24,7 +24,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         INSERT INTO [ParishServiceCenterVillages] (
-            ParishesServicentersId
+            ParishesServiceCentersId
             , VillageId
             , CreatedAt
             , CreatedBy

@@ -10,15 +10,18 @@ Script Description            : This procedure will Insert Member
 */
 CREATE PROCEDURE dbo.InsertMember (
     @RelationWithFamilyHeadId BIGINT
+    , @MemberName NVARCHAR(250)
     , @GenderCode BIGINT
     , @FirstProfessionCode BIGINT
     , @SecondProfessionCode BIGINT
     , @IncomeRelatedWork BIGINT
+    , @EducationalStatusCode BIGINT
+    , @CurrentlyStudying BIT
     , @MaritalStatusCode BIGINT
     , @DisabledTypeCode BIGINT
     , @KhanaId BIGINT
     , @InformationStatusCode BIGINT
-    , @AgeInMonth INT
+    , @DateOfBirth DATETIME2
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -31,33 +34,39 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        INSERT INTO [dbo].[Members] (
-            [RelationWithFamilyHeadId]
-            , [GenderCode]
-            , [FirstProfessionCode]
-            , [SecondProfessionCode]
-            , [IncomeRelatedWork]
-            , [MaritalStatusCode]
-            , [DisabledTypeCode]
-            , [KhanaId]
-            , [InformationStatusCode]
-            , [AgeInMonth]
-            , [CreatedBy]
-            , [UpdatedBy]
-            , [CreatedAt]
-            , [UpdatedAt]
+        INSERT INTO dbo.Members (
+            RelationWithFamilyHeadId
+            , MemberName
+            , GenderCode
+            , FirstProfessionCode
+            , SecondProfessionCode
+            , IncomeRelatedWork
+            , MaritalStatusCode
+            , DisabledTypeCode
+            , EducationalStatusCode
+            , CurrentlyStudying
+            , KhanaId
+            , InformationStatusCode
+            , DateOfBirth
+            , CreatedBy
+            , UpdatedBy
+            , CreatedAt
+            , UpdatedAt
             )
         VALUES (
             @RelationWithFamilyHeadId
+            , @MemberName
             , @GenderCode
             , @FirstProfessionCode
             , @SecondProfessionCode
             , @IncomeRelatedWork
             , @MaritalStatusCode
             , @DisabledTypeCode
+            , @EducationalStatusCode
+            , @CurrentlyStudying
             , @KhanaId
             , @InformationStatusCode
-            , @AgeInMonth
+            , @DateOfBirth
             , @AccessedBy
             , @AccessedBy
             , GETDATE()

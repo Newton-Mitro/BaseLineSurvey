@@ -9,7 +9,8 @@ Script Description            : This procedure will Select Service Centers By Pa
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.SelectServiceCentersByParisId (
-    @ReturnResult VARCHAR(255) = NULL OUTPUT
+    @ParishId BIGINT
+    , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
     )
 AS
@@ -20,8 +21,11 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT *
-        FROM Districts
+        SELECT [ParishesServiceCenters].[ParishesServiceCentersId], ServiceCenters.*
+        FROM [ParishesServiceCenters]
+        LEFT JOIN ServiceCenters
+        ON [ParishesServiceCenters].ServiceCenterId = ServiceCenters.ServiceCenterId
+        WHERE [ParishesServiceCenters].ParishId = @ParishId;
 
         --End Main Block
         IF @@ROWCOUNT > 0

@@ -10,7 +10,6 @@ Script Description            : This procedure will Select Relationships
 */
 CREATE PROCEDURE dbo.SelectRelationships (
     @ReturnResult VARCHAR(255) = NULL OUTPUT
-    , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
     )
 AS
 BEGIN

@@ -12,7 +12,7 @@ CREATE TABLE dbo.Khanas (
     KhanaId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , DistrictId BIGINT NOT NULL
     , UpazilaId BIGINT NOT NULL
-    , PariseId BIGINT NOT NULL
+    , ParishId BIGINT NOT NULL
     , ServiceCenterId BIGINT NOT NULL
     , VillageId BIGINT NOT NULL
     , ReligionId BIGINT NOT NULL
@@ -25,7 +25,7 @@ CREATE TABLE dbo.Khanas (
     , UpdatedAt DATETIME2 NULL
     , CONSTRAINT FK_Khanas_Districts FOREIGN KEY (DistrictId) REFERENCES Districts(DistrictId)
     , CONSTRAINT FK_Khanas_Upazilas FOREIGN KEY (UpazilaId) REFERENCES Upazilas(UpazilaId)
-    , CONSTRAINT FK_Khanas_Parises FOREIGN KEY (PariseId) REFERENCES Parishes(ParishId)
+    , CONSTRAINT FK_Khanas_Parises FOREIGN KEY (ParishId) REFERENCES Parishes(ParishId)
     , CONSTRAINT FK_Khanas_ServiceCenters FOREIGN KEY (ServiceCenterId) REFERENCES ServiceCenters(ServiceCenterId)
     , CONSTRAINT FK_Khanas_Villages FOREIGN KEY (VillageId) REFERENCES Villages(VillageId)
     , CONSTRAINT FK_Khanas_InformationStatuses FOREIGN KEY (InformationStatusCode) REFERENCES InformationStatuses(InformationStatusCode)

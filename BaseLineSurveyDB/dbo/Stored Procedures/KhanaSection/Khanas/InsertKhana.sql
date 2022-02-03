@@ -12,7 +12,7 @@ CREATE PROCEDURE dbo.InsertKhana (
     @KhanaId BIGINT
     , @DistrictId BIGINT
     , @UpazilaId BIGINT
-    , @PariseId BIGINT
+    , @ParishId BIGINT
     , @ServiceCenterId BIGINT
     , @VillageId BIGINT
     , @ReligionId BIGINT
@@ -38,7 +38,7 @@ BEGIN
         INSERT INTO Khanas (
             DistrictId
             , UpazilaId
-            , PariseId
+            , ParishId
             , ServiceCenterId
             , VillageId
             , ReligionId
@@ -53,7 +53,7 @@ BEGIN
         VALUES (
             @DistrictId
             , @UpazilaId
-            , @PariseId
+            , @ParishId
             , @ServiceCenterId
             , @VillageId
             , @ReligionId

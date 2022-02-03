@@ -9,12 +9,12 @@ Script Description            : This procedure will create Vitamin Knowledge Opt
 --------------------------------------------------------------------------------------
 */
 CREATE TABLE dbo.VitaminKnowledgeOptions (
-    OptionId BIGINT NOT NULL PRIMARY KEY IDENTITY
+    VitaminKnowledgeOptionId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , QuestionsId BIGINT NOT NULL
     , OptionText NVARCHAR(250) NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL
     , CreatedAt DATETIME2 NULL
     , UpdatedAt DATETIME2 NULL
-    , CONSTRAINT FK_VitaminKnowledgeOptions_VitaminKnowledgeQuestions FOREIGN KEY (QuestionsId) REFERENCES VitaminKnowledgeQuestions(QuestionId)
+    , CONSTRAINT FK_VitaminKnowledgeOptions_VitaminKnowledgeQuestions FOREIGN KEY (QuestionsId) REFERENCES VitaminKnowledgeQuestions(VitaminKnowledgeQuestionId)
     )

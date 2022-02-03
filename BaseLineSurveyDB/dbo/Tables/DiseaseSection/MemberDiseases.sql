@@ -10,6 +10,7 @@ Script Description            : This procedure will create Member Diseases table
 */
 CREATE TABLE dbo.MemberDiseases (
     MemberDiseasId BIGINT NOT NULL PRIMARY KEY IDENTITY
+    , KhanaId BIGINT NOT NULL
     , MemberId BIGINT NOT NULL
     , DiseaseCode BIGINT NOT NULL
     , TreatmentCentercode BIGINT NOT NULL
@@ -25,5 +26,6 @@ CREATE TABLE dbo.MemberDiseases (
     , CONSTRAINT FK_MemberDiseases_Diseases FOREIGN KEY (DiseaseCode) REFERENCES Diseases(DiseaseCode)
     , CONSTRAINT FK_MemberDiseases_TreatmentCenters FOREIGN KEY (TreatmentCentercode) REFERENCES TreatmentCenters(TreatmentCentercode)
     , CONSTRAINT FK_MemberDiseases_DoctorTypes FOREIGN KEY (DoctorTypeCode) REFERENCES DoctorTypes(DoctorTypeCode)
-    , CONSTRAINT FK_MemberDiseases_InformationStatuses FOREIGN KEY (InformationStatusCode) REFERENCES InformationStatuses(InformationStatusCode)
+    , CONSTRAINT FK_MemberDiseases_InformationStatuses FOREIGN KEY (InformationStatusCode) REFERENCES InformationStatuses(InformationStatusCode), 
+    CONSTRAINT [FK_MemberDiseases_ToKhanas] FOREIGN KEY (KhanaId) REFERENCES Khanas(KhanaId)
     )

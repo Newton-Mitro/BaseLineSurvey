@@ -1,15 +1,16 @@
 ﻿/*
-Stored Procedure InsertRole	
+Stored Procedure InsertUser	
 --------------------------------------------------------------------------------------
 Script By                     : REZA E RABBI
 Created At                    : 19 December 2022
-Script Altered By             : REZA E RABBI
-Altered At                    : 19 December 2022
-Script Description            : This procedure will Insert Role.
+Script Altered By             : Newton Mitro
+Altered At                    : 30 January 2022
+Script Description            : This procedure will Insert User.
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.InsertUser (
-    @UserName NVARCHAR(250)
+    @Email VARCHAR(250)
+    , @Password VARCHAR(250)
     , @RoleId BIGINT
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
@@ -24,7 +25,8 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         INSERT INTO Users (
-            UserName
+            Email
+            , Password
             , RoleId
             , CreatedAt
             , CreatedBy
@@ -32,7 +34,8 @@ BEGIN
             , UpdatedBy
             )
         VALUES (
-            @UserName
+            @Email
+            , @Password
             , @RoleId
             , getdate()
             , @AccessedBy

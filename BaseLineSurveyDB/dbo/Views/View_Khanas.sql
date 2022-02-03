@@ -15,7 +15,7 @@ SELECT KhanaId
     , Districts.DistrictName
     , Khanas.UpazilaId
     , Upazilas.UpazilaName
-    , Khanas.PariseId
+    , Khanas.ParishId
     , Parishes.ParishName
     , Khanas.ServiceCenterId
     , ServiceCenters.ServiceCenterName
@@ -28,9 +28,9 @@ SELECT KhanaId
     , InformationStatusCode
     , HouseReference
     , Khanas.CreatedBy
-    , Creator.UserName AS CreatorName
+    , Creator.Email AS CreatorName
     , Khanas.UpdatedBy
-    , Updator.UserName AS UpdatorName
+    , Updator.Email AS UpdatorName
     , Khanas.CreatedAt
     , Khanas.UpdatedAt
 FROM [dbo].Khanas
@@ -39,7 +39,7 @@ LEFT JOIN Districts
 LEFT JOIN Upazilas
     ON Khanas.UpazilaId = Upazilas.UpazilaId
 LEFT JOIN Parishes
-    ON Khanas.PariseId = Parishes.ParishId
+    ON Khanas.ParishId = Parishes.ParishId
 LEFT JOIN ServiceCenters
     ON Khanas.ServiceCenterId = ServiceCenters.ServiceCenterId
 LEFT JOIN Villages

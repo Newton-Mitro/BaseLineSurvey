@@ -11,7 +11,6 @@ Script Description            : This procedure will Update Member
 CREATE PROCEDURE dbo.SelectMembersByKhanaId (
     @KhanaId BIGINT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
-    , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
     )
 AS
 BEGIN
@@ -22,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM dbo.Members
+        FROM dbo.View_Members
         WHERE KhanaId = @KhanaId;
 
         --End Main Block

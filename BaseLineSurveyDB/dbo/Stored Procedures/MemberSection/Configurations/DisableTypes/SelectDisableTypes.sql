@@ -10,7 +10,6 @@ Script Description            : This procedure will Select Disable Types
 */
 CREATE PROCEDURE dbo.SelectDisableTypes (
     @ReturnResult VARCHAR(255) = NULL OUTPUT
-    , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
     )
 AS
 BEGIN

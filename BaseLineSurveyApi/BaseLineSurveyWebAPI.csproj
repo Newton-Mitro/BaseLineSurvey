@@ -126,6 +126,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ApiAuthorizationAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -158,13 +159,24 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Common\KeyGenerator.cs" />
+    <Compile Include="Common\PasswordHash.cs" />
+    <Compile Include="Controllers\Auth\AuthController.cs" />
+    <Compile Include="Controllers\FamilyExpenseSection\FamilyExpenseController.cs" />
+    <Compile Include="Controllers\FamilyIncomeSection\FamilyIncomeController.cs" />
     <Compile Include="Controllers\KhanaSection\DistrictController.cs" />
     <Compile Include="Controllers\KhanaSection\KhanaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhanaSection\ParishController.cs" />
     <Compile Include="Controllers\KhanaSection\RaceController.cs" />
     <Compile Include="Controllers\KhanaSection\ReligionController.cs" />
+    <Compile Include="Controllers\KhanaSection\ServiceCenterController.cs" />
     <Compile Include="Controllers\KhanaSection\UpazilaController.cs" />
+    <Compile Include="Controllers\KhanaSection\VillageController.cs" />
+    <Compile Include="Controllers\MemberDiseaseSection\MemberDiseaseController.cs" />
+    <Compile Include="Controllers\MemberSection\MemberController.cs" />
+    <Compile Include="Controllers\ToiletAndWaterSection\ToiletAndWaterInfoController.cs" />
+    <Compile Include="Controllers\VitaminKnowledgeSection\VitaminKnowledgeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,7 +235,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\EducationSection\" />
+    <Folder Include="Controllers\FoodAndSaftySection\" />
+    <Folder Include="Controllers\SocialAndCooperativeSection\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\DisabledType\" />
+    <Folder Include="Views\EducationStatus\" />
+    <Folder Include="Views\Gender\" />
+    <Folder Include="Views\MaritalStatus\" />
+    <Folder Include="Views\Member\" />
+    <Folder Include="Views\Profession\" />
+    <Folder Include="Views\Relstionship\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

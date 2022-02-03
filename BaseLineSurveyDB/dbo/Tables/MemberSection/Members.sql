@@ -10,16 +10,19 @@ Script Description            : This procedure will create Members table.
 */
 CREATE TABLE dbo.Members (
     MemberId BIGINT NOT NULL PRIMARY KEY IDENTITY
+    , MemberName NVARCHAR(250) NOT NULL
     , RelationWithFamilyHeadId BIGINT NOT NULL
     , GenderCode BIGINT NOT NULL
     , FirstProfessionCode BIGINT NOT NULL
-    , SecondProfessionCode BIGINT NOT NULL
-    , IncomeRelatedWork BIGINT NOT NULL
+    , SecondProfessionCode BIGINT NULL
+    , IncomeRelatedWork BIGINT NULL
+    , EducationalStatusCode BIGINT NULL
+    , CurrentlyStudying BIT NULL
     , MaritalStatusCode BIGINT NOT NULL
     , DisabledTypeCode BIGINT NOT NULL
     , KhanaId BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL
-    , AgeInMonth INT NULL
+    , DateOfBirth DATETIME2 NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL
     , CreatedAt DATETIME2 NULL

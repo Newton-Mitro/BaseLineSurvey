@@ -13,7 +13,7 @@ CREATE TABLE dbo.FamilyIncomes (
     , KhanaId BIGINT NOT NULL
     , IncomeSourceId BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL
-    , AnnualIncomeAmount INT NULL
+    , AnnualIncomeAmount MONEY NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL
     , CreatedAt DATETIME2 NULL

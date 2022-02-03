@@ -12,6 +12,7 @@ Post-Deployment Script Template
 
 --section Authentication
 
+ :r .\dbo\Scripts\Shared\insert_information_statuses.sql
  :r .\dbo\Scripts\Authentication\insert_roles_users_supervisors_employees.sql
 
 

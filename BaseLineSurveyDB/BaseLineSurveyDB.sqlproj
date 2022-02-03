@@ -64,7 +64,7 @@
     <Folder Include="dbo\Tables\KhanaSection" />
     <Folder Include="dbo\Tables\MemberSection" />
     <Folder Include="dbo\Tables\DiseaseSection" />
-    <Folder Include="dbo\Tables\WaterAndToiletSection" />
+    <Folder Include="dbo\Tables\ToiletAndWaterSection" />
     <Folder Include="dbo\Tables\VitaminSection" />
     <Folder Include="dbo\Tables\EducationSection" />
     <Folder Include="dbo\Tables\FoodAndSaftySection" />
@@ -74,7 +74,7 @@
     <Folder Include="dbo\Tables\SocialAndCooperativeSection" />
     <Folder Include="dbo\Stored Procedures\MemberSection" />
     <Folder Include="dbo\Stored Procedures\DiseaseSection" />
-    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection" />
+    <Folder Include="dbo\Stored Procedures\ToiletAndWaterSection" />
     <Folder Include="dbo\Stored Procedures\VitaminSection" />
     <Folder Include="dbo\Stored Procedures\EducationSection" />
     <Folder Include="dbo\Stored Procedures\FoodAndSaftySection" />
@@ -113,9 +113,9 @@
     <Folder Include="dbo\Stored Procedures\DiseaseSection\Configurations\Diseases" />
     <Folder Include="dbo\Stored Procedures\DiseaseSection\Configurations\DoctorTypes" />
     <Folder Include="dbo\Stored Procedures\DiseaseSection\Configurations\TreatmentCenters" />
-    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations" />
-    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterOptions" />
-    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterQuestions" />
+    <Folder Include="dbo\Stored Procedures\ToiletAndWaterSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\ToiletAndWaterSection\Configurations\ToiletAndWaterOptions" />
+    <Folder Include="dbo\Stored Procedures\ToiletAndWaterSection\Configurations\ToiletAndWaterQuestions" />
     <Folder Include="dbo\Stored Procedures\VitaminSection\Configurations" />
     <Folder Include="dbo\Stored Procedures\EducationSection\Configurations" />
     <Folder Include="dbo\Stored Procedures\EducationSection\Configurations\DropOutReasons" />
@@ -152,7 +152,7 @@
     <Folder Include="dbo\Tables\MemberSection\Configurations" />
     <Folder Include="dbo\Tables\SocialAndCooperativeSection\Configurations" />
     <Folder Include="dbo\Tables\VitaminSection\Configurations" />
-    <Folder Include="dbo\Tables\WaterAndToiletSection\Configurations" />
+    <Folder Include="dbo\Tables\ToiletAndWaterSection\Configurations" />
     <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\SleepingPlaces" />
     <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\MemberRiskProfessions" />
     <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\MemberTorturedReasions" />
@@ -181,14 +181,17 @@
     <Folder Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeOptions" />
     <Folder Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeQuestions" />
     <Folder Include="dbo\Stored Procedures\VitaminSection\VitaminKnowledges" />
-    <Folder Include="dbo\Stored Procedures\WaterAndToiletSection\ToiletAndWaterInfos" />
+    <Folder Include="dbo\Stored Procedures\ToiletAndWaterSection\ToiletAndWaterInfos" />
     <Folder Include="dbo\Stored Procedures\MemberSection\Members" />
     <Folder Include="dbo\Views" />
+    <Folder Include="dbo\Stored Procedures\Shared" />
+    <Folder Include="dbo\Scripts\Shared" />
+    <Folder Include="dbo\Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\KhanaSection\Khanas.sql" />
     <Build Include="dbo\Tables\MemberSection\Members.sql" />
-    <Build Include="dbo\Tables\WaterAndToiletSection\ToiletAndWaterInfos.sql" />
+    <Build Include="dbo\Tables\ToiletAndWaterSection\ToiletAndWaterInfos.sql" />
     <Build Include="dbo\Tables\VitaminSection\VitaminKnowledges.sql" />
     <Build Include="dbo\Tables\Authentication\InformationStatuses.sql" />
     <Build Include="dbo\Tables\Authentication\Roles.sql" />
@@ -212,7 +215,7 @@
     <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\Diseases\SelectDiseases.sql" />
     <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\DoctorTypes\SelectDoctorTypes.sql" />
     <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\TreatmentCenters\SelectTreatmentCenters.sql" />
-    <Build Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterOptions\SelectToiletAndWaterOptionsByQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\ToiletAndWaterSection\Configurations\ToiletAndWaterOptions\SelectToiletAndWaterOptionsWithSelectedOption.sql" />
     <Build Include="dbo\Stored Procedures\EducationSection\Configurations\DropOutReasons\SelectDropOutReasions.sql" />
     <Build Include="dbo\Stored Procedures\EducationSection\Configurations\EducationHelpTypes\SelectEducationHelpTypes.sql" />
     <Build Include="dbo\Stored Procedures\EducationSection\Configurations\HelpingOrganizations\SelectHelpingOrganizations.sql" />
@@ -267,8 +270,8 @@
     <Build Include="dbo\Tables\SocialAndCooperativeSection\Configurations\SocialWorkTypes.sql" />
     <Build Include="dbo\Tables\VitaminSection\Configurations\VitaminKnowledgeOptions.sql" />
     <Build Include="dbo\Tables\VitaminSection\Configurations\VitaminKnowledgeQuestions.sql" />
-    <Build Include="dbo\Tables\WaterAndToiletSection\Configurations\ToiletAndWaterQuestions.sql" />
-    <Build Include="dbo\Tables\WaterAndToiletSection\Configurations\ToiletAndWaterOptions.sql" />
+    <Build Include="dbo\Tables\ToiletAndWaterSection\Configurations\ToiletAndWaterQuestions.sql" />
+    <Build Include="dbo\Tables\ToiletAndWaterSection\Configurations\ToiletAndWaterOptions.sql" />
     <Build Include="dbo\Tables\SocialAndCooperativeSection\FMDefaulderReasons.sql" />
     <Build Include="dbo\Tables\SocialAndCooperativeSection\CooperativeInfos.sql" />
     <Build Include="dbo\Tables\IncomeAndExpenseSection\FamilyAssets.sql" />
@@ -328,10 +331,10 @@
     <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\DefaulderReasons\InsertDefaulderReason.sql" />
     <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\SocialWorkTypes\InsertSocialWorkType.sql" />
     <Build Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeOptions\InsertVitaminKnowledgeOptions.sql" />
-    <Build Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeOptions\SelectVitaminKnowledgeOptionsByQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeOptions\SelectVitaminKnowledgeOptionsWithSelectedOption.sql" />
     <Build Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeQuestions\InsertVitaminKnowledgeQuestions.sql" />
-    <Build Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterOptions\InsertToiletAndWaterOptions.sql" />
-    <Build Include="dbo\Stored Procedures\WaterAndToiletSection\Configurations\ToiletAndWaterQuestions\InsertToiletAndWaterQuestions.sql" />
+    <Build Include="dbo\Stored Procedures\ToiletAndWaterSection\Configurations\ToiletAndWaterOptions\InsertToiletAndWaterOptions.sql" />
+    <Build Include="dbo\Stored Procedures\ToiletAndWaterSection\Configurations\ToiletAndWaterQuestions\InsertToiletAndWaterQuestions.sql" />
     <Build Include="dbo\Stored Procedures\MemberSection\Members\InsertMember.sql" />
     <Build Include="dbo\Stored Procedures\MemberSection\Members\UpdateMember.sql" />
     <Build Include="dbo\Stored Procedures\MemberSection\Members\SelectMembersByKhanaId.sql" />
@@ -339,6 +342,30 @@
     <Build Include="dbo\Stored Procedures\KhanaSection\Khanas\InsertKhana.sql" />
     <Build Include="dbo\Views\View_Khanas.sql" />
     <Build Include="dbo\Stored Procedures\KhanaSection\Khanas\SelectKhanasByUserId.sql" />
+    <Build Include="dbo\Tables\Authentication\Tokens.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\InsertOrUpdateToken.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\VerifyToken.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\VerifyUser.sql" />
+    <Build Include="dbo\Stored Procedures\Shared\InsertInformationStatus.sql" />
+    <Build Include="dbo\Stored Procedures\ToiletAndWaterSection\Configurations\ToiletAndWaterQuestions\SelectToiletAndWaterQuestions.sql" />
+    <Build Include="dbo\Stored Procedures\ToiletAndWaterSection\ToiletAndWaterInfos\InsertOrUpdateToiletAndWaterInfo.sql" />
+    <Build Include="dbo\Stored Procedures\ToiletAndWaterSection\ToiletAndWaterInfos\SelectToiletAndWaterInfoByKhanaAndQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\VitaminSection\VitaminKnowledges\InsertOrUpdateVitaminKnowledge.sql" />
+    <Build Include="dbo\Stored Procedures\VitaminSection\VitaminKnowledges\SelectVitaminKnowledgesByKhanaAndQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\VitaminSection\Configurations\VitaminKnowledgeQuestions\SelectVitaminKnowledgeQuestions.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyIncomes\InsertFamilyIncome.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyIncomes\DeleteFamilyIncomeById.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyIncomes\SelectFamilyIncomeByKhanaId.sql" />
+    <Build Include="dbo\Views\View_Members.sql" />
+    <Build Include="dbo\Stored Procedures\DiseaseSection\MemberDiseases\InsertMemberDisease.sql" />
+    <Build Include="dbo\Stored Procedures\DiseaseSection\MemberDiseases\DeleteMemberDiseaseById.sql" />
+    <Build Include="dbo\Stored Procedures\DiseaseSection\MemberDiseases\SelectMemberDiseasesByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyExpenses\InsertFamilyExpense.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyExpenses\DeleteFamilyExpenseById.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyExpenses\SelectFamilyExpenseByKhanaId.sql" />
+    <Build Include="dbo\Functions\GetAgeFromDateOfBirth.sql" />
+    <Build Include="dbo\Functions\GateAgeAndMonthFromBirthDate.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Members\SelectFamilyMembersByAge.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\WaterAndToiletSection\insert_toilet_and_water_source_question_answers.sql" />
@@ -381,6 +408,7 @@
     <None Include="dbo\Scripts\KhanaSection\insert_races.sql" />
     <None Include="BaseLineSurveyDevServer.publish.xml" />
     <None Include="BaseLineSurveyDB.publish.xml" />
+    <None Include="dbo\Scripts\Shared\insert_information_statuses.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
@@ -391,7 +419,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\KhanaSection\Configurations\Parishes.sql" />
-    <Build Include="dbo\Tables\KhanaSection\Configurations\ParishesServicenters.sql" />
+    <Build Include="dbo\Tables\KhanaSection\Configurations\ParishesServiceCenters.sql" />
     <Build Include="dbo\Tables\KhanaSection\Configurations\Races.sql" />
     <Build Include="dbo\Tables\KhanaSection\Configurations\Religions.sql" />
     <Build Include="dbo\Tables\KhanaSection\Configurations\ServiceCenters.sql" />

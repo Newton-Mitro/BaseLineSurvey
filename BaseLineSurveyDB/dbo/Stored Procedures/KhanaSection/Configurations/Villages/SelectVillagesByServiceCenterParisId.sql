@@ -8,8 +8,9 @@ Altered At                    : 25 January 2022
 Script Description            : This procedure will Select Villages By ServiceCenterParisId
 --------------------------------------------------------------------------------------
 */
-CREATE PROCEDURE dbo.SelectVillagesByServiceCenterParisId (
-    @ReturnResult VARCHAR(255) = NULL OUTPUT
+CREATE PROCEDURE dbo.SelectVillagesByParishesServicentersId (
+    @ParishesServiceCentersId BIGINT
+    , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
     )
 AS
@@ -20,8 +21,11 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT *
-        FROM Districts
+        SELECT ParishServiceCenterVillages.ParishesServiceCentersId, Villages.*
+        FROM ParishServiceCenterVillages
+        LEFT JOIN Villages
+        ON ParishServiceCenterVillages.VillageId = Villages.VillageId
+        WHERE ParishServiceCenterVillages.ParishesServiceCentersId = @ParishesServiceCentersId;
 
         --End Main Block
         IF @@ROWCOUNT > 0

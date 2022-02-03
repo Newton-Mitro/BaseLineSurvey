@@ -11,7 +11,7 @@ Script Description            : This procedure will create Vitamin Knowledges ta
 CREATE TABLE dbo.VitaminKnowledges (
     VitaminKnowledgeId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , KhanaId BIGINT NOT NULL
-    , QustionId BIGINT NOT NULL
+    , QuestionId BIGINT NOT NULL
     , OptionId BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL
     , CreatedBy BIGINT NULL
@@ -19,7 +19,7 @@ CREATE TABLE dbo.VitaminKnowledges (
     , CreatedAt DATETIME2 NULL
     , UpdatedAt DATETIME2 NULL
     , CONSTRAINT FK_VitaminKnowledges_Khanas FOREIGN KEY (KhanaId) REFERENCES Khanas(KhanaId)
-    , CONSTRAINT FK_VitaminKnowledges_VitaminKnowledgeQuestions FOREIGN KEY (QustionId) REFERENCES VitaminKnowledgeQuestions(QuestionId)
-    , CONSTRAINT FK_VitaminKnowledges_VitaminKnowledgeOptions FOREIGN KEY (OptionId) REFERENCES VitaminKnowledgeOptions(OptionId)
+    , CONSTRAINT FK_VitaminKnowledges_VitaminKnowledgeQuestions FOREIGN KEY (QuestionId) REFERENCES VitaminKnowledgeQuestions(VitaminKnowledgeQuestionId)
+    , CONSTRAINT FK_VitaminKnowledges_VitaminKnowledgeOptions FOREIGN KEY (OptionId) REFERENCES VitaminKnowledgeOptions(VitaminKnowledgeOptionId)
     , CONSTRAINT FK_VitaminKnowledges_InformationStatuses FOREIGN KEY (InformationStatusCode) REFERENCES InformationStatuses(InformationStatusCode)
     )

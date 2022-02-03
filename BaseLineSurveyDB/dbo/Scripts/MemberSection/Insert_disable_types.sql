@@ -38,7 +38,12 @@ BEGIN
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 -- @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
 
-    EXEC InsertDisableType N'অন্যান্য' -- @DisabledTypeName NVARCHAR(250)
+   EXEC InsertDisableType N'অন্যান্য' -- @DisabledTypeName NVARCHAR(250)
+        , NULL -- @ScopeId BIGINT = NULL OUTPUT
+        , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 -- @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
+
+    EXEC InsertDisableType N'প্রতিবন্ধী নয়' -- @DisabledTypeName NVARCHAR(250)
         , NULL -- @ScopeId BIGINT = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 -- @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 

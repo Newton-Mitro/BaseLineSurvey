@@ -10,7 +10,6 @@ Script Description            : This procedure will Select Professions
 */
 CREATE PROCEDURE dbo.SelectProfessions (
     @ReturnResult VARCHAR(255) = NULL OUTPUT
-    , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
     )
 AS
 BEGIN

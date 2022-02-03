@@ -18,13 +18,13 @@ namespace BaseLineSurveyApi.Controllers
         //-- Version      : 1.0
         //-- ============================================================================
         [HttpPost]
-        public ResponseObject GetKhanasByUserId([FromBody] Basic Data)
+        public ResponseObject GetKhanasByUserId([FromBody] BasicModel Data)
         {
             return KhanaRepository.GetKhanasByUserId(Data);
         }
 
         [HttpPost]
-        public ResponseObject CreateKhana([FromBody] Khana khana)
+        public ResponseObject CreateKhana([FromBody] KhanaModel khana)
         {
             return KhanaRepository.CreateKhana(khana);
         }

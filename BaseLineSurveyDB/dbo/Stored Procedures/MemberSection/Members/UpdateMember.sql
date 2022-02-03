@@ -10,16 +10,19 @@ Script Description            : This procedure will Update Member
 */
 CREATE PROCEDURE dbo.UpdateMember (
     @MemberId BIGINT
+    , @MemberName NVARCHAR(250)
     , @RelationWithFamilyHeadId BIGINT
     , @GenderCode BIGINT
     , @FirstProfessionCode BIGINT
     , @SecondProfessionCode BIGINT
     , @IncomeRelatedWork BIGINT
+    , @EducationalStatusCode BIGINT
+    , @CurrentlyStudying BIT
     , @MaritalStatusCode BIGINT
     , @DisabledTypeCode BIGINT
     , @KhanaId BIGINT
     , @InformationStatusCode BIGINT
-    , @AgeInMonth INT
+    , @DateOfBirth DATETIME2
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -34,15 +37,18 @@ BEGIN
         --Start Main Block
         UPDATE dbo.Members
         SET RelationWithFamilyHeadId = @RelationWithFamilyHeadId
+            , MemberName = @MemberName
             , GenderCode = @GenderCode
             , FirstProfessionCode = @FirstProfessionCode
             , SecondProfessionCode = @SecondProfessionCode
             , IncomeRelatedWork = @IncomeRelatedWork
             , MaritalStatusCode = @MaritalStatusCode
+            , EducationalStatusCode = @EducationalStatusCode
+            , CurrentlyStudying = @CurrentlyStudying
             , DisabledTypeCode = @DisabledTypeCode
             , KhanaId = @KhanaId
             , InformationStatusCode = @InformationStatusCode
-            , AgeInMonth = @AgeInMonth
+            , DateOfBirth = @DateOfBirth
             , CreatedBy = @AccessedBy
             , UpdatedBy = @AccessedBy
             , CreatedAt = GETDATE()

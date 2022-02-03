@@ -5,9 +5,9 @@ namespace ApplicationDataAccess
 {
     public class DBConnection
     {
-        public static string GetConnectionString(string connectionStringName)
+        public static string GetConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["BS_DB_Connection"].ConnectionString;
         }
 
     }

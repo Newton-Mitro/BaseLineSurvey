@@ -23,7 +23,7 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        INSERT INTO dbo.[ParishesServicenters] (
+        INSERT INTO dbo.[ParishesServiceCenters] (
             [ParishId]
             , ServiceCenterId
             , CreatedAt

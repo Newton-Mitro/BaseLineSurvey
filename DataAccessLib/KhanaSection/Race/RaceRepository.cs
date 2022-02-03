@@ -7,27 +7,36 @@ using System.Data.SqlClient;
 
 namespace DataAccessLib.KhanaSection.Race
 {
+    /// <summary>
+    /// Developer    : Newton Mitro
+    /// Created At   : 29 January 2022
+    /// Updated By   : Newton Mitro
+    /// Updated At   : 29 January 2022
+    /// Description  : Data access repository for Race
+    /// </summary>
     public class RaceRepository
     {
-        string conStringName = "BS_DB_Connection"; //Database Connection String Name
+        ResponseObject responseObject;
+        public RaceRepository()
+        {
+            responseObject = new ResponseObject();
+        }
 
-        //-- =========================================================================
-        //-- Author       : Newton Mitro
-        //-- Create Date  : January 29, 2022
-        //-- Updated By   : Newton Mitro
-        //-- Updated Date : January 29, 2022
-        //-- Description  : Function for getting khanas by user id
-        //-- Version      : 1.0
-        //-- ============================================================================
-
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 29 January 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 29 January 2022
+        /// Description  : Function for getting Races
+        /// </summary>
+        /// <returns>ResponseObject</returns>
         public ResponseObject GetRaces()
         {
             var parameters = new DynamicParameters();
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
-            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString(conStringName)))
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
-                var races = connetion.Query<Race>(@"SelectRaces", parameters, commandType: CommandType.StoredProcedure);
-                ResponseObject responseObject = new ResponseObject();
+                var races = connetion.Query<RaceModel>(@"SelectRaces", parameters, commandType: CommandType.StoredProcedure);
                 responseObject.Data = JsonConvert.SerializeObject(races);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;

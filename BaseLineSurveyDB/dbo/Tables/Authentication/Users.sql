@@ -1,7 +1,8 @@
 ﻿CREATE TABLE dbo.Users (
     UserId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , RoleId BIGINT NOT NULL
-    , UserName NVARCHAR(250) NULL
+    , Email NVARCHAR(250) NULL UNIQUE
+    , Password NVARCHAR(250) NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL
     , CreatedAt DATETIME2 NULL

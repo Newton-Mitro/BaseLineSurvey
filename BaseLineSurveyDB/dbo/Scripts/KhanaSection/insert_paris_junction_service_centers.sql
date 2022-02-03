@@ -57,7 +57,7 @@ DECLARE @NarayanganjParish1 BIGINT = 31
 
 IF NOT EXISTS (
         SELECT *
-        FROM [ParishesServicenters]
+        FROM [ParishesServiceCenters]
         )
 BEGIN
     EXEC InsertParishesServicenter @DhorendaParish1 --@ParisId BIGINT

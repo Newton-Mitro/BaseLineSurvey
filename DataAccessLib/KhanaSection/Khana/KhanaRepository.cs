@@ -7,81 +7,89 @@ using System.Data.SqlClient;
 
 namespace DataAccessLib.KhanaSection.Khana
 {
+    /// <summary>
+    /// Developer    : Raven Mark Quiah
+    /// Created At   : 27 January 2022
+    /// Updated By   : Newton Mitro
+    /// Updated At   : 27 January 2022
+    /// Description  : Data access repository for Khana
+    /// </summary>
     public class KhanaRepository
     {
-        string conStringName = "BS_DB_Connection"; //Database Connection String Name
-        
-        //-- =========================================================================
-        //-- Author       : Raven Mark Quiah
-        //-- Create Date  : January 27, 2022
-        //-- Updated By   : Newton Mitro
-        //-- Updated Date : January 29, 2022
-        //-- Description  : Function for getting khanas by user id
-        //-- Version      : 1.0
-        //-- ============================================================================
+        ResponseObject responseObject;
+        public KhanaRepository()
+        {
+            responseObject = new ResponseObject();
+        }
 
-        public ResponseObject GetKhanasByUserId(Basic _dbModel)
+        /// <summary>
+        /// Developer    : Raven Mark Quiah
+        /// Created At   : 27 January 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 27 January 2022
+        /// Description  : Function for getting khanas for specific user
+        /// </summary>
+        /// <param name="_dbModel">Receive Basic Data Model</param>
+        /// <returns>ResponseObject</returns>
+        public ResponseObject GetKhanasByUserId(BasicModel _dbModel)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@UserId", _dbModel.UserId, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@AccessedBy", _dbModel.AccessedBy, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
-            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString(conStringName)))
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
-                var khanas = connetion.Query<KhanaView>(@"SelectKhanasByUserId", parameters, commandType: CommandType.StoredProcedure);
-                ResponseObject responseObject = new ResponseObject();
+                var khanas = connetion.Query<KhanaViewModel>(@"SelectKhanasByUserId", parameters, commandType: CommandType.StoredProcedure);
                 responseObject.Data = JsonConvert.SerializeObject(khanas);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;
             }
         }
 
-        //-- =========================================================================
-        //-- Author       : Raven Mark Quiah
-        //-- Create Date  : January 27, 2022
-        //-- Updated By   : Newton Mitro
-        //-- Updated Date : January 29, 2022
-        //-- Description  : Function for insert khana to khana table
-        //-- Version      : 1.0
-        //-- ============================================================================
-        public ResponseObject CreateKhana(Khana khana)
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 27 January 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 27 January 2022
+        /// Description  : Function for insert khana to khana table
+        /// </summary>
+        /// <param name="khana">Receive Khana Data Model</param>
+        /// <returns>ResponseObject</returns>
+        public ResponseObject CreateKhana(KhanaModel khana)
         {
             var parameters = new DynamicParameters(khana);
             parameters.Add("@AccessedBy", khana.CreatedBy, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
-            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString(conStringName)))
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
                 connetion.Execute(@"InsertKhana", parameters, commandType: CommandType.StoredProcedure);
-                ResponseObject responseObject = new ResponseObject();
                 responseObject.Data = "";
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;
             }
         }
 
-        //-- =========================================================================
-        //-- Author       : Newtn Mitro
-        //-- Create Date  : January 29, 2022
-        //-- Updated By   : Newton Mitro
-        //-- Updated Date : January 29, 2022
-        //-- Description  : Function for insert khana to khana table
-        //-- Version      : 1.0
-        //-- ============================================================================
-        public ResponseObject UpdateKhana(Khana khana)
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 27 January 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 27 January 2022
+        /// Description  : Function for update khana to khana table
+        /// </summary>
+        /// <param name="khana">Receive Khana Data Model</param>
+        /// <returns>ResponseObject</returns>
+        public ResponseObject UpdateKhana(KhanaModel khana)
         {
             var parameters = new DynamicParameters(khana);
             parameters.Add("@AccessedBy", khana.UpdatedBy, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
-            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString(conStringName)))
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
                 connetion.Execute(@"UpdateKhana", parameters, commandType: CommandType.StoredProcedure);
-                ResponseObject responseObject = new ResponseObject();
                 responseObject.Data = "";
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;
             }
         }
-
-
     }
 }
