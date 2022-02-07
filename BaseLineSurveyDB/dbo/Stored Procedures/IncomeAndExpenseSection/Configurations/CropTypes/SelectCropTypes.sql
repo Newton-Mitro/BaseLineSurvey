@@ -10,7 +10,6 @@ Script Description            : This procedure will Select Crop Types
 */
 CREATE PROCEDURE dbo.SelectCropTypes (
     @ReturnResult VARCHAR(255) = NULL OUTPUT
-    , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
     )
 AS
 BEGIN
@@ -21,7 +20,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM CropTypes;
+        FROM dbo.CropTypes;
 
         --End Main Block
         IF @@ROWCOUNT > 0

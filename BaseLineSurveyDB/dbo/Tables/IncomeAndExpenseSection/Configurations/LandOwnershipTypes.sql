@@ -10,7 +10,7 @@ Script Description            : This procedure will create Land Owner ship Types
 */
 CREATE TABLE dbo.LandOwnershipTypes (
     LandOwnershipTypeId BIGINT NOT NULL PRIMARY KEY IDENTITY
-    , LandOwnershipText NVARCHAR(250) NULL
+    , LandOwnershipTypeName NVARCHAR(250) NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL
     , CreatedAt DATETIME2 NULL

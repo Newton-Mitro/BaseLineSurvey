@@ -20,9 +20,21 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT *
+        SELECT MemberDiseases.*
+        , Diseases.DiseaseName
+        , TreatmentCenters.TreatmentCenterName
+        , DoctorTypes.DoctorTypeName
+        , Members.MemberName
         FROM dbo.MemberDiseases
-        WHERE KhanaId = @KhanaId;
+        LEFT JOIN dbo.Diseases
+        ON MemberDiseases.DiseaseCode = Diseases.DiseaseCode
+        LEFT JOIN dbo.TreatmentCenters
+        ON MemberDiseases.TreatmentCenterCode = TreatmentCenters.TreatmentCenterCode
+        LEFT JOIN dbo.DoctorTypes
+        ON MemberDiseases.DoctorTypeCode = DoctorTypes.DoctorTypeCode
+        LEFT JOIN dbo.Members
+        ON MemberDiseases.MemberId = Members.MemberId
+        WHERE MemberDiseases.KhanaId = @KhanaId
 
         --End Main Block
         IF @@ROWCOUNT > 0

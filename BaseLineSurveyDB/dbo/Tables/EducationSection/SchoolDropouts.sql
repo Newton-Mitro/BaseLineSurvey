@@ -10,6 +10,7 @@ Script Description            : This procedure will create Drop Out Reasons List
 */
 CREATE TABLE dbo.SchoolDropouts (
     SchoolDropoutId BIGINT NOT NULL PRIMARY KEY IDENTITY
+    , KhanaId BIGINT NOT NULL
     , MemberId BIGINT NOT NULL
     , DropOutReasonCode BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL

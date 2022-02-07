@@ -12,6 +12,8 @@ CREATE TABLE dbo.FarmingLands (
     FarmingLandId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , LandOwnershipTypeId BIGINT NOT NULL
     , CropTypeId BIGINT NOT NULL
+    , LandAmount DECIMAL NOT NULL
+    , CropAmount DECIMAL NOT NULL
     , KhanaId BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL
     , CreatedBy BIGINT NULL

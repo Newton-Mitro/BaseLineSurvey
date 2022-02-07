@@ -32,8 +32,8 @@ namespace DataAccessLib.MemberDisease
             parameters.Add("@KhanaId", memberDiseaseModel.KhanaId, DbType.Int64, direction: ParameterDirection.Input);
             parameters.Add("@MemberId", memberDiseaseModel.MemberId, DbType.Int64, direction: ParameterDirection.Input);
             parameters.Add("@DiseaseCode", memberDiseaseModel.DiseaseCode, DbType.Int64, direction: ParameterDirection.Input);
-            parameters.Add("@FirstTreatmentFrom", memberDiseaseModel.FirstTreatmentFrom, DbType.Int64, direction: ParameterDirection.Input);
-            parameters.Add("@TreatmentCentercode", memberDiseaseModel.TreatmentCentercode, DbType.Int64, direction: ParameterDirection.Input);
+            parameters.Add("@FirstTreatmentFromCode", memberDiseaseModel.FirstTreatmentFromCode, DbType.String, direction: ParameterDirection.Input);
+            parameters.Add("@TreatmentCentercode", memberDiseaseModel.TreatmentCenterCode, DbType.Int64, direction: ParameterDirection.Input);
             parameters.Add("@DoctorTypeCode", memberDiseaseModel.DoctorTypeCode, DbType.Int64, direction: ParameterDirection.Input);
             parameters.Add("@IfCovid_NumberOfDose", memberDiseaseModel.IfCovid_NumberOfDose, DbType.Int64, direction: ParameterDirection.Input);
             parameters.Add("@InformationStatusCode", memberDiseaseModel.InformationStatusCode, DbType.Int64, direction: ParameterDirection.Input);

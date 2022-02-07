@@ -9,7 +9,8 @@ Script Description            : This procedure will Select Child Right Options B
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.SelectChildRightOptionsByQuestionId (
-    @QuestionId BIGINT
+    @KhanaId BIGINT
+    , @ChildRightQuestionId BIGINT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
     )
@@ -21,12 +22,25 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
+         DECLARE @RowCount AS INT;
+
+        SET @RowCount = 0;
+
         SELECT *
         FROM dbo.ChildRightOptions
-        WHERE ChildRightQuestionId = @QuestionId;
+        WHERE ChildRightQuestionId = @ChildRightQuestionId;
+
+        SET @RowCount = @RowCount + @@ROWCOUNT
+
+        SELECT *
+        FROM dbo.ChildRights
+        WHERE KhanaId = @KhanaId
+            AND ChildRightQuestionId = @ChildRightQuestionId;
+
+        SET @RowCount = @RowCount + @@ROWCOUNT
 
         --End Main Block
-        IF @@ROWCOUNT > 0
+        IF @RowCount > 0
             SET @ReturnResult = 'Success'
         ELSE
             SET @ReturnResult = 'Records not found.'

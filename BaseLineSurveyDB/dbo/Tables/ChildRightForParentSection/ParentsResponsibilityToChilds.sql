@@ -10,8 +10,8 @@ Script Description            : This procedure will create Parents Responsibilit
 */
 CREATE TABLE dbo.ParentsResponsibilityToChilds (
     ParentsResponsibilityToChildId BIGINT NOT NULL PRIMARY KEY IDENTITY
-    , ParResQuestionId BIGINT NOT NULL
-    , ParResOptionId BIGINT NOT NULL
+    , ParentResponsibilityQuestionId BIGINT NOT NULL
+    , ParentResponsibilityOptionId BIGINT NOT NULL
     , KhanaId BIGINT NOT NULL
     , AnswerGivenById BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL
@@ -20,8 +20,8 @@ CREATE TABLE dbo.ParentsResponsibilityToChilds (
     , CreatedAt DATETIME2 NULL
     , UpdatedAt DATETIME2 NULL
     , CONSTRAINT FK_ParentsResponsibilityToChilds_Khanas FOREIGN KEY (KhanaId) REFERENCES Khanas(KhanaId)
-    , CONSTRAINT FK_ParentsResponsibilityToChilds_PerResponseQuestions FOREIGN KEY (ParResQuestionId) REFERENCES ParResponseQuestions(ParResQuestionId)
-    , CONSTRAINT FK_ParentsResponsibilityToChilds_PerResponseOptions FOREIGN KEY (ParResOptionId) REFERENCES ParResponseOptions(PerResponseOptionId)
+    , CONSTRAINT FK_ParentsResponsibilityToChilds_PerResponseQuestions FOREIGN KEY (ParentResponsibilityQuestionId) REFERENCES ParentResponsibilityQuestions(ParentResponsibilityQuestionId)
+    , CONSTRAINT FK_ParentsResponsibilityToChilds_PerResponseOptions FOREIGN KEY (ParentResponsibilityOptionId) REFERENCES ParentResponsibilityOptions(ParentResponsibilityOptionId)
     , CONSTRAINT FK_ParentsResponsibilityToChilds_Members FOREIGN KEY (AnswerGivenById) REFERENCES Members(MemberId)
     , CONSTRAINT FK_ParentsResponsibilityToChilds_InformationStatuses FOREIGN KEY (InformationStatusCode) REFERENCES InformationStatuses(InformationStatusCode)
     )

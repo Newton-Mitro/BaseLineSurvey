@@ -23,7 +23,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         INSERT INTO LandOwnershipTypes (
-            LandOwnershipText
+            LandOwnershipTypeName
             , CreatedAt
             , CreatedBy
             , UpdatedAt

@@ -10,6 +10,7 @@ Script Description            : This procedure will create Member Education Help
 */
 CREATE TABLE dbo.MemberEducationHelps (
     MemberEducationHelpId BIGINT NOT NULL PRIMARY KEY IDENTITY
+    , KhanaId BIGINT NOT NULL
     , MemberId BIGINT NOT NULL
     , HelpOrganizationCode BIGINT NOT NULL
     , EducationHelpTypeCode BIGINT NOT NULL

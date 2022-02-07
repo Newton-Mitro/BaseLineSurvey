@@ -12,9 +12,9 @@ CREATE PROCEDURE dbo.InsertMemberDisease (
     @KhanaId BIGINT
     , @MemberId BIGINT
     , @DiseaseCode BIGINT
-    , @TreatmentCentercode BIGINT
+    , @TreatmentCenterCode BIGINT
     , @DoctorTypeCode BIGINT
-    , @FirstTreatmentFrom NVARCHAR(250)
+    , @FirstTreatmentFromCode BIGINT
     , @InformationStatusCode BIGINT
     , @IfCovid_NumberOfDose INT
     , @ScopeId BIGINT = NULL OUTPUT
@@ -33,9 +33,9 @@ BEGIN
             KhanaId
            ,MemberId
            ,DiseaseCode
-           ,TreatmentCentercode
+           ,TreatmentCenterCode
            ,DoctorTypeCode
-           ,FirstTreatmentFrom
+           ,FirstTreatmentFromCode
            ,InformationStatusCode
            ,IfCovid_NumberOfDose
            ,CreatedBy
@@ -47,9 +47,9 @@ BEGIN
             @KhanaId
            ,@MemberId
            ,@DiseaseCode
-           ,@TreatmentCentercode
+           ,@TreatmentCenterCode
            ,@DoctorTypeCode
-           ,@FirstTreatmentFrom
+           ,@FirstTreatmentFromCode
            ,@InformationStatusCode
            ,@IfCovid_NumberOfDose
            ,@AccessedBy

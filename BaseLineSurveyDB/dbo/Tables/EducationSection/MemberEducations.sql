@@ -10,6 +10,7 @@ Script Description            : This procedure will create Member Educations tab
 */
 CREATE TABLE dbo.MemberEducations (
     MemberEducationId BIGINT NOT NULL PRIMARY KEY IDENTITY
+    , KhanaId BIGINT NULL
     , MemberId BIGINT NULL
     , EducationalStatusCode BIGINT NULL
     , InformationStatusCode BIGINT NULL

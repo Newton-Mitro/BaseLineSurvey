@@ -10,7 +10,7 @@ Script Description            : This procedure will Insert Parent Response Optio
 */
 CREATE PROCEDURE dbo.InsertParentResponseOption (
     @QuestionText NVARCHAR(250)
-    , @ParResQuestionId BIGINT
+    , @ParentResponsibilityQuestionId BIGINT
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -23,9 +23,9 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        INSERT INTO ParResponseOptions (
+        INSERT INTO ParentResponsibilityOptions (
             QuestionText
-            , ParResQuestionId
+            , ParentResponsibilityQuestionId
             , CreatedAt
             , CreatedBy
             , UpdatedAt
@@ -33,7 +33,7 @@ BEGIN
             )
         VALUES (
             @QuestionText
-            , @ParResQuestionId
+            , @ParentResponsibilityQuestionId
             , GETDATE()
             , @AccessedBy
             , GETDATE()

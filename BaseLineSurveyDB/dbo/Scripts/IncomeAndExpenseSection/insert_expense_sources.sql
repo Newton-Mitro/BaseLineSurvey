@@ -10,7 +10,7 @@ Script Description            : This Script will Insert Expense Sources.
 */
 IF NOT EXISTS (
         SELECT *
-        FROM ExpenseSources
+        FROM dbo.ExpenseSources
         )
 BEGIN
     EXEC InsertExpenseSource N'খাদ্য বাবদ ব্যয়' -- @ExpenseSourceName NVARCHAR(250)

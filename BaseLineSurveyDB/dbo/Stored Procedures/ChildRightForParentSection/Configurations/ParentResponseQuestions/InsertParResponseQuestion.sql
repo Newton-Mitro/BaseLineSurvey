@@ -22,7 +22,7 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        INSERT INTO ParResponseQuestions (
+        INSERT INTO ParentResponsibilityQuestions (
             QuestionText
             , CreatedAt
             , CreatedBy

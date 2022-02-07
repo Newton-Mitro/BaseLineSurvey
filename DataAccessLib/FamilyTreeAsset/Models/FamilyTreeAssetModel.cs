@@ -8,6 +8,7 @@ namespace DataAccessLib.FamilyTreeAsset.Models
         public Int64 FamilyTreeAssetId { get; set; }
         public Int64 KhanaId { get; set; }
         public Int64 TreeId { get; set; }
+        public string TreeName { get; set; }
         public Int64 InformationStatusCode { get; set; }
         public int NumberOfTrees { get; set; }
     }

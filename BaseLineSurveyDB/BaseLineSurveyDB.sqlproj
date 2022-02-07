@@ -137,7 +137,6 @@
     <Folder Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations" />
     <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseOptions" />
     <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseQuestions" />
-    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\TorturedReasons" />
     <Folder Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightOptions" />
     <Folder Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightQuestions" />
     <Folder Include="dbo\Scripts\SocialAndCooperativeSection" />
@@ -153,9 +152,6 @@
     <Folder Include="dbo\Tables\SocialAndCooperativeSection\Configurations" />
     <Folder Include="dbo\Tables\VitaminSection\Configurations" />
     <Folder Include="dbo\Tables\ToiletAndWaterSection\Configurations" />
-    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\SleepingPlaces" />
-    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\MemberRiskProfessions" />
-    <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\MemberTorturedReasions" />
     <Folder Include="dbo\Stored Procedures\ChildRightForParentSection\ParentsResponsibilityToChilds" />
     <Folder Include="dbo\Stored Procedures\ChildRightForChildSection\ChildRights" />
     <Folder Include="dbo\Stored Procedures\DiseaseSection\MemberDiseases" />
@@ -187,6 +183,13 @@
     <Folder Include="dbo\Stored Procedures\Shared" />
     <Folder Include="dbo\Scripts\Shared" />
     <Folder Include="dbo\Functions" />
+    <Folder Include="dbo\Tables\TorturedReasonsSection" />
+    <Folder Include="dbo\Tables\TorturedReasonsSection\Configurations" />
+    <Folder Include="dbo\Stored Procedures\MemberTorturedReasons" />
+    <Folder Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations" />
+    <Folder Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\TorturedReasons" />
+    <Folder Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\SleepingPlaces" />
+    <Folder Include="dbo\TypTables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\KhanaSection\Khanas.sql" />
@@ -228,8 +231,7 @@
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\IncomeSources\SelectIncomeSources.sql" />
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\LandOwnershipTypes\SelectLandOwnershipTypes.sql" />
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\Configurations\TreeTypes\SelectTreeTypes.sql" />
-    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\TorturedReasons\SelectTorturedReasons.sql" />
-    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseOptions\SelectParentResponseOptionsByQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseOptions\SelectParentResponsibilityOptions.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightOptions\SelectChildRightOptionsByQuestionId.sql" />
     <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Districts\InsertDistrict.sql" />
     <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Parises\InsertParish.sql" />
@@ -239,10 +241,8 @@
     <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Villages\InsertVillage.sql" />
     <Build Include="dbo\Tables\ChildRightForChildSection\Configurations\ChildRightOptions.sql" />
     <Build Include="dbo\Tables\ChildRightForChildSection\Configurations\ChildRightQuestions.sql" />
-    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\TorturedReasions.sql" />
-    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\ParResOptions.sql" />
-    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\ParResponseQuestions.sql" />
-    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\SleepingPlaces.sql" />
+    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\ParentResponsibilityOptions.sql" />
+    <Build Include="dbo\Tables\ChildRightForParentSection\Configurations\ParentResponsibilityQuestions.sql" />
     <Build Include="dbo\Tables\DiseaseSection\Configurations\TreatmentCenters.sql" />
     <Build Include="dbo\Tables\DiseaseSection\Configurations\Diseases.sql" />
     <Build Include="dbo\Tables\DiseaseSection\Configurations\DoctorTypes.sql" />
@@ -288,18 +288,14 @@
     <Build Include="dbo\Tables\EducationSection\MemberEducationHelps.sql" />
     <Build Include="dbo\Tables\DiseaseSection\MemberDiseases.sql" />
     <Build Include="dbo\Tables\ChildRightForParentSection\ParentsResponsibilityToChilds.sql" />
-    <Build Include="dbo\Tables\ChildRightForParentSection\MemberRiskProfessions.sql" />
     <Build Include="dbo\Tables\ChildRightForChildSection\ChildRights.sql" />
     <Build Include="dbo\Tables\MemberSection\Configurations\EducationalStatuses.sql" />
     <Build Include="dbo\Tables\SocialAndCooperativeSection\SocialOrganizations.sql" />
     <Build Include="dbo\Tables\SocialAndCooperativeSection\OrganizationWorks.sql" />
-    <Build Include="dbo\Tables\ChildRightForParentSection\MemberTorturedReasions.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightOptions\InsertChildRightOption.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightQuestions\InsertChildRightQuestion.sql" />
-    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\TorturedReasons\InsertTorturedReasion.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseQuestions\InsertParResponseQuestion.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseOptions\InsertParentResponseOption.sql" />
-    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\SleepingPlaces\InsertSleepingPlace.sql" />
     <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\Diseases\InsertDisease.sql" />
     <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\DoctorTypes\InsertDoctorTypes.sql" />
     <Build Include="dbo\Stored Procedures\DiseaseSection\Configurations\TreatmentCenters\InsertTreatmentCenter.sql" />
@@ -366,6 +362,30 @@
     <Build Include="dbo\Functions\GetAgeFromDateOfBirth.sql" />
     <Build Include="dbo\Functions\GateAgeAndMonthFromBirthDate.sql" />
     <Build Include="dbo\Stored Procedures\MemberSection\Members\SelectFamilyMembersByAge.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyTreeAssets\InsertFamilyTreeAsset.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyTreeAssets\DeleteFamilyTreeAssetById.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyTreeAssets\SelectFamilyTreeAssetByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyAssets\InsertFamilyAsset.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyAssets\DeleteFamilyAssetById.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyAssets\SelectFamilyAssetByKhanaId.sql" />
+    <Build Include="dbo\Tables\TorturedReasonsSection\Configurations\TorturedReasions.sql" />
+    <Build Include="dbo\Tables\TorturedReasonsSection\Configurations\SleepingPlaces.sql" />
+    <Build Include="dbo\Tables\TorturedReasonsSection\MemberRiskProfessions.sql" />
+    <Build Include="dbo\Tables\TorturedReasonsSection\MemberTorturedReasions.sql" />
+    <Build Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\TorturedReasons\InsertTorturedReasion.sql" />
+    <Build Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\TorturedReasons\SelectTorturedReasons.sql" />
+    <Build Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\SleepingPlaces\InsertSleepingPlace.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\ParentsResponsibilityToChilds\InsertOrUpdateParentResponsibilityToChild.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseQuestions\SelectParentResponsibilityQuestions.sql" />
+    <Build Include="dbo\TypTables\ParentResponsibilityToChilds.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightQuestions\SelectChildRightQuestions.sql" />
+    <Build Include="dbo\Stored Procedures\ChildRightForChildSection\ChildRights\InsertOrUpdateChildRightInfo.sql" />
+    <Build Include="dbo\TypTables\ChildRightInfos.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\SchoolDropouts\SelectSchoolDropOutMembers.sql" />
+    <Build Include="dbo\Stored Procedures\MemberSection\Members\SelectFamilyMembersBetweenAge.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FarmingLands\DeleteFamilyFarmingLandById.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FarmingLands\InsertFamilyFarmingLand.sql" />
+    <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FarmingLands\SelectFamilyFarmingLandByKhanaId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\WaterAndToiletSection\insert_toilet_and_water_source_question_answers.sql" />

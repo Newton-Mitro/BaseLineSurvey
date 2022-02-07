@@ -12,7 +12,7 @@ DECLARE @ParResQuestionId AS BIGINT;
 
 IF NOT EXISTS (
         SELECT *
-        FROM ParResponseQuestions
+        FROM ParentResponsibilityQuestions
         )
 BEGIN
     EXEC InsertParResponseQuestion N'আপনি কি শিশুদের প্রতি অভিভাবকের দায়িত্ব সম্পর্কে কিছু বলতে পারেন?' --@QuestionName NVARCHAR(250)

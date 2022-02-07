@@ -7,10 +7,14 @@ namespace DataAccessLib.MemberDisease.Models
         public long MemberDiseasId { get; set; }
         public long KhanaId { get; set; }
         public long MemberId { get; set; }
+        public string MemberName { get; set; }
         public long DiseaseCode { get; set; }
-        public long TreatmentCentercode { get; set; }
+        public string DiseaseName { get; set; }
+        public long TreatmentCenterCode { get; set; }
+        public string TreatmentCenterName { get; set; }
         public long DoctorTypeCode { get; set; }
-        public long FirstTreatmentFrom { get; set; }
+        public string DoctorTypeName { get; set; }
+        public long FirstTreatmentFromCode { get; set; }
         public long InformationStatusCode { get; set; }
         public int IfCovid_NumberOfDose { get; set; }
     }
