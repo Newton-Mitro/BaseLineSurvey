@@ -6,6 +6,6 @@ namespace DataAccessLib.ChildRightForParentSection.Models
     {
         public long ParentResponsibilityOptionId { get; set; }
         public long ParentResponsibilityQuestionId { get; set; }
-        public string QuestionText { get; set; }
+        public string OptionText { get; set; }
     }
 }

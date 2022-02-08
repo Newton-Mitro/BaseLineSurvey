@@ -163,5 +163,20 @@ namespace BaseLineSurveyApi.Controllers.MemberSection
         {
             return MemberRepository.GetFamilyMembersByAge(memberSearchModel);
         }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 09 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 09 February 2022
+        /// Description  : Function for Get Family Members Between Age
+        /// </summary>
+        /// <param name="memberSearchModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ResponseObject GetFamilyMembersBetweenAge([FromBody] MemberSearchModel memberSearchModel)
+        {
+            return MemberRepository.GetFamilyMembersBetweenAge(memberSearchModel);
+        }
     }
 }

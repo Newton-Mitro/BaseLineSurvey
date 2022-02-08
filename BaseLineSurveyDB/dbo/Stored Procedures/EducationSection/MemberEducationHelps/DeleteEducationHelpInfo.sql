@@ -1,15 +1,15 @@
 ﻿/*
-Stored Procedure SelectSchoolDropOutMembers		
+Stored Procedure DeleteEducationHelpInfo		
 --------------------------------------------------------------------------------------
 Script By                     : Newton Mitro
-Created At                    : 08 February 2022
+Created At                    : 09 February 2022
 Script Altered By             : Newton Mitro
-Altered At                    : 08 February 2022
-Script Description            : This procedure will Select School Drop Out Members
+Altered At                    : 09 February 2022
+Script Description            : This procedure will Delete Education Help Info
 --------------------------------------------------------------------------------------
 */
-CREATE PROCEDURE dbo.SelectSchoolDropOutMembers (
-    @KhanaId BIGINT
+CREATE PROCEDURE dbo.DeleteEducationHelpInfo (
+    @MemberEducationHelpId BIGINT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     )
 AS
@@ -20,13 +20,8 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT *
-            FROM dbo.View_Members
-            WHERE KhanaId = @KhanaId 
-            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) >=6 
-            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) <=18
-            AND EducationalStatusCode > 5
-            AND CurrentlyStudying = 0;
+        DELETE FROM dbo.MemberEducationHelps
+        WHERE MemberEducationHelpId = @MemberEducationHelpId;
 
         --End Main Block
         IF @@ROWCOUNT > 0

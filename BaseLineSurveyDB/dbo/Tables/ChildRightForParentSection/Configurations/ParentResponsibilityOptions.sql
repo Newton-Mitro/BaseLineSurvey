@@ -10,7 +10,7 @@ Script Description            : This procedure will create ParResponse Options t
 */
 CREATE TABLE dbo.ParentResponsibilityOptions (
     ParentResponsibilityOptionId BIGINT NOT NULL PRIMARY KEY IDENTITY(1, 1)
-    , QuestionText NVARCHAR(250) NULL
+    , OptionText NVARCHAR(250) NULL
     , ParentResponsibilityQuestionId BIGINT NOT NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL

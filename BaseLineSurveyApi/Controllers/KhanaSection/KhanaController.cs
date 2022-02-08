@@ -28,5 +28,11 @@ namespace BaseLineSurveyApi.Controllers
         {
             return KhanaRepository.CreateKhana(khana);
         }
+
+        [HttpPost]
+        public ResponseObject UpdateKhana([FromBody] KhanaModel khana)
+        {
+            return KhanaRepository.UpdateKhana(khana);
+        }
     }
 }

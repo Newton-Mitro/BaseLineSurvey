@@ -15,21 +15,39 @@ namespace BaseLineSurveyApi.Controllers.EducationSection
         }
 
         [HttpPost]
-        public ResponseObject CreateOrUpdateDropOutInfo([FromBody] SchoolDropOutInfoModel schoolDropOutInfoModel)
+        public ResponseObject CreateSchoolDropOutInfo([FromBody] SchoolDropOutInfoModel schoolDropOutInfoModel)
         {
-            return memberEducationRepository.CreateOrUpdateDropOutInfo(schoolDropOutInfoModel);
+            return memberEducationRepository.CreateSchoolDropOutInfo(schoolDropOutInfoModel);
         }
 
         [HttpPost]
-        public ResponseObject DeleteDropOutInfo([FromBody] Int64 SchoolDropoutId)
+        public ResponseObject DeleteSchoolDropOutInfo([FromBody] Int64 SchoolDropoutId)
         {
-            return memberEducationRepository.DeleteDropOutInfo(SchoolDropoutId);
+            return memberEducationRepository.DeleteSchoolDropOutInfo(SchoolDropoutId);
         }
 
         [HttpPost]
-        public ResponseObject GetDropOutInfosByKhanaId([FromBody] Int64 KhanaId)
+        public ResponseObject GetSchoolDropOutInfosByKhanaId([FromBody] Int64 KhanaId)
         {
-            return memberEducationRepository.GetDropOutInfosByKhanaId(KhanaId);
+            return memberEducationRepository.GetSchoolDropOutInfosByKhanaId(KhanaId);
+        }
+
+        [HttpPost]
+        public ResponseObject CreateEducationHelpInfo([FromBody] EducationHelpInfoModel educationHelpInfoModel)
+        {
+            return memberEducationRepository.CreateEducationHelpInfo(educationHelpInfoModel);
+        }
+
+        [HttpPost]
+        public ResponseObject DeleteEducationHelpInfo([FromBody] Int64 MemberEducationHelpId)
+        {
+            return memberEducationRepository.DeleteEducationHelpInfo(MemberEducationHelpId);
+        }
+
+        [HttpPost]
+        public ResponseObject GetEductionHelpInfoByKhanaId([FromBody] Int64 KhanaId)
+        {
+            return memberEducationRepository.GetEductionHelpInfoByKhanaId(KhanaId);
         }
 
         [HttpPost]
@@ -45,15 +63,45 @@ namespace BaseLineSurveyApi.Controllers.EducationSection
         }
 
         [HttpPost]
-        public ResponseObject GetDropOutReasons()
+        public ResponseObject GetSchoolDropOutReasons()
         {
-            return memberEducationRepository.GetDropOutReasons();
+            return memberEducationRepository.GetSchoolDropOutReasons();
         }
 
         [HttpPost]
         public ResponseObject GetSchoolDropOutMembers([FromBody] Int64 KhanaId)
         {
             return memberEducationRepository.GetSchoolDropOutMembers(KhanaId);
+        }
+
+        [HttpPost]
+        public ResponseObject CreateMemberEducaton([FromBody] MemberEducationModel memberEducationModel)
+        {
+            return memberEducationRepository.CreateMemberEducaton(memberEducationModel);
+        }
+
+        [HttpPost]
+        public ResponseObject DeleteMemberEducation([FromBody] Int64 MemberEducationId)
+        {
+            return memberEducationRepository.DeleteMemberEducation(MemberEducationId);
+        }
+
+        [HttpPost]
+        public ResponseObject GetMemberEducationsByKhanaAndMemberId([FromBody] MemberEducationModel memberEducationModel)
+        {
+            return memberEducationRepository.GetMemberEducationsByKhanaAndMemberId(memberEducationModel);
+        }
+
+        [HttpPost]
+        public ResponseObject GetEducationQuestions()
+        {
+            return memberEducationRepository.GetEducationQuestions();
+        }
+
+        [HttpPost]
+        public ResponseObject GetEducationOptionsByQuestionId([FromBody] Int64 EducationQuestionId)
+        {
+            return memberEducationRepository.GetEducationOptionsByQuestionId(EducationQuestionId);
         }
     }
 }

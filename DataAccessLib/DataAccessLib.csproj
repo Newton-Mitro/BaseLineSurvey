@@ -91,7 +91,10 @@
     <Compile Include="MemberDisease\Models\TreatmentCenterModel.cs" />
     <Compile Include="MemberEducations\MemberEducationRepository.cs" />
     <Compile Include="MemberEducations\Models\DropOutReasonModel.cs" />
+    <Compile Include="MemberEducations\Models\EducationHelpInfoModel.cs" />
     <Compile Include="MemberEducations\Models\EducationHelpTypeModel.cs" />
+    <Compile Include="MemberEducations\Models\EducationOptionModel.cs" />
+    <Compile Include="MemberEducations\Models\EducationQuestionModel.cs" />
     <Compile Include="MemberEducations\Models\HelpingOrganizationModel.cs" />
     <Compile Include="MemberEducations\Models\MemberEducationHelpModel.cs" />
     <Compile Include="MemberEducations\Models\MemberEducationModel.cs" />

@@ -1,16 +1,18 @@
 ﻿/*
-Stored Procedure InsertParentResponseOption	
+Stored Procedure InsertSchoolDropOutInfo		
 --------------------------------------------------------------------------------------
-Script By                     : REZA E RABBI
-Created At                    : 18 December 2022
-Script Altered By             : REZA E RABBI
-Altered At                    : 18 December 2022
-Script Description            : This procedure will Insert Parent Response Option.
+Script By                     : Newton Mitro
+Created At                    : 09 February 2022
+Script Altered By             : Newton Mitro
+Altered At                    : 09 February 2022
+Script Description            : This procedure will Insert School Drop Out Info
 --------------------------------------------------------------------------------------
 */
-CREATE PROCEDURE dbo.InsertParentResponseOption (
-    @QuestionText NVARCHAR(250)
-    , @ParentResponsibilityQuestionId BIGINT
+CREATE PROCEDURE dbo.InsertSchoolDropOutInfo (
+    @KhanaId BIGINT
+    , @MemberId BIGINT
+    , @DropOutReasonCode BIGINT
+    , @InformationStatusCode BIGINT
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -20,25 +22,29 @@ BEGIN
     BEGIN TRANSACTION;
 
     SAVE TRANSACTION MySavePoint;-- Create a save point
-
+   
     BEGIN TRY
         --Start Main Block
-        INSERT INTO ParentResponsibilityOptions (
-            OptionText
-            , ParentResponsibilityQuestionId
-            , CreatedAt
-            , CreatedBy
-            , UpdatedAt
-            , UpdatedBy
-            )
+        INSERT INTO dbo.SchoolDropouts(
+            KhanaId
+           ,MemberId
+           ,DropOutReasonCode
+           ,InformationStatusCode
+           ,CreatedBy
+           ,UpdatedBy
+           ,CreatedAt
+           ,UpdatedAt
+           )
         VALUES (
-            @QuestionText
-            , @ParentResponsibilityQuestionId
-            , GETDATE()
-            , @AccessedBy
-            , GETDATE()
-            , @AccessedBy
-            )
+            @KhanaId
+           ,@MemberId
+           ,@DropOutReasonCode
+           ,@InformationStatusCode
+           ,@AccessedBy
+           ,@AccessedBy
+           ,GETDATE()
+           ,GETDATE()
+           )
 
         SET @ScopeId = SCOPE_IDENTITY();
 

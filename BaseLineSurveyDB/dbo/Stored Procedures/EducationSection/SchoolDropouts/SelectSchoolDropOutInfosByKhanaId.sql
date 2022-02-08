@@ -1,15 +1,15 @@
 ﻿/*
-Stored Procedure SelectSchoolDropOutMembers		
+Stored Procedure SelectSchoolDropOutInfosByKhanaId		
 --------------------------------------------------------------------------------------
 Script By                     : Newton Mitro
-Created At                    : 08 February 2022
+Created At                    : 09 February 2022
 Script Altered By             : Newton Mitro
-Altered At                    : 08 February 2022
-Script Description            : This procedure will Select School Drop Out Members
+Altered At                    : 09 February 2022
+Script Description            : This procedure will Select School Drop Out Infos By Khana Id
 --------------------------------------------------------------------------------------
 */
-CREATE PROCEDURE dbo.SelectSchoolDropOutMembers (
-    @KhanaId BIGINT
+CREATE PROCEDURE dbo.SelectSchoolDropOutInfosByKhanaId (
+    @KhanaId BIGINT 
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     )
 AS
@@ -20,13 +20,15 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT *
-            FROM dbo.View_Members
-            WHERE KhanaId = @KhanaId 
-            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) >=6 
-            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) <=18
-            AND EducationalStatusCode > 5
-            AND CurrentlyStudying = 0;
+        SELECT SchoolDropouts.*
+        , DropOutReasons.DropOutReasonText
+        , Members.MemberName
+        FROM dbo.SchoolDropouts
+        LEFT JOIN dbo.DropOutReasons
+        ON SchoolDropouts.DropOutReasonCode = DropOutReasons.DropOutReasonCode
+        LEFT JOIN dbo.Members
+        ON SchoolDropouts.MemberId = Members.MemberId
+        WHERE SchoolDropouts.KhanaId = @KhanaId
 
         --End Main Block
         IF @@ROWCOUNT > 0
@@ -46,4 +48,3 @@ BEGIN
         END
     END CATCH
 END;
-

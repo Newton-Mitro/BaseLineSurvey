@@ -50,14 +50,23 @@ namespace DataAccessLib.KhanaSection.Khana
         /// Developer    : Newton Mitro
         /// Created At   : 27 January 2022
         /// Updated By   : Newton Mitro
-        /// Updated At   : 27 January 2022
+        /// Updated At   : 10 February 2022
         /// Description  : Function for insert khana to khana table
         /// </summary>
         /// <param name="khana">Receive Khana Data Model</param>
         /// <returns>ResponseObject</returns>
         public ResponseObject CreateKhana(KhanaModel khana)
         {
-            var parameters = new DynamicParameters(khana);
+            var parameters = new DynamicParameters();
+            parameters.Add("@DistrictId", khana.DistrictId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@UpazilaId", khana.UpazilaId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@ParishId", khana.ParishId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@ServiceCenterId", khana.ServiceCenterId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@VillageId", khana.VillageId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@ReligionId", khana.ReligionId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@RaceId", khana.RaceId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@InformationStatusCode", khana.InformationStatusCode, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@HouseReference", khana.HouseReference, DbType.String, ParameterDirection.Input);
             parameters.Add("@AccessedBy", khana.CreatedBy, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
@@ -71,16 +80,26 @@ namespace DataAccessLib.KhanaSection.Khana
 
         /// <summary>
         /// Developer    : Newton Mitro
-        /// Created At   : 27 January 2022
+        /// Created At   : 10 February 2022
         /// Updated By   : Newton Mitro
-        /// Updated At   : 27 January 2022
+        /// Updated At   : 10 February 2022
         /// Description  : Function for update khana to khana table
         /// </summary>
         /// <param name="khana">Receive Khana Data Model</param>
         /// <returns>ResponseObject</returns>
         public ResponseObject UpdateKhana(KhanaModel khana)
         {
-            var parameters = new DynamicParameters(khana);
+            var parameters = new DynamicParameters();
+            parameters.Add("@KhanaId", khana.KhanaId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@DistrictId", khana.DistrictId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@UpazilaId", khana.UpazilaId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@ParishId", khana.ParishId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@ServiceCenterId", khana.ServiceCenterId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@VillageId", khana.VillageId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@ReligionId", khana.ReligionId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@RaceId", khana.RaceId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@InformationStatusCode", khana.InformationStatusCode, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@HouseReference", khana.HouseReference, DbType.String, ParameterDirection.Input);
             parameters.Add("@AccessedBy", khana.UpdatedBy, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))

@@ -1,16 +1,15 @@
 ﻿/*
-Stored Procedure InsertParentResponseOption	
+Stored Procedure InsertEducationQuestion	
 --------------------------------------------------------------------------------------
-Script By                     : REZA E RABBI
-Created At                    : 18 December 2022
-Script Altered By             : REZA E RABBI
-Altered At                    : 18 December 2022
-Script Description            : This procedure will Insert Parent Response Option.
+Script By                     : Newton Mitro
+Created At                    : 09 February 2022
+Script Altered By             : Newton Mitro
+Altered At                    : 09 February 2022
+Script Description            : This procedure will Insert Education Question
 --------------------------------------------------------------------------------------
 */
-CREATE PROCEDURE dbo.InsertParentResponseOption (
-    @QuestionText NVARCHAR(250)
-    , @ParentResponsibilityQuestionId BIGINT
+CREATE PROCEDURE dbo.InsertEducationQuestion (
+    @QuestionText NVARCHAR(255)
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -23,9 +22,8 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        INSERT INTO ParentResponsibilityOptions (
-            OptionText
-            , ParentResponsibilityQuestionId
+        INSERT INTO dbo.EducationQuestions(
+            QuestionText
             , CreatedAt
             , CreatedBy
             , UpdatedAt
@@ -33,7 +31,6 @@ BEGIN
             )
         VALUES (
             @QuestionText
-            , @ParentResponsibilityQuestionId
             , GETDATE()
             , @AccessedBy
             , GETDATE()
@@ -60,3 +57,4 @@ BEGIN
         END
     END CATCH
 END;
+

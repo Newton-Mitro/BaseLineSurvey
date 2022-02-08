@@ -9,8 +9,7 @@ Script Description            : This procedure will Insert Khana.
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.InsertKhana (
-    @KhanaId BIGINT
-    , @DistrictId BIGINT
+    @DistrictId BIGINT
     , @UpazilaId BIGINT
     , @ParishId BIGINT
     , @ServiceCenterId BIGINT
@@ -19,10 +18,6 @@ CREATE PROCEDURE dbo.InsertKhana (
     , @RaceId BIGINT
     , @InformationStatusCode BIGINT
     , @HouseReference VARCHAR(255)
-    , @CreatedAt DATETIME2 = NULL
-    , @UpdatedAt DATETIME2 = NULL
-    , @CreatedBy BIGINT = NULL
-    , @UpdatedBy BIGINT = NULL
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 

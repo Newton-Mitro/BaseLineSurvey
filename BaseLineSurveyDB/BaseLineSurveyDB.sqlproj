@@ -190,6 +190,8 @@
     <Folder Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\TorturedReasons" />
     <Folder Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\SleepingPlaces" />
     <Folder Include="dbo\TypTables" />
+    <Folder Include="dbo\Stored Procedures\EducationSection\Configurations\EducationQuestions" />
+    <Folder Include="dbo\Stored Procedures\EducationSection\Configurations\EducationOptions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\KhanaSection\Khanas.sql" />
@@ -386,6 +388,22 @@
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FarmingLands\DeleteFamilyFarmingLandById.sql" />
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FarmingLands\InsertFamilyFarmingLand.sql" />
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FarmingLands\SelectFamilyFarmingLandByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\SchoolDropouts\InsertSchoolDropOutInfo.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\SchoolDropouts\DeleteSchoolDropOutInfo.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\SchoolDropouts\SelectSchoolDropOutInfosByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\MemberEducationHelps\InsertEducationHelpInfo.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\MemberEducationHelps\DeleteEducationHelpInfo.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\MemberEducationHelps\SelectEductionHelpInfoByKhanaId.sql" />
+    <Build Include="dbo\Tables\EducationSection\Configurations\EducationQuestions.sql" />
+    <Build Include="dbo\Tables\EducationSection\Configurations\EducationOptions.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\EducationQuestions\InsertEducationQuestion.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\EducationQuestions\SelectEducationQuestions.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\EducationOptions\InsertEducationOption.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\Configurations\EducationOptions\SelectEducationOptionsByQuestionId.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\MemberEducations\InsertMemberEducation.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\MemberEducations\DeleteMemberEducation.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\MemberEducations\SelectMemberEducationsByKhanaAndMemberId.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Khanas\UpdateKhana.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\WaterAndToiletSection\insert_toilet_and_water_source_question_answers.sql" />
@@ -429,6 +447,7 @@
     <None Include="BaseLineSurveyDevServer.publish.xml" />
     <None Include="BaseLineSurveyDB.publish.xml" />
     <None Include="dbo\Scripts\Shared\insert_information_statuses.sql" />
+    <None Include="dbo\Scripts\EducationSection\insert_education_questions_and_options.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

@@ -274,5 +274,31 @@ namespace DataAccessLib.MemberSection.MemberSection
                 return responseObject;
             }
         }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 09 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 09 February 2022
+        /// Description  : Function for Get Family Members Between Age
+        /// </summary>
+        /// <param name="memberSearchModel"></param>
+        /// <returns></returns>
+        public ResponseObject GetFamilyMembersBetweenAge(MemberSearchModel memberSearchModel)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@KhanaId", memberSearchModel.KhanaId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@FromAge", memberSearchModel.FromAge, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@ToAge", memberSearchModel.ToAge, DbType.Int32, ParameterDirection.Input);
+            //@Condition-- 1 = Equal, 2 = Less Than, 3 = Greater Than
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var members = connetion.Query<MemberViewModel>(@"SelectFamilyMembersBetweenAge", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Data = JsonConvert.SerializeObject(members);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
     }
 }

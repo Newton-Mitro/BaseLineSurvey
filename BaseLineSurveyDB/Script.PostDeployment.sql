@@ -48,6 +48,7 @@ Post-Deployment Script Template
   :r .\dbo\Scripts\VitaminSection\insert_vitamin_knowledge_question_and_answers.sql
 
   --section six
+:r .\dbo\Scripts\EducationSection\insert_education_questions_and_options.sql
 :r .\dbo\Scripts\EducationSection\Insert_drop_out_reason_codes.sql
 :r .\dbo\Scripts\EducationSection\insert_education_help_types.sql
 :r .\dbo\Scripts\EducationSection\insert_education_statuses.sql
