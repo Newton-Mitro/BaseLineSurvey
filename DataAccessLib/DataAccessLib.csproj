@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataAccessLib</RootNamespace>
     <AssemblyName>DataAccessLib</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,9 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auth\TokenModel.cs" />
-    <Compile Include="Auth\UserModel.cs" />
+    <Compile Include="Auth\Models\TokenModel.cs" />
+    <Compile Include="Auth\Models\UserModel.cs" />
     <Compile Include="Auth\AuthRepository.cs" />
+    <Compile Include="Auth\Models\UsersSupervisorModel.cs" />
     <Compile Include="Base\BaseEntity.cs" />
     <Compile Include="Base\BasicModel.cs" />
     <Compile Include="Base\DatatableConverter.cs" />
@@ -76,6 +78,17 @@
     <Compile Include="FamilyTreeAsset\FamilyTreeAssetRepository.cs" />
     <Compile Include="FamilyTreeAsset\Models\FamilyTreeAssetModel.cs" />
     <Compile Include="FamilyTreeAsset\Models\TreeTypeModel.cs" />
+    <Compile Include="FoodSecurities\FoodSecurityRepository.cs" />
+    <Compile Include="FoodSecurities\FoodShortageMonthRepository.cs" />
+    <Compile Include="FoodSecurities\Models\FoodModel.cs" />
+    <Compile Include="FoodSecurities\Models\FoodSecurityModel.cs" />
+    <Compile Include="FoodSecurities\Models\FoodShortageMonthModel.cs" />
+    <Compile Include="FoodSecurities\Models\MonthModel.cs" />
+    <Compile Include="FoodSecurities\Models\RunFamilyWhenShortageModel.cs" />
+    <Compile Include="FoodSecurities\Models\ShortageSolutionModel.cs" />
+    <Compile Include="FoodSecurities\Models\YesterdaysFoodModel.cs" />
+    <Compile Include="FoodSecurities\RunFamilyWhenShortageRepository.cs" />
+    <Compile Include="FoodSecurities\YesterdaysFoodRepository.cs" />
     <Compile Include="KhanaSection\ServiceCenter\ServiceCenterModel.cs" />
     <Compile Include="KhanaSection\ServiceCenter\ServiceCenterRepository.cs" />
     <Compile Include="KhanaSection\Village\VillageModel.cs" />
@@ -99,6 +112,11 @@
     <Compile Include="MemberEducations\Models\MemberEducationHelpModel.cs" />
     <Compile Include="MemberEducations\Models\MemberEducationModel.cs" />
     <Compile Include="MemberEducations\Models\SchoolDropOutInfoModel.cs" />
+    <Compile Include="MemberRiskedProfessions\MemberRiskProfessionRepository.cs" />
+    <Compile Include="MemberRiskedProfessions\Models\MemberSleepingPlaceModel.cs" />
+    <Compile Include="MemberRiskedProfessions\Models\MemberTorturedReasonModel.cs" />
+    <Compile Include="MemberRiskedProfessions\Models\SleepingPlaceModel.cs" />
+    <Compile Include="MemberRiskedProfessions\Models\TorturedReasonModel.cs" />
     <Compile Include="Members\Models\DisabledTypeModel.cs" />
     <Compile Include="Members\Models\EducationStatusModel.cs" />
     <Compile Include="KhanaSection\District\DistrictModel.cs" />

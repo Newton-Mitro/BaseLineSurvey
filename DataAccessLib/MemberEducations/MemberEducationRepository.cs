@@ -349,15 +349,38 @@ namespace DataAccessLib.MemberEducations
         /// </summary>
         /// <param name="MemberEducationModel">Receive MemberEducationModel as Input Parameter</param>
         /// <returns>Return ResponseObject</returns>
-        public ResponseObject GetMemberEducationsByKhanaAndMemberId(MemberEducationModel memberEducationModel)
+        public ResponseObject GetMemberEducationsByKhanaAndQuestionId(MemberEducationModel memberEducationModel)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@KhanaId", memberEducationModel.KhanaId, DbType.Int64, direction: ParameterDirection.Input);
-            parameters.Add("@MemberId", memberEducationModel.MemberId, DbType.Int64, direction: ParameterDirection.Input);
+            parameters.Add("@EducationQuestionId", memberEducationModel.EducationQuestionId, DbType.Int64, direction: ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
-                var res = connetion.Query<MemberEducationModel>(@"SelectMemberEducationsByKhanaAndMemberId", parameters, commandType: CommandType.StoredProcedure);
+                var res = connetion.Query<MemberEducationModel>(@"SelectMemberEducationsByKhanaAnQuestionId", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Data = JsonConvert.SerializeObject(res);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 10 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 10 February 2022
+        /// Description  : Function for getting AgedEducaton Taken Members
+        /// </summary>
+        /// <param name="KhanaId">Receive KhanaId as Input Parameter</param>
+        /// <returns>Return ResponseObject</returns>
+        public ResponseObject GetAgedEducatonTakenMembers(Int64 KhanaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@KhanaId", KhanaId, DbType.Int64, direction: ParameterDirection.Input);
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var res = connetion.Query<MemberViewModel>(@"SelectAgedEducatonTakenMembers", parameters, commandType: CommandType.StoredProcedure);
                 responseObject.Data = JsonConvert.SerializeObject(res);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;

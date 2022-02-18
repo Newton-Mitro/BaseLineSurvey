@@ -1,5 +1,6 @@
 ﻿using ApplicationDataAccess;
 using Dapper;
+using DataAccessLib.Auth.Models;
 using DataAccessLib.Base;
 using Newtonsoft.Json;
 using System.Data;
@@ -62,12 +63,152 @@ namespace DataAccessLib.Auth
         {
             var parameters = new DynamicParameters();
             parameters.Add("@RoleId", user.RoleId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@FullName", user.FullName, DbType.String, ParameterDirection.Input);
             parameters.Add("@Email", user.Email, DbType.String, ParameterDirection.Input);
-            parameters.Add("@Password", CreateMD5(user.Password), DbType.String, ParameterDirection.Input);
+            parameters.Add("@Password", user.Password, DbType.String, ParameterDirection.Input);
+            parameters.Add("@IsActive", user.IsActive, DbType.String, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
                 var user_info = connetion.Execute(@"InsertUser", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 15 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 15 February 2022
+        /// Description  : Function for Update User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public ResponseObject UpdateUser(UserModel user)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@UserId", user.UserId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@RoleId", user.RoleId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@FullName", user.FullName, DbType.String, ParameterDirection.Input);
+            parameters.Add("@Email", user.Email, DbType.String, ParameterDirection.Input);
+            parameters.Add("@IsActive", user.IsActive, DbType.String, ParameterDirection.Input);
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var user_info = connetion.Execute(@"UpdateUser", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 15 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 15 February 2022
+        /// Description  : Function for Update User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public ResponseObject ResetUserPassword(UserModel user)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@UserId", user.UserId, DbType.String, ParameterDirection.Input);
+            parameters.Add("@Password", user.Password, DbType.String, ParameterDirection.Input);
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var user_info = connetion.Execute(@"ResetUserPassword", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 15 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 15 February 2022
+        /// Description  : Function for De Activate User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public ResponseObject DeActivateUser(UserModel user)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@UserId", user.UserId, DbType.String, ParameterDirection.Input);
+            parameters.Add("@AccessedBy", user.UpdatedBy, DbType.String, ParameterDirection.Input);
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var user_info = connetion.Execute(@"DeActivateUser", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 13 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 13 February 2022
+        /// Description  : Function for Assign Supervisor
+        /// </summary>
+        /// <param name="usersSupervisorModel"></param>
+        /// <returns>ResponseObject</returns>
+        public ResponseObject AssignSupervisor(UsersSupervisorModel usersSupervisorModel)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@UserId", usersSupervisorModel.UserId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@SupervisorId", usersSupervisorModel.SupervisorId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@AccessedBy", usersSupervisorModel.CreatedBy, DbType.Int64, direction: ParameterDirection.Input);
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var user_info = connetion.Execute(@"InsertOrUpdateUserSupervisor", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 13 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 13 February 2022
+        /// Description  : Function for Get Supervisors
+        /// </summary>
+        /// <returns>ResponseObject</returns>
+        public ResponseObject GetSupervisors()
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var user_info = connetion.Query<UserModel>(@"SelectSupervisors", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Data = JsonConvert.SerializeObject(user_info);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 16 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 16 February 2022
+        /// Description  : Function for Get Users
+        /// </summary>
+        /// <returns>ResponseObject</returns>
+        public ResponseObject GetUsers()
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var user_info = connetion.Query<UserModel>(@"SelectUsers", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Data = JsonConvert.SerializeObject(user_info);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;
             }

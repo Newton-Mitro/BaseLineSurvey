@@ -12,7 +12,7 @@ CREATE TABLE dbo.FoodSecurities (
     FoodSecuritieId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , KhanaId BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL
-    , NumberOfMealYeasterday NVARCHAR(250) NOT NULL
+    , NumberOfMealYeasterday INT NOT NULL
     , DontEatOrHalfEat INT NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL

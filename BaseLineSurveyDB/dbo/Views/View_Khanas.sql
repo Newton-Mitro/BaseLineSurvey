@@ -25,12 +25,13 @@ SELECT KhanaId
     , Religions.ReligionName
     , Khanas.RaceId
     , Races.RaceName
-    , InformationStatusCode
+    , Khanas.InformationStatusCode
+    , InformationStatuses.InformationStatusName
     , HouseReference
     , Khanas.CreatedBy
-    , Creator.Email AS CreatorName
+    , Creator.FullName AS CreatorName
     , Khanas.UpdatedBy
-    , Updator.Email AS UpdatorName
+    , Updator.FullName AS UpdatorName
     , Khanas.CreatedAt
     , Khanas.UpdatedAt
 FROM [dbo].Khanas
@@ -52,3 +53,5 @@ LEFT JOIN Users AS Creator
     ON Khanas.CreatedBy = Creator.UserId
 LEFT JOIN Users AS Updator
     ON Khanas.UpdatedBy = Updator.UserId
+LEFT JOIN dbo.InformationStatuses 
+    ON Khanas.InformationStatusCode = InformationStatuses.InformationStatusCode

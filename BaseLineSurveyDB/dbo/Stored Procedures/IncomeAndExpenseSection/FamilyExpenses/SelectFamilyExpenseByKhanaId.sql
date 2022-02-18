@@ -22,9 +22,12 @@ BEGIN
         --Start Main Block
         SELECT FamilyExpenses.* 
         , ExpenseSources.SourceName
+        , InformationStatuses.InformationStatusName
         FROM dbo.FamilyExpenses
         LEFT JOIN ExpenseSources
         ON FamilyExpenses.ExpenseSourceId = ExpenseSources.ExpenseSourceId
+        LEFT JOIN dbo.InformationStatuses
+        ON FamilyExpenses.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId
 
 

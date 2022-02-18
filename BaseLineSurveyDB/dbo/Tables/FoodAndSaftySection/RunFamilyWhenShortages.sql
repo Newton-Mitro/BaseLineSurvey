@@ -9,7 +9,7 @@ Script Description            : This procedure will create Run Family When Short
 --------------------------------------------------------------------------------------
 */
 CREATE TABLE dbo.RunFamilyWhenShortages (
-    RunFamilyWhenShortId BIGINT NOT NULL PRIMARY KEY
+    RunFamilyWhenShortId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , KhanaId BIGINT NOT NULL
     , ShortageSolutionId BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL

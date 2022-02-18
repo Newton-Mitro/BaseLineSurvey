@@ -17,6 +17,7 @@ namespace DataAccessLib.FamilyExpense.Models
         public Int64 ExpenseSourceId { get; set; }
         public string SourceName { get; set; }
         public Int64 InformationStatusCode { get; set; }
+        public string InformationStatusName { get; set; }
         public decimal AnnualExpenseAmount { get; set; }
     }
 }

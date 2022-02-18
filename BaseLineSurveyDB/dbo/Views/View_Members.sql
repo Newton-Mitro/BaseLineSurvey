@@ -16,7 +16,6 @@ SELECT Members.*
 , Genders.GenderName
 , FirstProfessions.ProfessionName AS FirstProfessionName
 , SecondProfessions.ProfessionName AS SecondProfessionName
-, IncomeProfessions.ProfessionName AS IncomeRelatedWorkName
 , EducationalStatuses.EducationName AS EducationalStatusName 
 , MaritalStatuses.MaritalStatusName 
 , DisabaledTypes.DisabledTypeName 
@@ -30,8 +29,6 @@ LEFT JOIN Professions AS FirstProfessions
     ON Members.FirstProfessionCode = FirstProfessions.ProfessionCode
 LEFT JOIN Professions AS SecondProfessions
     ON Members.SecondProfessionCode = SecondProfessions.ProfessionCode
-LEFT JOIN Professions AS IncomeProfessions
-    ON Members.IncomeRelatedWork = IncomeProfessions.ProfessionCode
 LEFT JOIN EducationalStatuses
     ON Members.EducationalStatusCode = EducationalStatuses.EducationalStatusCode
 LEFT JOIN MaritalStatuses

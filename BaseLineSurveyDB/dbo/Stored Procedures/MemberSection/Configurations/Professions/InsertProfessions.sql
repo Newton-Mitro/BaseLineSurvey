@@ -3,13 +3,14 @@ Stored Procedure InsertProfession
 --------------------------------------------------------------------------------------
 Script By                     : REZA E RABBI
 Created At                    : 13 December 2022
-Script Altered By             : REZA E RABBI
-Altered At                    : 20 December 2022
+Script Altered By             : Newton Mitro
+Altered At                    : 15 February 2022
 Script Description            : This procedure will Insert Profession.
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.InsertProfession (
     @ProfessionName NVARCHAR(250)
+    , @IsRiskedProfession BIT = 0
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -24,6 +25,7 @@ BEGIN
         --Start Main Block
         INSERT INTO Professions (
             ProfessionName
+            , IsRiskedProfession
             , CreatedAt
             , CreatedBy
             , UpdatedAt
@@ -31,6 +33,7 @@ BEGIN
             )
         VALUES (
             @ProfessionName
+            , @IsRiskedProfession
             , GETDATE()
             , @AccessedBy
             , GETDATE()

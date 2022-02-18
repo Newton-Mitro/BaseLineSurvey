@@ -23,11 +23,14 @@ BEGIN
         SELECT SchoolDropouts.*
         , DropOutReasons.DropOutReasonText
         , Members.MemberName
+        , InformationStatuses.InformationStatusName
         FROM dbo.SchoolDropouts
         LEFT JOIN dbo.DropOutReasons
         ON SchoolDropouts.DropOutReasonCode = DropOutReasons.DropOutReasonCode
         LEFT JOIN dbo.Members
         ON SchoolDropouts.MemberId = Members.MemberId
+        LEFT JOIN dbo.InformationStatuses
+        ON SchoolDropouts.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE SchoolDropouts.KhanaId = @KhanaId
 
         --End Main Block

@@ -23,38 +23,34 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         DECLARE @VerifiedUserId BIGINT
+        DECLARE @IsActive BIT
 
-        SELECT @VerifiedUserId = UserId
+        SELECT @VerifiedUserId = UserId, @IsActive = IsActive
         FROM dbo.Users
         WHERE Email = @Email
             AND Password = @Password;
 
         IF (@VerifiedUserId IS NULL)
         BEGIN
-         SELECT UserId
-                , Email
-                , RoleId
-                , CreatedAt
-                , CreatedBy
-                , UpdatedAt
-                , UpdatedBy
-            FROM dbo.Users
+         SELECT *
+            FROM dbo.View_Users
             WHERE UserId = 0;
             SET @ReturnResult = 'User email or password don not match.'
         END
         ELSE
         BEGIN
-            SELECT UserId
-                , Email
-                , RoleId
-                , CreatedAt
-                , CreatedBy
-                , UpdatedAt
-                , UpdatedBy
-            FROM dbo.Users
-            WHERE UserId = @VerifiedUserId;
+            IF( @IsActive = 1)
+            BEGIN
+                SELECT *
+                FROM dbo.View_Users
+                WHERE UserId = @VerifiedUserId;
 
-            SET @ReturnResult = 'Success'
+                SET @ReturnResult = 'Success'
+            END
+            ELSE
+            BEGIN
+                SET @ReturnResult = 'User is not active.'
+            END
         END
 
         --End Main Block

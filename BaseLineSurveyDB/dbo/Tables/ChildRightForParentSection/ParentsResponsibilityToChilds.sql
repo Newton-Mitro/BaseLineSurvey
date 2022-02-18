@@ -13,7 +13,7 @@ CREATE TABLE dbo.ParentsResponsibilityToChilds (
     , ParentResponsibilityQuestionId BIGINT NOT NULL
     , ParentResponsibilityOptionId BIGINT NOT NULL
     , KhanaId BIGINT NOT NULL
-    , AnswerGivenById BIGINT NOT NULL
+    , AnswerGivenById BIGINT NULL
     , InformationStatusCode BIGINT NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL

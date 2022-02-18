@@ -13,5 +13,6 @@ namespace DataAccessLib.MemberEducations.Models
         public long EducationOptionId { get; set; }
         public string OptionText { get; set; }
         public long InformationStatusCode { get; set; }
+        public string InformationStatusName { get; set; }
     }
 }

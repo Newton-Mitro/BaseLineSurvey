@@ -21,7 +21,8 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         DECLARE 
-        @ParentResponsibilityQuestionId BIGINT
+        @ParentsResponsibilityToChildId BIGINT
+        , @ParentResponsibilityQuestionId BIGINT
         , @ParentResponsibilityOptionId BIGINT
         , @KhanaId BIGINT
         , @AnswerGivenById BIGINT
@@ -36,7 +37,8 @@ BEGIN
 
         DECLARE CURSOR_PRODUCT CURSOR
         FOR SELECT 
-                ParentResponsibilityQuestionId
+                ParentsResponsibilityToChildId
+                , ParentResponsibilityQuestionId
                 , ParentResponsibilityOptionId
                 , KhanaId
                 , AnswerGivenById
@@ -51,7 +53,8 @@ BEGIN
         OPEN CURSOR_PRODUCT;
 
         FETCH NEXT FROM CURSOR_PRODUCT INTO 
-                @ParentResponsibilityQuestionId
+                @ParentsResponsibilityToChildId
+                , @ParentResponsibilityQuestionId
                 , @ParentResponsibilityOptionId
                 , @KhanaId
                 , @AnswerGivenById
@@ -88,14 +91,15 @@ BEGIN
                 , @InformationStatusCode
                 , @CreatedBy
                 , @UpdatedBy
-                , @CreatedAt
+                , GETDATE()
                 , GETDATE()
                 )
 
                 SET @RowCount = @RowCount + 1;
 
                 FETCH NEXT FROM CURSOR_PRODUCT INTO 
-                @ParentResponsibilityQuestionId
+                @ParentsResponsibilityToChildId
+                , @ParentResponsibilityQuestionId
                 , @ParentResponsibilityOptionId
                 , @KhanaId
                 , @AnswerGivenById

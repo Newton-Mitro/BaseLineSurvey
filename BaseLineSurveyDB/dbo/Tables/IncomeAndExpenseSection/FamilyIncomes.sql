@@ -14,6 +14,7 @@ CREATE TABLE dbo.FamilyIncomes (
     , IncomeSourceId BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL
     , AnnualIncomeAmount MONEY NULL
+    , ProductionCost MONEY NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL
     , CreatedAt DATETIME2 NULL

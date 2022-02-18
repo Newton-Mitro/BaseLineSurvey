@@ -13,5 +13,6 @@ namespace DataAccessLib.MemberEducations.Models
         public long EducationHelpTypeCode { get; set; }
         public string HelpTypeName { get; set; }
         public long InformationStatusCode { get; set; }
+        public string InformationStatusName { get; set; }
     }
 }

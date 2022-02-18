@@ -11,5 +11,6 @@
         public string RaceName { get; set; }
         public string CreatorName { get; set; }
         public string UpdatorName { get; set; }
+        public string InformationStatusName { get; set; }
     }
 }

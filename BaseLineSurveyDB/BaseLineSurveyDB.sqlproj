@@ -16,7 +16,7 @@
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <TargetLanguage>CS</TargetLanguage>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <SqlServerVerification>False</SqlServerVerification>
@@ -185,13 +185,16 @@
     <Folder Include="dbo\Functions" />
     <Folder Include="dbo\Tables\TorturedReasonsSection" />
     <Folder Include="dbo\Tables\TorturedReasonsSection\Configurations" />
-    <Folder Include="dbo\Stored Procedures\MemberTorturedReasons" />
-    <Folder Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations" />
-    <Folder Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\TorturedReasons" />
-    <Folder Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\SleepingPlaces" />
+    <Folder Include="dbo\Stored Procedures\MemberRiskProfessions" />
+    <Folder Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations" />
+    <Folder Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations\TorturedReasons" />
+    <Folder Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations\SleepingPlaces" />
     <Folder Include="dbo\TypTables" />
     <Folder Include="dbo\Stored Procedures\EducationSection\Configurations\EducationQuestions" />
     <Folder Include="dbo\Stored Procedures\EducationSection\Configurations\EducationOptions" />
+    <Folder Include="dbo\Tables\IncomeRelatedProfessions" />
+    <Folder Include="dbo\Stored Procedures\MemberRiskProfessions\MemberSleepingPlaces" />
+    <Folder Include="dbo\Stored Procedures\MemberRiskProfessions\MemberTorturedReasons" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\KhanaSection\Khanas.sql" />
@@ -200,10 +203,9 @@
     <Build Include="dbo\Tables\VitaminSection\VitaminKnowledges.sql" />
     <Build Include="dbo\Tables\Authentication\InformationStatuses.sql" />
     <Build Include="dbo\Tables\Authentication\Roles.sql" />
-    <Build Include="dbo\Tables\Authentication\SupervisorsEmployees.sql" />
+    <Build Include="dbo\Tables\Authentication\UsersSupervisors.sql" />
     <Build Include="dbo\Tables\Authentication\Users.sql" />
     <Build Include="dbo\Stored Procedures\Authentication\InsertRole.sql" />
-    <Build Include="dbo\Stored Procedures\Authentication\InsertSupervisorsEmployee.sql" />
     <Build Include="dbo\Stored Procedures\Authentication\InsertUser.sql" />
     <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Districts\SelectDistricts.sql" />
     <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Upazilas\SelectUpazilasByDistrictId.sql" />
@@ -372,11 +374,10 @@
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyAssets\SelectFamilyAssetByKhanaId.sql" />
     <Build Include="dbo\Tables\TorturedReasonsSection\Configurations\TorturedReasions.sql" />
     <Build Include="dbo\Tables\TorturedReasonsSection\Configurations\SleepingPlaces.sql" />
-    <Build Include="dbo\Tables\TorturedReasonsSection\MemberRiskProfessions.sql" />
     <Build Include="dbo\Tables\TorturedReasonsSection\MemberTorturedReasions.sql" />
-    <Build Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\TorturedReasons\InsertTorturedReasion.sql" />
-    <Build Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\TorturedReasons\SelectTorturedReasons.sql" />
-    <Build Include="dbo\Stored Procedures\MemberTorturedReasons\Configurations\SleepingPlaces\InsertSleepingPlace.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations\TorturedReasons\InsertTorturedReasion.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations\TorturedReasons\SelectTorturedReasons.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations\SleepingPlaces\InsertSleepingPlace.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForParentSection\ParentsResponsibilityToChilds\InsertOrUpdateParentResponsibilityToChild.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseQuestions\SelectParentResponsibilityQuestions.sql" />
     <Build Include="dbo\TypTables\ParentResponsibilityToChilds.sql" />
@@ -402,8 +403,34 @@
     <Build Include="dbo\Stored Procedures\EducationSection\Configurations\EducationOptions\SelectEducationOptionsByQuestionId.sql" />
     <Build Include="dbo\Stored Procedures\EducationSection\MemberEducations\InsertMemberEducation.sql" />
     <Build Include="dbo\Stored Procedures\EducationSection\MemberEducations\DeleteMemberEducation.sql" />
-    <Build Include="dbo\Stored Procedures\EducationSection\MemberEducations\SelectMemberEducationsByKhanaAndMemberId.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\MemberEducations\SelectMemberEducationsByKhanaAnQuestionId.sql" />
     <Build Include="dbo\Stored Procedures\KhanaSection\Khanas\UpdateKhana.sql" />
+    <Build Include="dbo\Stored Procedures\EducationSection\MemberEducations\SelectAgedEducatonTakenMembers.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\RunFamilyWhenShortages\InsertRunFamilyWhenShortage.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\RunFamilyWhenShortages\DeleteRunFamilyWhenShortage.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\RunFamilyWhenShortages\SelectRunFamilyWhenShortageByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\YesterdaysFoods\InsertYesterdaysFood.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\YesterdaysFoods\DeleteYesterdaysFood.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\YesterdaysFoods\SelectYesterdaysFoodByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\FoodShortageMonths\InsertFoodShortageMonth.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\FoodShortageMonths\DeleteFoodShortageMonth.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\FoodShortageMonths\SelectFoodShortageMonthsByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\FoodSecurities\InsertOrUpdateFoodSecurityInfo.sql" />
+    <Build Include="dbo\Stored Procedures\FoodAndSaftySection\FoodSecurities\SelectFoodSecurityInfoByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\InsertOrUpdateUserSupervisor.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\SelectSupervisors.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\UpdateUser.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\ResetUserPassword.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\DeActivateUser.sql" />
+    <Build Include="dbo\Tables\IncomeRelatedProfessions\MemberIncomeRelatedProfessions.sql" />
+    <Build Include="dbo\Tables\TorturedReasonsSection\MemberSleepingPlaces.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations\SleepingPlaces\SelectSleepingPlaces.sql" />
+    <Build Include="dbo\Stored Procedures\Authentication\SelectUsers.sql" />
+    <Build Include="dbo\Views\View_Users.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\MemberSleepingPlaces\DeleteMemberSleepingPlace.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\MemberSleepingPlaces\InsertOrUpdateMemberSleepingPlace.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\MemberSleepingPlaces\SelectMemberSleepingPlacesByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\MemberSleepingPlaces\SelectMembersWhoHasRiskProfessionByKhanaId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\WaterAndToiletSection\insert_toilet_and_water_source_question_answers.sql" />
@@ -444,10 +471,9 @@
     <None Include="dbo\Scripts\SocialAndCooperativeSection\insert_cooperative_lists.sql" />
     <None Include="dbo\Scripts\KhanaSection\insert_religions.sql" />
     <None Include="dbo\Scripts\KhanaSection\insert_races.sql" />
-    <None Include="BaseLineSurveyDevServer.publish.xml" />
-    <None Include="BaseLineSurveyDB.publish.xml" />
     <None Include="dbo\Scripts\Shared\insert_information_statuses.sql" />
     <None Include="dbo\Scripts\EducationSection\insert_education_questions_and_options.sql" />
+    <None Include="BaseLineSurveyDB.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

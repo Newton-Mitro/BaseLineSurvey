@@ -15,7 +15,6 @@ CREATE TABLE dbo.Members (
     , GenderCode BIGINT NOT NULL
     , FirstProfessionCode BIGINT NOT NULL
     , SecondProfessionCode BIGINT NULL
-    , IncomeRelatedWork BIGINT NULL
     , EducationalStatusCode BIGINT NULL
     , CurrentlyStudying BIT NULL
     , MaritalStatusCode BIGINT NOT NULL
@@ -31,7 +30,6 @@ CREATE TABLE dbo.Members (
     , CONSTRAINT FK_Members_Genders FOREIGN KEY (GenderCode) REFERENCES Genders(GerderCode)
     , CONSTRAINT FK_Members_Professions FOREIGN KEY (FirstProfessionCode) REFERENCES Professions(ProfessionCode)
     , CONSTRAINT FK_Members_Professions2 FOREIGN KEY (SecondProfessionCode) REFERENCES Professions(ProfessionCode)
-    , CONSTRAINT FK_Members_Professions3 FOREIGN KEY (IncomeRelatedWork) REFERENCES Professions(ProfessionCode)
     , CONSTRAINT FK_Members_MaritalStatuses FOREIGN KEY (MaritalStatusCode) REFERENCES MaritalStatuses(MaritalStatusCode)
     , CONSTRAINT FK_Members_DisabaledTypes FOREIGN KEY (DisabledTypeCode) REFERENCES DisabaledTypes(DisabledTypeCode)
     , CONSTRAINT FK_Members_Khanas FOREIGN KEY (KhanaId) REFERENCES Khanas(KhanaId)

@@ -26,7 +26,7 @@ namespace BaseLineSurveyApi.Controllers.FamilyIncomeSection
         /// <param name="familyIncomeModel">Expect FamilyIncomeModel</param>
         /// <returns>ResponseObject</returns>
         [HttpPost]
-        public ResponseObject CreateFamilyIncome([FromBody] FamilyIncomeModel familyIncomeModel)
+        public ResponseObject CreateFamilysIncome([FromBody] FamilyIncomeModel familyIncomeModel)
         {
             return familyIncomeRepository.CreateFamilyIncome(familyIncomeModel);
         }

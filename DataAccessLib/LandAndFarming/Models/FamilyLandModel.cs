@@ -13,5 +13,6 @@ namespace DataAccessLib.LandAndFarmingSection.Models
         public decimal LandAmount { get; set; }
         public decimal CropAmount { get; set; }
         public long InformationStatusCode { get; set; }
+        public string InformationStatusName { get; set; }
     }
 }

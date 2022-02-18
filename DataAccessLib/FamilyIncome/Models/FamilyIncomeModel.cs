@@ -17,7 +17,9 @@ namespace DataAccessLib.FamilyIncome.Models
         public Int64 IncomeSourceId { get; set; }
         public string SourceName { get; set; }
         public Int64 InformationStatusCode { get; set; }
+        public string InformationStatusName { get; set; }
         public decimal AnnualIncomeAmount { get; set; }
+        public decimal ProductionCost { get; set; }
     }
 }
 

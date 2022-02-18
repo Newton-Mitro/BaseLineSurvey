@@ -22,9 +22,12 @@ BEGIN
         --Start Main Block
         SELECT FamilyIncomes.* 
         , IncomeSources.SourceName
+        , InformationStatuses.InformationStatusName
         FROM dbo.FamilyIncomes
         LEFT JOIN IncomeSources
         ON FamilyIncomes.IncomeSourceId = IncomeSources.IncomeSourceId
+        LEFT JOIN dbo.InformationStatuses
+        ON FamilyIncomes.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId;
 
         --End Main Block

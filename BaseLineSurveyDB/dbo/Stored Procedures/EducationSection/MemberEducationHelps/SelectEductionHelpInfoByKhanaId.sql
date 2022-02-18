@@ -24,6 +24,7 @@ BEGIN
         , HelpingOrganizations.HelpingOrganizationName
         , EducationHelpTypes.HelpTypeName
         , Members.MemberName
+        , InformationStatuses.InformationStatusName
         FROM dbo.MemberEducationHelps
         LEFT JOIN dbo.EducationHelpTypes
         ON MemberEducationHelps.EducationHelpTypeCode = EducationHelpTypes.EducationHelpTypeCode
@@ -31,6 +32,8 @@ BEGIN
         ON MemberEducationHelps.HelpOrganizationCode = HelpingOrganizations.HelpingOrganizationCode
         LEFT JOIN dbo.Members
         ON MemberEducationHelps.MemberId = Members.MemberId
+        LEFT JOIN dbo.InformationStatuses
+        ON MemberEducationHelps.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE MemberEducationHelps.KhanaId = @KhanaId
 
         --End Main Block

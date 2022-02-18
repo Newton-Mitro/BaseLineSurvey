@@ -11,5 +11,6 @@ namespace DataAccessLib.MemberEducations.Models
         public long DropOutReasonCode { get; set; }
         public string DropOutReasonText { get; set; }
         public long InformationStatusCode { get; set; }
+        public string InformationStatusName { get; set; }
     }
 }

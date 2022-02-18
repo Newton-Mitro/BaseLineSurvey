@@ -21,9 +21,33 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT *
-        FROM View_Khanas
-        WHERE CreatedBy = @UserId
+        DECLARE @RoleId AS BIGINT;
+
+        SELECT @RoleId = RoleId
+        FROM dbo.Users
+        WHERE UserId = @UserId;
+
+        IF (@RoleId = 1)
+        BEGIN
+            SELECT *
+            FROM View_Khanas;
+        END
+        ELSE IF (@RoleId = 2)
+        BEGIN
+            SELECT View_Khanas.*
+            FROM dbo.View_Khanas
+            INNER JOIN dbo.Users
+                ON Users.UserId = View_Khanas.CreatedBy
+            INNER JOIN dbo.UsersSupervisors
+                ON UsersSupervisors.UserId = Users.UserId
+            WHERE UsersSupervisors.SupervisorId = @RoleId;
+        END
+        ELSE
+        BEGIN
+            SELECT *
+            FROM View_Khanas
+            WHERE CreatedBy = @UserId;
+        END
 
         --End Main Block
         IF @@ROWCOUNT > 0

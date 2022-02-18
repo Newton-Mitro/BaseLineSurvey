@@ -41,12 +41,22 @@ namespace DataAccessLib.FamilyIncome
             parameters.Add("@IncomeSourceId", familyIncomeModel.IncomeSourceId, DbType.Int64, direction: ParameterDirection.Input);
             parameters.Add("@InformationStatusCode", familyIncomeModel.InformationStatusCode, DbType.Int64, direction: ParameterDirection.Input);
             parameters.Add("@AnnualIncomeAmount", familyIncomeModel.AnnualIncomeAmount, DbType.Decimal, direction: ParameterDirection.Input);
+            parameters.Add("@ProductionCost", familyIncomeModel.ProductionCost, DbType.Decimal, direction: ParameterDirection.Input);
             parameters.Add("@AccessedBy", familyIncomeModel.CreatedBy, DbType.Int64, direction: ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
-            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            try
             {
-                var res = connetion.Execute(@"InsertFamilyIncome", parameters, commandType: CommandType.StoredProcedure);
-                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+                {
+                    var res = connetion.Execute(@"InsertFamilyIncome", parameters, commandType: CommandType.StoredProcedure);
+                    responseObject.Message = parameters.Get<string>("@ReturnResult");
+                    return responseObject;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                responseObject.Message = ex.Message;
                 return responseObject;
             }
         }

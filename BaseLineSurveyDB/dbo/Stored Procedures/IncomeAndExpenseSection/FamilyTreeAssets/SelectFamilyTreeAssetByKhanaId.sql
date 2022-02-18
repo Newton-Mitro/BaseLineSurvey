@@ -22,9 +22,12 @@ BEGIN
         --Start Main Block
         SELECT FamilyTreeAssets.* 
         , Trees.TreeName
+        , InformationStatuses.InformationStatusName
         FROM dbo.FamilyTreeAssets
         LEFT JOIN Trees
         ON FamilyTreeAssets.TreeId = Trees.TreeId
+        LEFT JOIN dbo.InformationStatuses
+        ON FamilyTreeAssets.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId;
 
         --End Main Block

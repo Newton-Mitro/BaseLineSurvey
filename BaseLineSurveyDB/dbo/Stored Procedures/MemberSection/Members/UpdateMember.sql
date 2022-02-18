@@ -15,7 +15,6 @@ CREATE PROCEDURE dbo.UpdateMember (
     , @GenderCode BIGINT
     , @FirstProfessionCode BIGINT
     , @SecondProfessionCode BIGINT
-    , @IncomeRelatedWork BIGINT
     , @EducationalStatusCode BIGINT
     , @CurrentlyStudying BIT
     , @MaritalStatusCode BIGINT
@@ -41,7 +40,6 @@ BEGIN
             , GenderCode = @GenderCode
             , FirstProfessionCode = @FirstProfessionCode
             , SecondProfessionCode = @SecondProfessionCode
-            , IncomeRelatedWork = @IncomeRelatedWork
             , MaritalStatusCode = @MaritalStatusCode
             , EducationalStatusCode = @EducationalStatusCode
             , CurrentlyStudying = @CurrentlyStudying

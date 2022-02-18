@@ -25,6 +25,7 @@ BEGIN
         , TreatmentCenters.TreatmentCenterName
         , DoctorTypes.DoctorTypeName
         , Members.MemberName
+        , InformationStatuses.InformationStatusName
         FROM dbo.MemberDiseases
         LEFT JOIN dbo.Diseases
         ON MemberDiseases.DiseaseCode = Diseases.DiseaseCode
@@ -34,6 +35,8 @@ BEGIN
         ON MemberDiseases.DoctorTypeCode = DoctorTypes.DoctorTypeCode
         LEFT JOIN dbo.Members
         ON MemberDiseases.MemberId = Members.MemberId
+        LEFT JOIN dbo.InformationStatuses
+        ON MemberDiseases.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE MemberDiseases.KhanaId = @KhanaId
 
         --End Main Block

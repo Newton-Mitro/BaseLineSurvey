@@ -14,7 +14,6 @@ CREATE PROCEDURE dbo.InsertMember (
     , @GenderCode BIGINT
     , @FirstProfessionCode BIGINT
     , @SecondProfessionCode BIGINT
-    , @IncomeRelatedWork BIGINT
     , @EducationalStatusCode BIGINT
     , @CurrentlyStudying BIT
     , @MaritalStatusCode BIGINT
@@ -40,7 +39,6 @@ BEGIN
             , GenderCode
             , FirstProfessionCode
             , SecondProfessionCode
-            , IncomeRelatedWork
             , MaritalStatusCode
             , DisabledTypeCode
             , EducationalStatusCode
@@ -59,7 +57,6 @@ BEGIN
             , @GenderCode
             , @FirstProfessionCode
             , @SecondProfessionCode
-            , @IncomeRelatedWork
             , @MaritalStatusCode
             , @DisabledTypeCode
             , @EducationalStatusCode

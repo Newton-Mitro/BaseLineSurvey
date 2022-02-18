@@ -1,6 +1,7 @@
 ﻿using BaseLineSurveyWebApi.Common;
 using BaseLineSurveyWebAPI.Common;
 using DataAccessLib.Auth;
+using DataAccessLib.Auth.Models;
 using DataAccessLib.Base;
 using System;
 using System.Configuration;
@@ -24,8 +25,8 @@ namespace BaseLineSurveyApi.Controllers.Auth
         {
             try
             {
-               
-                var response =  _loginRepository.AuthenticateUser(user);
+
+                var response = _loginRepository.AuthenticateUser(user);
                 if (response != null && response.Message == "Success")
                 {
                     var oResponse = Request.CreateResponse(HttpStatusCode.OK, new ResponseObject { Data = response.Data, Message = response.Message });
@@ -44,7 +45,7 @@ namespace BaseLineSurveyApi.Controllers.Auth
         /// Developer    : Newton Mitro
         /// Created At   : 03 February 2022
         /// Updated By   : Newton Mitro
-        /// Updated At   : 03 February 2022
+        /// Updated At   : 15 February 2022
         /// Description  : Function for creating new user account
         /// </summary>
         /// <param name="user"></param>
@@ -54,6 +55,44 @@ namespace BaseLineSurveyApi.Controllers.Auth
         {
             return _loginRepository.RegisterNewUser(user);
         }
+
+        [HttpPost]
+        public ResponseObject UpdateUser(UserModel user)
+        {
+            return _loginRepository.UpdateUser(user);
+        }
+
+        [HttpPost]
+        public ResponseObject ResetUserPassword(UserModel user)
+        {
+            return _loginRepository.ResetUserPassword(user);
+        }
+
+        [HttpPost]
+        public ResponseObject DeActivateUser(UserModel user)
+        {
+            return _loginRepository.DeActivateUser(user);
+        }
+
+
+        [HttpPost]
+        public ResponseObject AssignSupervisor(UsersSupervisorModel usersSupervisorModel)
+        {
+            return _loginRepository.AssignSupervisor(usersSupervisorModel);
+        }
+
+        [HttpPost]
+        public ResponseObject GetSupervisors()
+        {
+            return _loginRepository.GetSupervisors();
+        }
+
+        [HttpPost]
+        public ResponseObject GetUsers()
+        {
+            return _loginRepository.GetUsers();
+        }
+
 
         [NonAction]
         private HttpResponseMessage GenerateAndSaveToken(int userId, HttpResponseMessage response)

@@ -9,9 +9,11 @@ Script Description            : This procedure will Insert User.
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.InsertUser (
-    @Email VARCHAR(250)
+    @FullName NVARCHAR(250) = NULL
+    , @Email VARCHAR(250)
     , @Password VARCHAR(250)
     , @RoleId BIGINT
+    , @IsActive BIT = 1
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -24,22 +26,26 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        INSERT INTO Users (
-            Email
+        INSERT INTO dbo.Users (
+            FullName
+            , Email
             , Password
             , RoleId
+            , IsActive
             , CreatedAt
             , CreatedBy
             , UpdatedAt
             , UpdatedBy
             )
         VALUES (
-            @Email
+            @FullName
+            , @Email
             , @Password
             , @RoleId
-            , getdate()
+            , @IsActive
+            , GETDATE()
             , @AccessedBy
-            , getdate()
+            , GETDATE()
             , @AccessedBy
             )
 

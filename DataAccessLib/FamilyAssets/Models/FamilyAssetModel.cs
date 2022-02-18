@@ -12,6 +12,7 @@ namespace DataAccessLib.FamilyAssets.Models
         public Int64 ChildAssetId { get; set; }
         public string ChildAssetName { get; set; }
         public Int64 InformationStatusCode { get; set; }
+        public string InformationStatusName { get; set; }
         public double Quantity { get; set; }
         public Decimal CurrentSaleValue { get; set; }
     }

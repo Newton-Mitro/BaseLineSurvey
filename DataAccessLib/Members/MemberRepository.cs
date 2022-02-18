@@ -40,7 +40,6 @@ namespace DataAccessLib.MemberSection.MemberSection
             parameters.Add("@GenderCode", member.GenderCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@FirstProfessionCode", member.FirstProfessionCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@SecondProfessionCode", member.SecondProfessionCode, DbType.Int64, ParameterDirection.Input);
-            parameters.Add("@IncomeRelatedWork", member.IncomeRelatedWork, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@MaritalStatusCode", member.MaritalStatusCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@DisabledTypeCode", member.DisabledTypeCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@EducationalStatusCode", member.EducationalStatusCode, DbType.Int64, ParameterDirection.Input);
@@ -76,7 +75,6 @@ namespace DataAccessLib.MemberSection.MemberSection
             parameters.Add("@GenderCode", member.GenderCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@FirstProfessionCode", member.FirstProfessionCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@SecondProfessionCode", member.SecondProfessionCode, DbType.Int64, ParameterDirection.Input);
-            parameters.Add("@IncomeRelatedWork", member.IncomeRelatedWork, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@MaritalStatusCode", member.MaritalStatusCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@DisabledTypeCode", member.DisabledTypeCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@EducationalStatusCode", member.EducationalStatusCode, DbType.Int64, ParameterDirection.Input);

@@ -87,9 +87,9 @@ namespace BaseLineSurveyApi.Controllers.EducationSection
         }
 
         [HttpPost]
-        public ResponseObject GetMemberEducationsByKhanaAndMemberId([FromBody] MemberEducationModel memberEducationModel)
+        public ResponseObject GetMemberEducationsByKhanaAndQuestionId([FromBody] MemberEducationModel memberEducationModel)
         {
-            return memberEducationRepository.GetMemberEducationsByKhanaAndMemberId(memberEducationModel);
+            return memberEducationRepository.GetMemberEducationsByKhanaAndQuestionId(memberEducationModel);
         }
 
         [HttpPost]
@@ -102,6 +102,12 @@ namespace BaseLineSurveyApi.Controllers.EducationSection
         public ResponseObject GetEducationOptionsByQuestionId([FromBody] Int64 EducationQuestionId)
         {
             return memberEducationRepository.GetEducationOptionsByQuestionId(EducationQuestionId);
+        }
+
+        [HttpPost]
+        public ResponseObject GetAgedEducatonTakenMembers([FromBody] Int64 KhanaId)
+        {
+            return memberEducationRepository.GetAgedEducatonTakenMembers(KhanaId);
         }
     }
 }

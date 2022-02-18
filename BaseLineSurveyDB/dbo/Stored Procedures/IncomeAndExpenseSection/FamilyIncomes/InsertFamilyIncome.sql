@@ -12,6 +12,7 @@ CREATE PROCEDURE dbo.InsertFamilyIncome (
     @KhanaId BIGINT
     , @IncomeSourceId BIGINT
     , @AnnualIncomeAmount MONEY
+    , @ProductionCost MONEY
     , @InformationStatusCode BIGINT = 1
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @ScopeId BIGINT = NULL OUTPUT
@@ -30,6 +31,7 @@ BEGIN
             , IncomeSourceId
             , InformationStatusCode
             , AnnualIncomeAmount
+            , ProductionCost
             , CreatedAt
             , CreatedBy
             , UpdatedAt
@@ -40,6 +42,7 @@ BEGIN
             , @IncomeSourceId
             , @InformationStatusCode
             , @AnnualIncomeAmount
+            , @ProductionCost
             , GETDATE()
             , @AccessedBy
             , GETDATE()

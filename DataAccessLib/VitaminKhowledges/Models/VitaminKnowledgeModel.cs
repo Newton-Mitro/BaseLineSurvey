@@ -17,5 +17,6 @@ namespace DataAccessLib.VitaminKhowledgeSection.VitaminKnowledges
         public Int64 QuestionId { get; set; }
         public Int64 OptionId { get; set; }
         public Int64 InformationStatusCode { get; set; }
+        public string InformationStatusName { get; set; }
     }
 }

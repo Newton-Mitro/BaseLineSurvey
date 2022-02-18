@@ -11,7 +11,6 @@ namespace DataAccessLib.MemberSection.MemberSection
         public long GenderCode { get; set; }
         public long FirstProfessionCode { get; set; }
         public long SecondProfessionCode { get; set; }
-        public long IncomeRelatedWork { get; set; }
         public long MaritalStatusCode { get; set; }
         public long EducationalStatusCode { get; set; }
         public bool CurrentlyStudying { get; set; }

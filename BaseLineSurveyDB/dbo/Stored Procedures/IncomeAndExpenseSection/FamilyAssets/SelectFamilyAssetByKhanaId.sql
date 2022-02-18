@@ -23,11 +23,14 @@ BEGIN
         SELECT FamilyAssets.* 
         , ChildAssetTypes.ChildAssetName
         , ParentAssetTypes.ParentAssetName
+        , InformationStatuses.InformationStatusName
         FROM dbo.FamilyAssets
         LEFT JOIN ChildAssetTypes
         ON FamilyAssets.ChildAssetId = ChildAssetTypes.ChildAssetTypeId
         LEFT JOIN ParentAssetTypes
         ON FamilyAssets.ParentAssetId = ParentAssetTypes.ParentAssetTypeId
+        LEFT JOIN dbo.InformationStatuses
+        ON FamilyAssets.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId;
 
         --End Main Block

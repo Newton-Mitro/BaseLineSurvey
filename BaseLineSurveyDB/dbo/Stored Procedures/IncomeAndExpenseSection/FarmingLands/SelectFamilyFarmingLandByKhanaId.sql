@@ -23,11 +23,14 @@ BEGIN
         SELECT FarmingLands.* 
         , LandOwnershipTypes.LandOwnershipTypeName
         , CropTypes.CropTypeName
+        , InformationStatuses.InformationStatusName
         FROM dbo.FarmingLands
         LEFT JOIN LandOwnershipTypes
         ON FarmingLands.LandOwnershipTypeId = LandOwnershipTypes.LandOwnershipTypeId
         LEFT JOIN dbo.CropTypes
         ON FarmingLands.CropTypeId = CropTypes.CropTypeId
+        LEFT JOIN dbo.InformationStatuses
+        ON FarmingLands.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId;
 
         --End Main Block

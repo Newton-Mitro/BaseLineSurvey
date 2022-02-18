@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BaseLineSurveyApi</RootNamespace>
     <AssemblyName>BaseLineSurveyApi</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,15 +52,15 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -111,6 +112,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -170,6 +172,10 @@
     <Compile Include="Controllers\FamilyIncomeSection\FamilyIncomeController.cs" />
     <Compile Include="Controllers\FamilyLandAndFarmingSection\FamilyLandAndFarmingController.cs" />
     <Compile Include="Controllers\FamilyTreeAssetsSection\FamilyTreeAssetController.cs" />
+    <Compile Include="Controllers\FoodAndSaftySection\FoodSecurityController.cs" />
+    <Compile Include="Controllers\FoodAndSaftySection\FoodShortageMonthController.cs" />
+    <Compile Include="Controllers\FoodAndSaftySection\RunFamilyWhenShortageController.cs" />
+    <Compile Include="Controllers\FoodAndSaftySection\YesterdaysFoodController.cs" />
     <Compile Include="Controllers\KhanaSection\DistrictController.cs" />
     <Compile Include="Controllers\KhanaSection\KhanaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -180,6 +186,7 @@
     <Compile Include="Controllers\KhanaSection\UpazilaController.cs" />
     <Compile Include="Controllers\KhanaSection\VillageController.cs" />
     <Compile Include="Controllers\MemberDiseaseSection\MemberDiseaseController.cs" />
+    <Compile Include="Controllers\MemberRiskProfession\MemberRiskProfessionController.cs" />
     <Compile Include="Controllers\MemberSection\MemberController.cs" />
     <Compile Include="Controllers\ToiletAndWaterSection\ToiletAndWaterInfoController.cs" />
     <Compile Include="Controllers\VitaminKnowledgeSection\VitaminKnowledgeController.cs" />
@@ -241,7 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\FoodAndSaftySection\" />
     <Folder Include="Controllers\SocialAndCooperativeSection\" />
     <Folder Include="Models\" />
     <Folder Include="Views\DisabledType\" />
