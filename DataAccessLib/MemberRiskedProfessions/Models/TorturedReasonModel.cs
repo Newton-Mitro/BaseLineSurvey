@@ -4,7 +4,7 @@ namespace DataAccessLib.MemberRiskedProfessions.Models
 {
     public class TorturedReasonModel : BaseEntity
     {
-        public long TorturedRessonCode { get; set; }
-        public string TorturedReasionText { get; set; }
+        public long TorturedReasonCode { get; set; }
+        public string TorturedReasonText { get; set; }
     }
 }

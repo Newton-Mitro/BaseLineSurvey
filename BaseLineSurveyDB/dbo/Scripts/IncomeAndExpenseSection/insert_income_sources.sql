@@ -63,7 +63,6 @@ BEGIN
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 -- @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
 
-    --upto 10
     EXEC InsertIncomeSource N'ব্যবসা/ বাড়ী ভাড়া' -- @IncomeSourceName NVARCHAR(250)
         , NULL -- @ScopeId BIGINT = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT

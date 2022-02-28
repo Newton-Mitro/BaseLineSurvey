@@ -27,7 +27,6 @@ SELECT KhanaId
     , Races.RaceName
     , Khanas.InformationStatusCode
     , InformationStatuses.InformationStatusName
-    , HouseReference
     , Khanas.CreatedBy
     , Creator.FullName AS CreatorName
     , Khanas.UpdatedBy
@@ -53,5 +52,5 @@ LEFT JOIN Users AS Creator
     ON Khanas.CreatedBy = Creator.UserId
 LEFT JOIN Users AS Updator
     ON Khanas.UpdatedBy = Updator.UserId
-LEFT JOIN dbo.InformationStatuses 
+LEFT JOIN dbo.InformationStatuses
     ON Khanas.InformationStatusCode = InformationStatuses.InformationStatusCode

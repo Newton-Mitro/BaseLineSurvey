@@ -82,3 +82,4 @@ Post-Deployment Script Template
 :r .\dbo\Scripts\SocialAndCooperativeSection\insert_defaulder_reasons.sql
 :r .\dbo\Scripts\SocialAndCooperativeSection\insert_social_work_types.sql
 :r .\dbo\Scripts\SocialAndCooperativeSection\insert_cooperative_lists.sql
+:r .\dbo\Scripts\SocialAndCooperativeSection\insert_cooperative_questions.sql

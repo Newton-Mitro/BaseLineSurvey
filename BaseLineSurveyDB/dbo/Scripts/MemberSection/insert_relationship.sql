@@ -58,6 +58,11 @@ BEGIN
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 -- @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
 
+    EXEC InsertRelationship N'মেয়ে' -- @DisabledTypeName NVARCHAR(250)
+        , NULL -- @ScopeId BIGINT = NULL OUTPUT
+        , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 -- @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
     EXEC InsertRelationship N'অন্যান্য' -- @DisabledTypeName NVARCHAR(250)
         , NULL -- @ScopeId BIGINT = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT

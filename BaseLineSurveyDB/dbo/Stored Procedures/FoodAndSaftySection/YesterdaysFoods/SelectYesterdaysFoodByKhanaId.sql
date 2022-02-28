@@ -20,14 +20,14 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT YesterdaysFoods.* 
-        , Foods.FoodName
-        , InformationStatuses.InformationStatusName
+        SELECT YesterdaysFoods.*
+            , Foods.FoodName
+            , InformationStatuses.InformationStatusName
         FROM dbo.YesterdaysFoods
         LEFT JOIN dbo.Foods
-        ON YesterdaysFoods.FoodId = Foods.FoodId
+            ON YesterdaysFoods.FoodId = Foods.FoodId
         LEFT JOIN dbo.InformationStatuses
-        ON YesterdaysFoods.InformationStatusCode = InformationStatuses.InformationStatusCode
+            ON YesterdaysFoods.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId;
 
         --End Main Block
@@ -40,11 +40,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

@@ -21,10 +21,10 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-            FROM dbo.View_Members
-            WHERE KhanaId = @KhanaId 
-            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) >=6 
-            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) <=18
+        FROM dbo.View_Members
+        WHERE KhanaId = @KhanaId
+            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) >= 6
+            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) <= 18
             AND EducationalStatusCode > 5
             AND CurrentlyStudying = 0;
 
@@ -38,12 +38,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

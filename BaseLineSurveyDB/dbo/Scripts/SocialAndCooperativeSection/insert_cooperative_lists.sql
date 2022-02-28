@@ -369,7 +369,6 @@ BEGIN
         , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
 
-    --upto 10
     EXEC InsertCooperativeList N'দক্ষিন দড়িপাড়া খ্রীষ্টান সঞ্চয় ও ঋণদান সমিতি ' -- @CoperativeName NVARCHAR(250)
         , NULL --@ScopeId BIGINT = NULL OUTPUT
         , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT

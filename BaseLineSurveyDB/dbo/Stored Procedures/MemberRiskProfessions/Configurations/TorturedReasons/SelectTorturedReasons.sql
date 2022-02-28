@@ -8,9 +8,7 @@ Altered At                    : 25 January 2022
 Script Description            : This procedure will Select Tortured Reasons
 --------------------------------------------------------------------------------------
 */
-CREATE PROCEDURE dbo.SelectTorturedReasons (
-    @ReturnResult VARCHAR(255) = NULL OUTPUT
-    )
+CREATE PROCEDURE dbo.SelectTorturedReasons (@ReturnResult VARCHAR(255) = NULL OUTPUT)
 AS
 BEGIN
     BEGIN TRANSACTION;
@@ -20,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM TorturedReasions;
+        FROM TorturedReasons;
 
         --End Main Block
         IF @@ROWCOUNT > 0
@@ -32,11 +30,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

@@ -169,6 +169,7 @@
     <Compile Include="Controllers\EducationSection\MemberEducationController.cs" />
     <Compile Include="Controllers\FamilyAssetsSection\FamilyAssetController.cs" />
     <Compile Include="Controllers\FamilyExpenseSection\FamilyExpenseController.cs" />
+    <Compile Include="Controllers\FamilyFishFarmings\FamilyFishFarmingController.cs" />
     <Compile Include="Controllers\FamilyIncomeSection\FamilyIncomeController.cs" />
     <Compile Include="Controllers\FamilyLandAndFarmingSection\FamilyLandAndFarmingController.cs" />
     <Compile Include="Controllers\FamilyTreeAssetsSection\FamilyTreeAssetController.cs" />
@@ -186,8 +187,13 @@
     <Compile Include="Controllers\KhanaSection\UpazilaController.cs" />
     <Compile Include="Controllers\KhanaSection\VillageController.cs" />
     <Compile Include="Controllers\MemberDiseaseSection\MemberDiseaseController.cs" />
+    <Compile Include="Controllers\MemberIncomeRelatedWorkSection\MemberIncomeRelatedWorkController.cs" />
     <Compile Include="Controllers\MemberRiskProfession\MemberRiskProfessionController.cs" />
     <Compile Include="Controllers\MemberSection\MemberController.cs" />
+    <Compile Include="Controllers\SocialAndCooperativeSection\CooperativeQuestionAnswerController.cs" />
+    <Compile Include="Controllers\SocialAndCooperativeSection\DefaultFromCooperativeController.cs" />
+    <Compile Include="Controllers\SocialAndCooperativeSection\FamilyDefaulderReasonController.cs" />
+    <Compile Include="Controllers\SocialAndCooperativeSection\SocialOrganizationController.cs" />
     <Compile Include="Controllers\ToiletAndWaterSection\ToiletAndWaterInfoController.cs" />
     <Compile Include="Controllers\VitaminKnowledgeSection\VitaminKnowledgeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -248,7 +254,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\SocialAndCooperativeSection\" />
     <Folder Include="Models\" />
     <Folder Include="Views\DisabledType\" />
     <Folder Include="Views\EducationStatus\" />

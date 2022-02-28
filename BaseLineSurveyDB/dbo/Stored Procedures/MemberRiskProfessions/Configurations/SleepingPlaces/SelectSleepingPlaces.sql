@@ -8,9 +8,7 @@ Altered At                    : 15 February 2022
 Script Description            : This procedure will Select Sleeping Places
 --------------------------------------------------------------------------------------
 */
-CREATE PROCEDURE dbo.SelectSleepingPlaces (
-    @ReturnResult VARCHAR(255) = NULL OUTPUT
-    )
+CREATE PROCEDURE dbo.SelectSleepingPlaces (@ReturnResult VARCHAR(255) = NULL OUTPUT)
 AS
 BEGIN
     BEGIN TRANSACTION;
@@ -19,7 +17,8 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT * FROM dbo.SleepingPlaces;
+        SELECT *
+        FROM dbo.SleepingPlaces;
 
         --End Main Block
         IF @@ROWCOUNT > 0
@@ -31,12 +30,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

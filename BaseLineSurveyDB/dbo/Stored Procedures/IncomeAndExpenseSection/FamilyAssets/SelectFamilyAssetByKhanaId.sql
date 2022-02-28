@@ -20,17 +20,17 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT FamilyAssets.* 
-        , ChildAssetTypes.ChildAssetName
-        , ParentAssetTypes.ParentAssetName
-        , InformationStatuses.InformationStatusName
+        SELECT FamilyAssets.*
+            , ChildAssetTypes.ChildAssetName
+            , ParentAssetTypes.ParentAssetName
+            , InformationStatuses.InformationStatusName
         FROM dbo.FamilyAssets
         LEFT JOIN ChildAssetTypes
-        ON FamilyAssets.ChildAssetId = ChildAssetTypes.ChildAssetTypeId
+            ON FamilyAssets.ChildAssetId = ChildAssetTypes.ChildAssetTypeId
         LEFT JOIN ParentAssetTypes
-        ON FamilyAssets.ParentAssetId = ParentAssetTypes.ParentAssetTypeId
+            ON FamilyAssets.ParentAssetId = ParentAssetTypes.ParentAssetTypeId
         LEFT JOIN dbo.InformationStatuses
-        ON FamilyAssets.InformationStatusCode = InformationStatuses.InformationStatusCode
+            ON FamilyAssets.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId;
 
         --End Main Block
@@ -43,12 +43,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

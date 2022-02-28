@@ -30,6 +30,7 @@ DECLARE @PagarParishPagarServiceCenter BIGINT = 28
 DECLARE @MausaidParishPagarServiceCenter BIGINT = 29
 DECLARE @SolepurParishSolpurServiceCenter BIGINT = 30
 DECLARE @NarayanganjParishLaxmibazar BIGINT = 31
+DECLARE @OtherChurchHeadOffice BIGINT = 32
 --villages
 DECLARE @Dharenda1 BIGINT = 1
 DECLARE @Kamalapur1 BIGINT = 2
@@ -1047,6 +1048,31 @@ BEGIN
 
     EXEC InsertParishServiceCenterVillages @NarayanganjParishLaxmibazar --@ParisesServicentersId BIGINT
         , @Narayangonj1 --@VillageId BIGINT
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+    --Other Church
+    EXEC InsertParishServiceCenterVillages @OtherChurchHeadOffice --@ParisesServicentersId BIGINT
+        , @MirpurBaptistChurch1 --@VillageId BIGINT
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+    EXEC InsertParishServiceCenterVillages @OtherChurchHeadOffice --@ParisesServicentersId BIGINT
+        , @SDA1 --@VillageId BIGINT
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+    EXEC InsertParishServiceCenterVillages @OtherChurchHeadOffice --@ParisesServicentersId BIGINT
+        , @FellowshipChruch1 --@VillageId BIGINT
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+    EXEC InsertParishServiceCenterVillages @OtherChurchHeadOffice --@ParisesServicentersId BIGINT
+        , @GBC1 --@VillageId BIGINT
         , NULL --@ScopeId BIGINT = NULL OUTPUT
         , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.

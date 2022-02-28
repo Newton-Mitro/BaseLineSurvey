@@ -9,7 +9,7 @@ Script Description            : This procedure will Select School Drop Out Infos
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.SelectSchoolDropOutInfosByKhanaId (
-    @KhanaId BIGINT 
+    @KhanaId BIGINT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     )
 AS
@@ -21,16 +21,16 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT SchoolDropouts.*
-        , DropOutReasons.DropOutReasonText
-        , Members.MemberName
-        , InformationStatuses.InformationStatusName
+            , DropOutReasons.DropOutReasonText
+            , Members.MemberName
+            , InformationStatuses.InformationStatusName
         FROM dbo.SchoolDropouts
         LEFT JOIN dbo.DropOutReasons
-        ON SchoolDropouts.DropOutReasonCode = DropOutReasons.DropOutReasonCode
+            ON SchoolDropouts.DropOutReasonCode = DropOutReasons.DropOutReasonCode
         LEFT JOIN dbo.Members
-        ON SchoolDropouts.MemberId = Members.MemberId
+            ON SchoolDropouts.MemberId = Members.MemberId
         LEFT JOIN dbo.InformationStatuses
-        ON SchoolDropouts.InformationStatusCode = InformationStatuses.InformationStatusCode
+            ON SchoolDropouts.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE SchoolDropouts.KhanaId = @KhanaId
 
         --End Main Block
@@ -43,11 +43,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

@@ -9,7 +9,7 @@ Script Description            : This procedure will Reset User Password
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.ResetUserPassword (
-     @UserId BIGINT
+    @UserId BIGINT
     , @Password NVARCHAR(250) = NULL
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -22,7 +22,7 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-         UPDATE dbo.Users 
+        UPDATE dbo.Users
         SET Password = @Password
             , UpdatedAt = GETDATE()
             , UpdatedBy = @AccessedBy
@@ -38,11 +38,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

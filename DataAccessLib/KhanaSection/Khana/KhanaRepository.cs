@@ -66,7 +66,6 @@ namespace DataAccessLib.KhanaSection.Khana
             parameters.Add("@ReligionId", khana.ReligionId, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@RaceId", khana.RaceId, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@InformationStatusCode", khana.InformationStatusCode, DbType.Int64, ParameterDirection.Input);
-            parameters.Add("@HouseReference", khana.HouseReference, DbType.String, ParameterDirection.Input);
             parameters.Add("@AccessedBy", khana.CreatedBy, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
@@ -99,7 +98,6 @@ namespace DataAccessLib.KhanaSection.Khana
             parameters.Add("@ReligionId", khana.ReligionId, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@RaceId", khana.RaceId, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@InformationStatusCode", khana.InformationStatusCode, DbType.Int64, ParameterDirection.Input);
-            parameters.Add("@HouseReference", khana.HouseReference, DbType.String, ParameterDirection.Input);
             parameters.Add("@AccessedBy", khana.UpdatedBy, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))

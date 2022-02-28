@@ -21,10 +21,11 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT ParishServiceCenterVillages.ParishesServiceCentersId, Villages.*
+        SELECT ParishServiceCenterVillages.ParishesServiceCentersId
+            , Villages.*
         FROM ParishServiceCenterVillages
         LEFT JOIN Villages
-        ON ParishServiceCenterVillages.VillageId = Villages.VillageId
+            ON ParishServiceCenterVillages.VillageId = Villages.VillageId
         WHERE ParishServiceCenterVillages.ParishesServiceCentersId = @ParishesServiceCentersId;
 
         --End Main Block
@@ -37,11 +38,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

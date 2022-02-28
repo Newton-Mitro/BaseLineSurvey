@@ -195,6 +195,17 @@
     <Folder Include="dbo\Tables\IncomeRelatedProfessions" />
     <Folder Include="dbo\Stored Procedures\MemberRiskProfessions\MemberSleepingPlaces" />
     <Folder Include="dbo\Stored Procedures\MemberRiskProfessions\MemberTorturedReasons" />
+    <Folder Include="dbo\Tables\MemberIncomeRelatedWorkSection" />
+    <Folder Include="dbo\Stored Procedures\MemberIncomeRelatedWorkSection" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\SocialOrganizations" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\OrganizationWorkForChildrens" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeQuestions" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeOptions" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeAnswers" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\DefaultFromCooperativeInfo" />
+    <Folder Include="dbo\Stored Procedures\SocialAndCooperativeSection\FamilyMemberDefaulterReasons" />
+    <Folder Include="dbo\Tables\FishFarming" />
+    <Folder Include="dbo\Stored Procedures\FamilyFishFarmings" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\KhanaSection\Khanas.sql" />
@@ -276,8 +287,8 @@
     <Build Include="dbo\Tables\VitaminSection\Configurations\VitaminKnowledgeQuestions.sql" />
     <Build Include="dbo\Tables\ToiletAndWaterSection\Configurations\ToiletAndWaterQuestions.sql" />
     <Build Include="dbo\Tables\ToiletAndWaterSection\Configurations\ToiletAndWaterOptions.sql" />
-    <Build Include="dbo\Tables\SocialAndCooperativeSection\FMDefaulderReasons.sql" />
-    <Build Include="dbo\Tables\SocialAndCooperativeSection\CooperativeInfos.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\FamilyMemberDefaulderReasons.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\DefaultFromCooperativeInfos.sql" />
     <Build Include="dbo\Tables\IncomeAndExpenseSection\FamilyAssets.sql" />
     <Build Include="dbo\Tables\IncomeAndExpenseSection\FamilyExpenses.sql" />
     <Build Include="dbo\Tables\IncomeAndExpenseSection\FamilyIncomes.sql" />
@@ -295,7 +306,7 @@
     <Build Include="dbo\Tables\ChildRightForChildSection\ChildRights.sql" />
     <Build Include="dbo\Tables\MemberSection\Configurations\EducationalStatuses.sql" />
     <Build Include="dbo\Tables\SocialAndCooperativeSection\SocialOrganizations.sql" />
-    <Build Include="dbo\Tables\SocialAndCooperativeSection\OrganizationWorks.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\OrganizationWorkForChildrens.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightOptions\InsertChildRightOption.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForChildSection\Configurations\ChildRightQuestions\InsertChildRightQuestion.sql" />
     <Build Include="dbo\Stored Procedures\ChildRightForParentSection\Configurations\ParentResponseQuestions\InsertParResponseQuestion.sql" />
@@ -372,9 +383,9 @@
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyAssets\InsertFamilyAsset.sql" />
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyAssets\DeleteFamilyAssetById.sql" />
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyAssets\SelectFamilyAssetByKhanaId.sql" />
-    <Build Include="dbo\Tables\TorturedReasonsSection\Configurations\TorturedReasions.sql" />
+    <Build Include="dbo\Tables\TorturedReasonsSection\Configurations\TorturedReasons.sql" />
     <Build Include="dbo\Tables\TorturedReasonsSection\Configurations\SleepingPlaces.sql" />
-    <Build Include="dbo\Tables\TorturedReasonsSection\MemberTorturedReasions.sql" />
+    <Build Include="dbo\Tables\TorturedReasonsSection\MemberTorturedReasons.sql" />
     <Build Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations\TorturedReasons\InsertTorturedReasion.sql" />
     <Build Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations\TorturedReasons\SelectTorturedReasons.sql" />
     <Build Include="dbo\Stored Procedures\MemberRiskProfessions\Configurations\SleepingPlaces\InsertSleepingPlace.sql" />
@@ -431,6 +442,43 @@
     <Build Include="dbo\Stored Procedures\MemberRiskProfessions\MemberSleepingPlaces\InsertOrUpdateMemberSleepingPlace.sql" />
     <Build Include="dbo\Stored Procedures\MemberRiskProfessions\MemberSleepingPlaces\SelectMemberSleepingPlacesByKhanaId.sql" />
     <Build Include="dbo\Stored Procedures\MemberRiskProfessions\MemberSleepingPlaces\SelectMembersWhoHasRiskProfessionByKhanaId.sql" />
+    <Build Include="dbo\TypTables\TT_MemberSleepingPlaces.sql" />
+    <Build Include="dbo\TypTables\TT_MemberTorturedReasons.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\MemberTorturedReasons\InsertOrUpdateMemberTorturedReason.sql" />
+    <Build Include="dbo\Stored Procedures\MemberRiskProfessions\MemberTorturedReasons\SelectMemberTorturedReasonByKhanaAndMemberId.sql" />
+    <Build Include="dbo\Tables\MemberIncomeRelatedWorkSection\MemberIncomeRelatedWorks.sql" />
+    <Build Include="dbo\TypTables\TT_MemberIncomeRelatedWorks.sql" />
+    <Build Include="dbo\Stored Procedures\MemberIncomeRelatedWorkSection\InsertOrUpdateMemberIncomeRelatedWork.sql" />
+    <Build Include="dbo\Stored Procedures\MemberIncomeRelatedWorkSection\SelectMemberIncomeRelatedWorkByKhanaAndMemberId.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\SocialOrganizations\InsertSocialOrganization.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\SocialOrganizations\SelectSocialOrganizationsByVillageId.sql" />
+    <Build Include="dbo\TypTables\TT_OrganizationWorkForChildrens.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\OrganizationWorkForChildrens\InsertOrUpdateOrganizationWorkForChildrens.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\OrganizationWorkForChildrens\SelectOrganizationWorkForChildrensByVillageId.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\SocialWorkTypes\SelectSocialWorkTypes.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\SocialOrganizations\DeleteSocialOrganizationById.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Configurations\Villages\InsertVillageAndRelatedInfo.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\Configurations\CooperativeQuestions.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\Configurations\CooperativeOptions.sql" />
+    <Build Include="dbo\Tables\SocialAndCooperativeSection\CooperativeAnswers.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeQuestions\InsertCooperativeQuestion.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeQuestions\SelectCooperativeQuestionsAndOptions.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeOptions\InsertCooperativeOption.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeAnswers\InsertOrUpdateCooperativeAnswer.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\FamilyMemberDefaulterReasons\InsertFamilyMemberDefaulterReason.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\FamilyMemberDefaulterReasons\SelectFamilyMemberDefaulterReasonByKhanaId.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\DefaultFromCooperativeInfo\InsertDefaultFromCooperativeInfo.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\DefaultFromCooperativeInfo\SelectDefaultFromCooperativeInfosByKhanaAndMemberId.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeAnswers\SelectCooperativeAnswersByKhanaId.sql" />
+    <Build Include="dbo\TypTables\TT_CooperativeAnswers.sql" />
+    <Build Include="dbo\TypTables\TT_FamilyMemberDefaulderReasons.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\DefaulderReasons\SelectDefaulderReasons.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\CooperativeLists\SelectCooperatives.sql" />
+    <Build Include="dbo\TypTables\TT_DefaultFromCooperativeInfos.sql" />
+    <Build Include="dbo\Tables\FishFarming\FamilyFishFarmings.sql" />
+    <Build Include="dbo\Stored Procedures\FamilyFishFarmings\InsertFamilyFishFarming.sql" />
+    <Build Include="dbo\Stored Procedures\FamilyFishFarmings\SelectFamilyFishFarming.sql" />
+    <Build Include="dbo\Stored Procedures\FamilyFishFarmings\UpdateFamilyFishFarming.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\WaterAndToiletSection\insert_toilet_and_water_source_question_answers.sql" />
@@ -474,6 +522,7 @@
     <None Include="dbo\Scripts\Shared\insert_information_statuses.sql" />
     <None Include="dbo\Scripts\EducationSection\insert_education_questions_and_options.sql" />
     <None Include="BaseLineSurveyDB.publish.xml" />
+    <None Include="dbo\Scripts\SocialAndCooperativeSection\insert_cooperative_questions.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

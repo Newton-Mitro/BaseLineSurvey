@@ -23,31 +23,31 @@ BEGIN
     BEGIN TRANSACTION;
 
     SAVE TRANSACTION MySavePoint;-- Create a save point
-   
+
     BEGIN TRY
         --Start Main Block
-        INSERT INTO dbo.MemberEducationHelps(
+        INSERT INTO dbo.MemberEducationHelps (
             KhanaId
-           ,MemberId
-           ,HelpOrganizationCode
-           ,EducationHelpTypeCode
-           ,InformationStatusCode
-           ,CreatedBy
-           ,UpdatedBy
-           ,CreatedAt
-           ,UpdatedAt
-           )
+            , MemberId
+            , HelpOrganizationCode
+            , EducationHelpTypeCode
+            , InformationStatusCode
+            , CreatedBy
+            , UpdatedBy
+            , CreatedAt
+            , UpdatedAt
+            )
         VALUES (
             @KhanaId
-           ,@MemberId
-           ,@HelpOrganizationCode
-           ,@EducationHelpTypeCode
-           ,@InformationStatusCode
-           ,@AccessedBy
-           ,@AccessedBy
-           ,GETDATE()
-           ,GETDATE()
-           )
+            , @MemberId
+            , @HelpOrganizationCode
+            , @EducationHelpTypeCode
+            , @InformationStatusCode
+            , @AccessedBy
+            , @AccessedBy
+            , GETDATE()
+            , GETDATE()
+            )
 
         SET @ScopeId = SCOPE_IDENTITY();
 
@@ -61,11 +61,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

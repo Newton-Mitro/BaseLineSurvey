@@ -22,7 +22,6 @@ BEGIN
         --Start Main Block
         DECLARE @ChildRightQuestionId BIGINT
             , @QuestionText NVARCHAR(250);
-
         DECLARE @ChildRightQuestions AS TABLE (
             ChildRightQuestionId BIGINT
             , QuestionText NVARCHAR(250)
@@ -91,11 +90,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

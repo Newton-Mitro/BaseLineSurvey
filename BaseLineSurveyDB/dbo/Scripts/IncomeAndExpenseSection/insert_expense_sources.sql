@@ -63,7 +63,6 @@ BEGIN
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 -- @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
 
-    --upto 10
     EXEC InsertExpenseSource N'সামাজিক/ ধর্মীয় অনুষ্ঠান বাবদ ব্যয়' -- @ExpenseSourceName NVARCHAR(250)
         , NULL -- @ScopeId BIGINT = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT

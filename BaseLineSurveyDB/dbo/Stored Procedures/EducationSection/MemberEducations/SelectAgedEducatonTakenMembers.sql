@@ -9,7 +9,7 @@ Script Description            : This procedure will Select Aged Educaton Taken M
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.SelectAgedEducatonTakenMembers (
-    @KhanaId BIGINT 
+    @KhanaId BIGINT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     )
 AS
@@ -23,10 +23,10 @@ BEGIN
         SELECT *
         FROM dbo.View_Members
         LEFT JOIN dbo.MemberEducations
-        ON View_Members.MemberId = MemberEducations.MemberId
+            ON View_Members.MemberId = MemberEducations.MemberId
         WHERE MemberEducations.KhanaId = @KhanaId
-        AND MemberEducations.EducationQuestionId = 2
-        AND MemberEducations.EducationOptionId = 3;
+            AND MemberEducations.EducationQuestionId = 2
+            AND MemberEducations.EducationOptionId = 3;
 
         --End Main Block
         IF @@ROWCOUNT > 0
@@ -38,11 +38,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END

@@ -20,17 +20,17 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT FarmingLands.* 
-        , LandOwnershipTypes.LandOwnershipTypeName
-        , CropTypes.CropTypeName
-        , InformationStatuses.InformationStatusName
+        SELECT FarmingLands.*
+            , LandOwnershipTypes.LandOwnershipTypeName
+            , CropTypes.CropTypeName
+            , InformationStatuses.InformationStatusName
         FROM dbo.FarmingLands
         LEFT JOIN LandOwnershipTypes
-        ON FarmingLands.LandOwnershipTypeId = LandOwnershipTypes.LandOwnershipTypeId
+            ON FarmingLands.LandOwnershipTypeId = LandOwnershipTypes.LandOwnershipTypeId
         LEFT JOIN dbo.CropTypes
-        ON FarmingLands.CropTypeId = CropTypes.CropTypeId
+            ON FarmingLands.CropTypeId = CropTypes.CropTypeId
         LEFT JOIN dbo.InformationStatuses
-        ON FarmingLands.InformationStatusCode = InformationStatuses.InformationStatusCode
+            ON FarmingLands.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId;
 
         --End Main Block
@@ -43,12 +43,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

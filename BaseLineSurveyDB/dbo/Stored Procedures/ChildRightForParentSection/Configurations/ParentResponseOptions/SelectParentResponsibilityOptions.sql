@@ -21,7 +21,7 @@ BEGIN
     SAVE TRANSACTION MySavePoint;-- Create a save point
 
     BEGIN TRY
-         --Start Main Block
+        --Start Main Block
         DECLARE @RowCount AS INT;
 
         SET @RowCount = 0;
@@ -49,11 +49,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

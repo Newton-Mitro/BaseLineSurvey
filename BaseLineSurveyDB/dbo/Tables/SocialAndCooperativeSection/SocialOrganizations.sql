@@ -11,9 +11,9 @@ Script Description            : This procedure will create Social Organizations 
 CREATE TABLE dbo.SocialOrganizations (
     SocialOrganizationId BIGINT NOT NULL PRIMARY KEY IDENTITY
     , VillageId BIGINT NOT NULL
-    , InformationStatusCode BIGINT NULL
     , OrganizationName NVARCHAR(250) NOT NULL
-    , WorkForChildern NVARCHAR(250) NOT NULL
+    , WorkForChildern BIT NOT NULL
+    , InformationStatusCode BIGINT NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL
     , CreatedAt DATETIME2 NULL

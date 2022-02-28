@@ -10,7 +10,7 @@ Script Description            : This Script will Insert Tortured Reasiones.
 */
 IF NOT EXISTS (
         SELECT *
-        FROM TorturedReasions
+        FROM TorturedReasons
         )
 BEGIN
     EXEC InsertTorturedReasion N'অনপুস্থীত থাকা বা দেরি করে যাওয়া' -- @TorturedReasionText NVARCHAR(250)

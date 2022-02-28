@@ -78,7 +78,7 @@ namespace DataAccessLib.VitaminKhowledgeSection.VitaminKnowledgeQuestion
                 var options = results.Read<VitaminKnowledgeOptionModel>();
                 var selectedOptions = results.Read<VitaminKnowledgeModel>();
 
-                OptionAndSelectedOptionModel optionAndSelectedOptionModel = new OptionAndSelectedOptionModel();
+                QuestionOptionAndSelectedOptionModel optionAndSelectedOptionModel = new QuestionOptionAndSelectedOptionModel();
                 optionAndSelectedOptionModel.Options = JsonConvert.SerializeObject(options);
                 optionAndSelectedOptionModel.SelectedOptions = JsonConvert.SerializeObject(selectedOptions);
                 responseObject.Data = JsonConvert.SerializeObject(optionAndSelectedOptionModel);

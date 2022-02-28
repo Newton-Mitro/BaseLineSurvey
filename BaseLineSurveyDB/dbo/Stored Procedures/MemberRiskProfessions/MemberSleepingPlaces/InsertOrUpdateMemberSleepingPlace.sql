@@ -4,17 +4,12 @@ Stored Procedure InsertOrUpdateMemberSleepingPlace
 Script By                     : Newton Mitro
 Created At                    : 15 February 2022
 Script Altered By             : Newton Mitro
-Altered At                    : 15 February 2022
+Altered At                    : 19 February 2022
 Script Description            : This procedure will Insert Or Update Member Sleeping Place
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.InsertOrUpdateMemberSleepingPlace (
-    @MemberSleepingPlaceId BIGINT 
-    , @SleepingPlaceId BIGINT 
-    , @KhanaId BIGINT 
-    , @InformationStatusCode BIGINT 
-    , @MemberId BIGINT 
-    , @AccessedBy BIGINT 
+    @TT_MemberSleepingPlaces TT_MemberSleepingPlaces READONLY
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     )
 AS
@@ -25,58 +20,120 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-       IF(@MemberSleepingPlaceId>0)
-       BEGIN
-            UPDATE dbo.MemberSleepingPlaces
-            SET SleepingPlaceId = @SleepingPlaceId
-            , KhanaId = @KhanaId
-            , MemberId = @MemberId
-            , InformationStatusCode = @InformationStatusCode
-            WHERE MemberSleepingPlaceId = @MemberSleepingPlaceId;
+        DECLARE @MemberSleepingPlaceId BIGINT
+            , @KhanaId BIGINT
+            , @MemberId BIGINT
+            , @SleepingPlaceId BIGINT
+            , @InformationStatusCode BIGINT
+            , @CreatedBy BIGINT
+            , @UpdatedBy BIGINT
+            , @CreatedAt DATETIME2
+            , @UpdatedAt DATETIME2
+            , @RowCount INT;
 
-            IF @@ROWCOUNT > 0
-                SET @ReturnResult = 'Success'
-            ELSE
-                SET @ReturnResult = 'Faield to update.'
-       END
-       ELSE
-       BEGIN
-            INSERT INTO dbo.MemberSleepingPlaces (
-            MemberId
+        SET @RowCount = 0;
+
+        DECLARE CURSOR_PRODUCT CURSOR
+        FOR
+        SELECT MemberSleepingPlaceId
             , KhanaId
+            , MemberId
             , SleepingPlaceId
             , InformationStatusCode
-            , CreatedAt
             , CreatedBy
+            , UpdatedBy
+            , CreatedAt
             , UpdatedAt
-            , UpdatedBy )
-            VALUES (
-            @MemberId
+        FROM @TT_MemberSleepingPlaces;
+
+        OPEN CURSOR_PRODUCT;
+
+        FETCH NEXT
+        FROM CURSOR_PRODUCT
+        INTO @MemberSleepingPlaceId
             , @KhanaId
+            , @MemberId
             , @SleepingPlaceId
             , @InformationStatusCode
-            , GETDATE()
-            , @AccessedBy
-            , GETDATE()
-            , @AccessedBy
-            )
-            IF @@ROWCOUNT > 0
-                SET @ReturnResult = 'Success'
+            , @CreatedBy
+            , @UpdatedBy
+            , @CreatedAt
+            , @UpdatedAt;
+
+        WHILE @@FETCH_STATUS = 0
+        BEGIN
+            IF EXISTS (
+                    SELECT *
+                    FROM dbo.MemberSleepingPlaces
+                    WHERE MemberSleepingPlaceId = @MemberSleepingPlaceId
+                    )
+            BEGIN
+                UPDATE dbo.MemberSleepingPlaces
+                SET SleepingPlaceId = @SleepingPlaceId
+                    , KhanaId = @KhanaId
+                    , MemberId = @MemberId
+                    , InformationStatusCode = @InformationStatusCode
+                    , UpdatedAt = GETDATE()
+                    , UpdatedBY = @UpdatedBy
+                WHERE MemberSleepingPlaceId = @MemberSleepingPlaceId;
+
+                SET @RowCount = @RowCount + 1;
+            END
             ELSE
-                SET @ReturnResult = 'Faield to insert.'
-       END
-        
+            BEGIN
+                INSERT INTO dbo.MemberSleepingPlaces (
+                    MemberId
+                    , KhanaId
+                    , SleepingPlaceId
+                    , InformationStatusCode
+                    , CreatedAt
+                    , CreatedBy
+                    , UpdatedAt
+                    , UpdatedBy
+                    )
+                VALUES (
+                    @MemberId
+                    , @KhanaId
+                    , @SleepingPlaceId
+                    , @InformationStatusCode
+                    , GETDATE()
+                    , @CreatedBy
+                    , GETDATE()
+                    , @UpdatedBy
+                    )
+
+                SET @RowCount = @RowCount + 1;
+            END
+
+            FETCH NEXT
+            FROM CURSOR_PRODUCT
+            INTO @MemberSleepingPlaceId
+                , @KhanaId
+                , @MemberId
+                , @SleepingPlaceId
+                , @InformationStatusCode
+                , @CreatedBy
+                , @UpdatedBy
+                , @CreatedAt
+                , @UpdatedAt;
+        END;
+
+        CLOSE CURSOR_PRODUCT;
+
+        DEALLOCATE CURSOR_PRODUCT;
+
+        IF @RowCount > 0
+            SET @ReturnResult = 'Success'
+        ELSE
+            SET @ReturnResult = 'Faield to insert or update.'
 
         --End Main Block
         COMMIT TRANSACTION
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

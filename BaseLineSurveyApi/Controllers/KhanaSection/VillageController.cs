@@ -19,5 +19,11 @@ namespace BaseLineSurveyApi.Controllers.KhanaSection
             return villageRepository.GetVillagesByParishesServicentersId(ParishesServicentersId);
         }
 
+        [HttpPost]
+        public ResponseObject CreateVillageAndRelatedInfo([FromBody] ParishServiceCenterVillageModel parishServiceCenterVillageModel)
+        {
+            return villageRepository.CreateVillageAndRelatedInfo(parishServiceCenterVillageModel);
+        }
+
     }
 }

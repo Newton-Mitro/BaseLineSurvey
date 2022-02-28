@@ -9,7 +9,7 @@ Script Description            : This procedure will Select Member Sleeping Place
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.SelectMembersWhoHasRiskProfessionByKhanaId (
-    @KhanaId BIGINT 
+    @KhanaId BIGINT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     )
 AS
@@ -23,32 +23,27 @@ BEGIN
         SELECT *
         FROM dbo.View_Members
         INNER JOIN dbo.Professions AS FirstProfessions
-                ON FirstProfessions.ProfessionCode = View_Members.FirstProfessionCode
-         INNER JOIN dbo.Professions AS SecondProfessions
-                ON SecondProfessions.ProfessionCode = View_Members.FirstProfessionCode
-            WHERE FirstProfessions.IsRiskedProfession = 1
+            ON FirstProfessions.ProfessionCode = View_Members.FirstProfessionCode
+        INNER JOIN dbo.Professions AS SecondProfessions
+            ON SecondProfessions.ProfessionCode = View_Members.FirstProfessionCode
+        WHERE FirstProfessions.IsRiskedProfession = 1
             AND SecondProfessions.IsRiskedProfession = 1
             AND View_Members.KhanaId = @KhanaId
-            AND dbo.GetAgeFromDateOfBirth(View_Members.DateOfBirth) >=6 
-            AND dbo.GetAgeFromDateOfBirth(View_Members.DateOfBirth) <=18;
+            AND dbo.GetAgeFromDateOfBirth(View_Members.DateOfBirth) >= 6
+            AND dbo.GetAgeFromDateOfBirth(View_Members.DateOfBirth) <= 18;
 
-            IF @@ROWCOUNT > 0
-                SET @ReturnResult = 'Success'
-            ELSE
-                SET @ReturnResult = 'No entry found.'
-        
+        IF @@ROWCOUNT > 0
+            SET @ReturnResult = 'Success'
+        ELSE
+            SET @ReturnResult = 'No entry found.'
 
         --End Main Block
         COMMIT TRANSACTION
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

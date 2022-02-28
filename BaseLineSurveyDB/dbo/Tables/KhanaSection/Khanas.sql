@@ -18,7 +18,6 @@ CREATE TABLE dbo.Khanas (
     , ReligionId BIGINT NOT NULL
     , RaceId BIGINT NOT NULL
     , InformationStatusCode BIGINT NULL
-    , HouseReference NVARCHAR(250) NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL
     , CreatedAt DATETIME2 NULL

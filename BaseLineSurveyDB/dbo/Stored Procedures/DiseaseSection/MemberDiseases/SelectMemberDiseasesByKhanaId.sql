@@ -9,7 +9,7 @@ Script Description            : This procedure will Select Member Diseases By Kh
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.SelectMemberDiseasesByKhanaId (
-    @KhanaId BIGINT 
+    @KhanaId BIGINT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     )
 AS
@@ -21,22 +21,22 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT MemberDiseases.*
-        , Diseases.DiseaseName
-        , TreatmentCenters.TreatmentCenterName
-        , DoctorTypes.DoctorTypeName
-        , Members.MemberName
-        , InformationStatuses.InformationStatusName
+            , Diseases.DiseaseName
+            , TreatmentCenters.TreatmentCenterName
+            , DoctorTypes.DoctorTypeName
+            , Members.MemberName
+            , InformationStatuses.InformationStatusName
         FROM dbo.MemberDiseases
         LEFT JOIN dbo.Diseases
-        ON MemberDiseases.DiseaseCode = Diseases.DiseaseCode
+            ON MemberDiseases.DiseaseCode = Diseases.DiseaseCode
         LEFT JOIN dbo.TreatmentCenters
-        ON MemberDiseases.TreatmentCenterCode = TreatmentCenters.TreatmentCenterCode
+            ON MemberDiseases.TreatmentCenterCode = TreatmentCenters.TreatmentCenterCode
         LEFT JOIN dbo.DoctorTypes
-        ON MemberDiseases.DoctorTypeCode = DoctorTypes.DoctorTypeCode
+            ON MemberDiseases.DoctorTypeCode = DoctorTypes.DoctorTypeCode
         LEFT JOIN dbo.Members
-        ON MemberDiseases.MemberId = Members.MemberId
+            ON MemberDiseases.MemberId = Members.MemberId
         LEFT JOIN dbo.InformationStatuses
-        ON MemberDiseases.InformationStatusCode = InformationStatuses.InformationStatusCode
+            ON MemberDiseases.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE MemberDiseases.KhanaId = @KhanaId
 
         --End Main Block
@@ -49,12 +49,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

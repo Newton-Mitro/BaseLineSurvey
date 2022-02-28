@@ -8,18 +8,17 @@ Altered At                    : 09 February 2022
 Script Description            : This procedure will Select Education Questions
 --------------------------------------------------------------------------------------
 */
-CREATE PROCEDURE dbo.SelectEducationQuestions (
-    @ReturnResult VARCHAR(255) = NULL OUTPUT
-    )
+CREATE PROCEDURE dbo.SelectEducationQuestions (@ReturnResult VARCHAR(255) = NULL OUTPUT)
 AS
 BEGIN
     BEGIN TRANSACTION;
 
     SAVE TRANSACTION MySavePoint;-- Create a save point
-   
+
     BEGIN TRY
         --Start Main Block
-        SELECT * FROM dbo.EducationQuestions;
+        SELECT *
+        FROM dbo.EducationQuestions;
 
         --End Main Block
         IF @@ROWCOUNT > 0
@@ -31,11 +30,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

@@ -34,10 +34,17 @@ BEGIN
         , NULL -- @ScopeId BIGINT = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
 
-
-     EXEC InsertRole 'Supervisor' -- @RoleName NVARCHAR(250)
+    EXEC InsertRole 'Supervisor' -- @RoleName NVARCHAR(250)
         , @RoleID OUTPUT -- @ScopeId BIGINT = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
+        , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
+
+    EXEC InsertUser 'Supervisor One' -- Full Name
+        , 'supervisor.one@email.com' -- @Email VARCHAR(250)
+        , @PasswordHash -- @Password VARCHAR(250)
+        , @RoleID -- @RoleId BIGINT
+        , 1 -- @IsActive
+        , NULL -- @ScopeId BIGINT = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
 
     EXEC InsertRole 'Field Agent' -- @RoleName NVARCHAR(250)
@@ -45,5 +52,12 @@ BEGIN
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
 
-   
+     EXEC InsertUser 'Field Agent One' -- Full Name
+        , 'fieldagent.one@email.com' -- @Email VARCHAR(250)
+        , @PasswordHash -- @Password VARCHAR(250)
+        , @RoleID -- @RoleId BIGINT
+        , 1 -- @IsActive
+        , NULL -- @ScopeId BIGINT = NULL OUTPUT
+        , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
+
 END

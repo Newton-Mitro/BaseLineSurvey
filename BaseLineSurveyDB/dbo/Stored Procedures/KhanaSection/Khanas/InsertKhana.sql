@@ -17,7 +17,6 @@ CREATE PROCEDURE dbo.InsertKhana (
     , @ReligionId BIGINT
     , @RaceId BIGINT
     , @InformationStatusCode BIGINT
-    , @HouseReference VARCHAR(255)
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -38,7 +37,6 @@ BEGIN
             , VillageId
             , ReligionId
             , RaceId
-            , HouseReference
             , InformationStatusCode
             , CreatedAt
             , CreatedBy
@@ -53,7 +51,6 @@ BEGIN
             , @VillageId
             , @ReligionId
             , @RaceId
-            , @HouseReference
             , @InformationStatusCode
             , GETDATE()
             , @AccessedBy
@@ -73,11 +70,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

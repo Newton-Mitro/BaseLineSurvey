@@ -21,7 +21,7 @@ CREATE PROCEDURE dbo.InsertOrUpdateFoodSecurityInfo (
 AS
 BEGIN
     BEGIN TRANSACTION;
-    
+
     SAVE TRANSACTION MySavePoint;-- Create a save point
 
     BEGIN TRY
@@ -30,39 +30,38 @@ BEGIN
         BEGIN
             UPDATE dbo.FoodSecurities
             SET KhanaId = @KhanaId
-              ,InformationStatusCode = @InformationStatusCode
-              ,NumberOfMealYeasterday = @NumberOfMealYeasterday
-              ,DontEatOrHalfEat = @DontEatOrHalfEat
-              ,UpdatedBy = @AccessedBy
-              ,UpdatedAt = GETDATE()
+                , InformationStatusCode = @InformationStatusCode
+                , NumberOfMealYeasterday = @NumberOfMealYeasterday
+                , DontEatOrHalfEat = @DontEatOrHalfEat
+                , UpdatedBy = @AccessedBy
+                , UpdatedAt = GETDATE()
             WHERE FoodSecuritieId = @FoodSecuritieId;
         END
         ELSE
         BEGIN
-            INSERT INTO dbo.FoodSecurities(
-            KhanaId
-            , NumberOfMealYeasterday
-            , DontEatOrHalfEat
-            , InformationStatusCode
-            , CreatedAt
-            , CreatedBy
-            , UpdatedAt
-            , UpdatedBy
-            )
+            INSERT INTO dbo.FoodSecurities (
+                KhanaId
+                , NumberOfMealYeasterday
+                , DontEatOrHalfEat
+                , InformationStatusCode
+                , CreatedAt
+                , CreatedBy
+                , UpdatedAt
+                , UpdatedBy
+                )
             VALUES (
-            @KhanaId
-            , @NumberOfMealYeasterday
-            , @DontEatOrHalfEat
-            , @InformationStatusCode
-            , GETDATE()
-            , @AccessedBy
-            , GETDATE()
-            , @AccessedBy
-            )
+                @KhanaId
+                , @NumberOfMealYeasterday
+                , @DontEatOrHalfEat
+                , @InformationStatusCode
+                , GETDATE()
+                , @AccessedBy
+                , GETDATE()
+                , @AccessedBy
+                )
+
             SET @ScopeId = SCOPE_IDENTITY();
         END
-
-        
 
         --End Main Block
         IF @@ROWCOUNT > 0
@@ -74,11 +73,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

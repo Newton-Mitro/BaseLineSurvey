@@ -18,7 +18,6 @@ CREATE PROCEDURE dbo.UpdateKhana (
     , @ReligionId BIGINT
     , @RaceId BIGINT
     , @InformationStatusCode BIGINT
-    , @HouseReference VARCHAR(255)
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
     )
@@ -39,13 +38,11 @@ BEGIN
             , ReligionId = @ReligionId
             , RaceId = @RaceId
             , InformationStatusCode = @InformationStatusCode
-            , HouseReference = @HouseReference
             , CreatedBy = @AccessedBy
             , UpdatedBy = @AccessedBy
             , CreatedAt = GETDATE()
             , UpdatedAt = GETDATE()
         WHERE KhanaId = @KhanaId;
-
 
         --End Main Block
         IF @@ROWCOUNT > 0
@@ -57,12 +54,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

@@ -31,32 +31,32 @@ BEGIN
         --Start Main Block
         INSERT INTO dbo.MemberDiseases (
             KhanaId
-           ,MemberId
-           ,DiseaseCode
-           ,TreatmentCenterCode
-           ,DoctorTypeCode
-           ,FirstTreatmentFromCode
-           ,InformationStatusCode
-           ,IfCovid_NumberOfDose
-           ,CreatedBy
-           ,UpdatedBy
-           ,CreatedAt
-           ,UpdatedAt
-           )
+            , MemberId
+            , DiseaseCode
+            , TreatmentCenterCode
+            , DoctorTypeCode
+            , FirstTreatmentFromCode
+            , InformationStatusCode
+            , IfCovid_NumberOfDose
+            , CreatedBy
+            , UpdatedBy
+            , CreatedAt
+            , UpdatedAt
+            )
         VALUES (
             @KhanaId
-           ,@MemberId
-           ,@DiseaseCode
-           ,@TreatmentCenterCode
-           ,@DoctorTypeCode
-           ,@FirstTreatmentFromCode
-           ,@InformationStatusCode
-           ,@IfCovid_NumberOfDose
-           ,@AccessedBy
-           ,@AccessedBy
-           ,GETDATE()
-           ,GETDATE()
-           )
+            , @MemberId
+            , @DiseaseCode
+            , @TreatmentCenterCode
+            , @DoctorTypeCode
+            , @FirstTreatmentFromCode
+            , @InformationStatusCode
+            , @IfCovid_NumberOfDose
+            , @AccessedBy
+            , @AccessedBy
+            , GETDATE()
+            , GETDATE()
+            )
 
         SET @ScopeId = SCOPE_IDENTITY();
 
@@ -70,11 +70,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

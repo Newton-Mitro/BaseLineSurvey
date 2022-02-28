@@ -1,6 +1,7 @@
 ﻿using DataAccessLib.Base;
 using DataAccessLib.MemberRiskedProfessions;
 using DataAccessLib.MemberRiskedProfessions.Models;
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace BaseLineSurveyApi.Controllers.MemberRiskProfession
@@ -14,9 +15,9 @@ namespace BaseLineSurveyApi.Controllers.MemberRiskProfession
         }
 
         [HttpPost]
-        public ResponseObject CreateOrUpdateMemberSleepingPlace([FromBody] MemberSleepingPlaceModel memberSleepingPlaceModel )
+        public ResponseObject CreateOrUpdateMemberSleepingPlace([FromBody] IEnumerable<MemberSleepingPlaceModel> memberSleepingPlaceModels )
         {
-            return memberRiskProfessionRepository.CreateOrUpdateMemberSleepingPlace(memberSleepingPlaceModel);
+            return memberRiskProfessionRepository.CreateOrUpdateMemberSleepingPlace(memberSleepingPlaceModels);
         }
 
         [HttpPost]
@@ -31,11 +32,6 @@ namespace BaseLineSurveyApi.Controllers.MemberRiskProfession
             return memberRiskProfessionRepository.GetMemberSleepingPlacesByKhanaId(KhanaId);
         }
 
-        [HttpPost]
-        public ResponseObject DeleteMemberSleepingPlace([FromBody] long MemberSleepingPlaceId)
-        {
-            return memberRiskProfessionRepository.DeleteMemberSleepingPlace(MemberSleepingPlaceId);
-        }
 
         [HttpPost]
         public ResponseObject GetSleepingPlaces()
@@ -47,6 +43,18 @@ namespace BaseLineSurveyApi.Controllers.MemberRiskProfession
         public ResponseObject GetTorturedReasons()
         {
             return memberRiskProfessionRepository.GetTorturedReasons();
+        }
+
+        [HttpPost]
+        public ResponseObject CreateOrUpdateMemberTorturedReason([FromBody] IEnumerable<MemberTorturedReasonModel> memberTorturedReasonModels)
+        {
+            return memberRiskProfessionRepository.CreateOrUpdateMemberTorturedReason(memberTorturedReasonModels);
+        }
+
+        [HttpPost]
+        public ResponseObject GetMemberTorturedReasonByKhanaAndMemberId([FromBody] MemberTorturedReasonModel memberTorturedReasonModel)
+        {
+            return memberRiskProfessionRepository.GetMemberTorturedReasonByKhanaAndMemberId(memberTorturedReasonModel);
         }
     }
 }

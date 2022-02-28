@@ -25,21 +25,23 @@ BEGIN
         DECLARE @VerifiedUserId BIGINT
         DECLARE @IsActive BIT
 
-        SELECT @VerifiedUserId = UserId, @IsActive = IsActive
+        SELECT @VerifiedUserId = UserId
+            , @IsActive = IsActive
         FROM dbo.Users
         WHERE Email = @Email
             AND Password = @Password;
 
         IF (@VerifiedUserId IS NULL)
         BEGIN
-         SELECT *
+            SELECT *
             FROM dbo.View_Users
             WHERE UserId = 0;
+
             SET @ReturnResult = 'User email or password don not match.'
         END
         ELSE
         BEGIN
-            IF( @IsActive = 1)
+            IF (@IsActive = 1)
             BEGIN
                 SELECT *
                 FROM dbo.View_Users
@@ -58,11 +60,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

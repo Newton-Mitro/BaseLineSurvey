@@ -10,7 +10,7 @@ Script Description            : This procedure will SSelect Family Members Betwe
 */
 CREATE PROCEDURE dbo.SelectFamilyMembersBetweenAge (
     @KhanaId BIGINT
-    , @FromAge INT 
+    , @FromAge INT
     , @ToAge INT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     )
@@ -23,9 +23,9 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-            FROM dbo.View_Members
-            WHERE KhanaId = @KhanaId 
-            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) >= @FromAge 
+        FROM dbo.View_Members
+        WHERE KhanaId = @KhanaId
+            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) >= @FromAge
             AND dbo.GetAgeFromDateOfBirth(DateOfBirth) <= @ToAge;
 
         --End Main Block
@@ -38,12 +38,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

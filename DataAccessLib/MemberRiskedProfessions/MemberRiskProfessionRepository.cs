@@ -5,6 +5,7 @@ using DataAccessLib.MemberRiskedProfessions.Models;
 using DataAccessLib.MemberSection.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -27,15 +28,13 @@ namespace DataAccessLib.MemberRiskedProfessions
         /// </summary>
         /// <param name="MemberSleepingPlaceModel">Receive MemberSleepingPlaceModel as Input Parameter</param>
         /// <returns>Return ResponseObject</returns>
-        public ResponseObject CreateOrUpdateMemberSleepingPlace(MemberSleepingPlaceModel memberSleepingPlaceModel)
+        public ResponseObject CreateOrUpdateMemberSleepingPlace(IEnumerable<MemberSleepingPlaceModel> memberSleepingPlaceModels)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@MemberSleepingPlaceId", memberSleepingPlaceModel.MemberSleepingPlaceId, DbType.Int64, direction: ParameterDirection.Input);
-            parameters.Add("@KhanaId", memberSleepingPlaceModel.KhanaId, DbType.Int64, direction: ParameterDirection.Input);
-            parameters.Add("@MemberId", memberSleepingPlaceModel.MemberId, DbType.Int64, direction: ParameterDirection.Input);
-            parameters.Add("@SleepingPlaceId", memberSleepingPlaceModel.SleepingPlaceId, DbType.Int64, direction: ParameterDirection.Input);
-            parameters.Add("@InformationStatusCode", memberSleepingPlaceModel.InformationStatusCode, DbType.Int64, direction: ParameterDirection.Input);
-            parameters.Add("@AccessedBy", memberSleepingPlaceModel.CreatedBy, DbType.Int64, direction: ParameterDirection.Input);
+            var dt = new DataTable();
+            dt = DatatableConverter.ToDataTable(memberSleepingPlaceModels);
+
+            parameters.Add("@TT_MemberSleepingPlaces", dt.AsTableValuedParameter());
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
@@ -45,27 +44,7 @@ namespace DataAccessLib.MemberRiskedProfessions
             }
         }
 
-        /// <summary>
-        /// Developer    : Newton Mitro
-        /// Created At   : 15 February 2022
-        /// Updated By   : Newton Mitro
-        /// Updated At   : 15 February 2022
-        /// Description  : Function for Delete Member Sleeping Place
-        /// </summary>
-        /// <param name="MemberSleepingPlaceId">Receive MemberSleepingPlaceId as Input Parameter</param>
-        /// <returns>Return ResponseObject</returns>
-        public ResponseObject DeleteMemberSleepingPlace(Int64 MemberSleepingPlaceId)
-        {
-            var parameters = new DynamicParameters();
-            parameters.Add("@MemberSleepingPlaceId", MemberSleepingPlaceId, DbType.Int64, direction: ParameterDirection.Input);
-            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
-            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
-            {
-                var res = connetion.Execute(@"DeleteMemberSleepingPlace", parameters, commandType: CommandType.StoredProcedure);
-                responseObject.Message = parameters.Get<string>("@ReturnResult");
-                return responseObject;
-            }
-        }
+      
 
         /// <summary>
         /// Developer    : Newton Mitro
@@ -83,7 +62,7 @@ namespace DataAccessLib.MemberRiskedProfessions
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
-                var res = connetion.Query<MemberSleepingPlaceModel>(@"SelectMemberSleepingPlacesByKhanaId", parameters, commandType: CommandType.StoredProcedure);
+                var res = connetion.Query<MemberSleepingPlaceViewModel>(@"SelectMemberSleepingPlacesByKhanaId", parameters, commandType: CommandType.StoredProcedure);
                 responseObject.Data = JsonConvert.SerializeObject(res);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;
@@ -149,6 +128,55 @@ namespace DataAccessLib.MemberRiskedProfessions
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
                 var res = connetion.Query<TorturedReasonModel>(@"SelectTorturedReasons", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Data = JsonConvert.SerializeObject(res);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 19 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 19 February 2022
+        /// Description  : Function for Create Or Update Member Tortured Reason
+        /// </summary>
+        /// <param name="memberTorturedReasonModels">Receive IEnumerable<MemberTorturedReasonModel> as Input Parameter</param>
+        /// <returns>Return ResponseObject</returns>
+        public ResponseObject CreateOrUpdateMemberTorturedReason(IEnumerable<MemberTorturedReasonModel> memberTorturedReasonModels)
+        {
+            var parameters = new DynamicParameters();
+            var dt = new DataTable();
+            dt = DatatableConverter.ToDataTable(memberTorturedReasonModels);
+
+            parameters.Add("@TT_MemberTorturedReasons", dt.AsTableValuedParameter());
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var res = connetion.Execute(@"InsertOrUpdateMemberTorturedReason", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 19 February 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 19 February 2022
+        /// Description  : Function for Get Member Tortured Reason By Khana And Member Id
+        /// </summary>
+        /// <param name="memberTorturedReason">Receive MemberTorturedReasonModel as Input Parameter</param>
+        /// <returns>Return ResponseObject</returns>
+        public ResponseObject GetMemberTorturedReasonByKhanaAndMemberId(MemberTorturedReasonModel memberTorturedReason)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@KhanaId", memberTorturedReason.KhanaId, DbType.Int64, direction: ParameterDirection.Input);
+            parameters.Add("@MemberId", memberTorturedReason.MemberId, DbType.Int64, direction: ParameterDirection.Input);
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var res = connetion.Query<MemberTorturedReasonViewModel>(@"SelectMemberTorturedReasonByKhanaAndMemberId", parameters, commandType: CommandType.StoredProcedure);
                 responseObject.Data = JsonConvert.SerializeObject(res);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;

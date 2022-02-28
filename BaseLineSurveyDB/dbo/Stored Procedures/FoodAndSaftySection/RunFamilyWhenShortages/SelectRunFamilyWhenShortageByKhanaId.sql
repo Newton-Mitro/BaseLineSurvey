@@ -20,14 +20,14 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT RunFamilyWhenShortages.* 
-        , ShortageSolutions.SolutionName
-        , InformationStatuses.InformationStatusName
+        SELECT RunFamilyWhenShortages.*
+            , ShortageSolutions.SolutionName
+            , InformationStatuses.InformationStatusName
         FROM dbo.RunFamilyWhenShortages
         LEFT JOIN dbo.ShortageSolutions
-        ON RunFamilyWhenShortages.ShortageSolutionId = ShortageSolutions.ShortageSolutionId
+            ON RunFamilyWhenShortages.ShortageSolutionId = ShortageSolutions.ShortageSolutionId
         LEFT JOIN dbo.InformationStatuses
-        ON RunFamilyWhenShortages.InformationStatusCode = InformationStatuses.InformationStatusCode
+            ON RunFamilyWhenShortages.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId;
 
         --End Main Block
@@ -40,11 +40,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

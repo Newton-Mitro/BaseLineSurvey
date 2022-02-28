@@ -19,12 +19,12 @@ CREATE PROCEDURE dbo.InsertRunFamilyWhenShortage (
 AS
 BEGIN
     BEGIN TRANSACTION;
-    
+
     SAVE TRANSACTION MySavePoint;-- Create a save point
 
     BEGIN TRY
         --Start Main Block
-        INSERT INTO dbo.RunFamilyWhenShortages(
+        INSERT INTO dbo.RunFamilyWhenShortages (
             KhanaId
             , ShortageSolutionId
             , InformationStatusCode
@@ -55,11 +55,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

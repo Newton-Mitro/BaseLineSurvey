@@ -8,18 +8,17 @@ Altered At                    : 02 February 2022
 Script Description            : This Script will create View_Members.
 --------------------------------------------------------------------------------------
 */
-
 CREATE VIEW dbo.View_Members
 AS
 SELECT Members.*
-, Relationships.RelationshipName AS RelationWithFamilyHeadName
-, Genders.GenderName
-, FirstProfessions.ProfessionName AS FirstProfessionName
-, SecondProfessions.ProfessionName AS SecondProfessionName
-, EducationalStatuses.EducationName AS EducationalStatusName 
-, MaritalStatuses.MaritalStatusName 
-, DisabaledTypes.DisabledTypeName 
-, InformationStatuses.InformationStatusName 
+    , Relationships.RelationshipName AS RelationWithFamilyHeadName
+    , Genders.GenderName
+    , FirstProfessions.ProfessionName AS FirstProfessionName
+    , SecondProfessions.ProfessionName AS SecondProfessionName
+    , EducationalStatuses.EducationName AS EducationalStatusName
+    , MaritalStatuses.MaritalStatusName
+    , DisabaledTypes.DisabledTypeName
+    , InformationStatuses.InformationStatusName
 FROM dbo.Members
 LEFT JOIN Relationships
     ON Members.RelationWithFamilyHeadId = Relationships.RelationshipCode
@@ -33,7 +32,7 @@ LEFT JOIN EducationalStatuses
     ON Members.EducationalStatusCode = EducationalStatuses.EducationalStatusCode
 LEFT JOIN MaritalStatuses
     ON Members.MaritalStatusCode = MaritalStatuses.MaritalStatusCode
-LEFT JOIN DisabaledTypes 
+LEFT JOIN DisabaledTypes
     ON Members.DisabledTypeCode = DisabaledTypes.DisabledTypeCode
 LEFT JOIN InformationStatuses
     ON Members.InformationStatusCode = InformationStatuses.InformationStatusCode

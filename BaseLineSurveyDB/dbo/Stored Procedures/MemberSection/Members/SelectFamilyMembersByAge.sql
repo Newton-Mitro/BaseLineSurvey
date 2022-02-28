@@ -22,23 +22,26 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        IF(@Condition = 1)
+        IF (@Condition = 1)
         BEGIN
             SELECT *
             FROM dbo.View_Members
-            WHERE KhanaId = @KhanaId AND dbo.GetAgeFromDateOfBirth(DateOfBirth) = @Age;
+            WHERE KhanaId = @KhanaId
+                AND dbo.GetAgeFromDateOfBirth(DateOfBirth) = @Age;
         END
         ELSE IF (@Condition = 2)
         BEGIN
-           SELECT *
+            SELECT *
             FROM dbo.View_Members
-            WHERE KhanaId = @KhanaId AND dbo.GetAgeFromDateOfBirth(DateOfBirth) < @Age;
+            WHERE KhanaId = @KhanaId
+                AND dbo.GetAgeFromDateOfBirth(DateOfBirth) < @Age;
         END
         ELSE IF (@Condition = 3)
         BEGIN
             SELECT *
             FROM dbo.View_Members
-            WHERE KhanaId = @KhanaId AND dbo.GetAgeFromDateOfBirth(DateOfBirth) > @Age;
+            WHERE KhanaId = @KhanaId
+                AND dbo.GetAgeFromDateOfBirth(DateOfBirth) > @Age;
         END
 
         --End Main Block
@@ -51,11 +54,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

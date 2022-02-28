@@ -9,7 +9,7 @@ Script Description            : This procedure will Select Eduction Help Info By
 --------------------------------------------------------------------------------------
 */
 CREATE PROCEDURE dbo.SelectEductionHelpInfoByKhanaId (
-    @KhanaId BIGINT 
+    @KhanaId BIGINT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     )
 AS
@@ -21,19 +21,19 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT MemberEducationHelps.*
-        , HelpingOrganizations.HelpingOrganizationName
-        , EducationHelpTypes.HelpTypeName
-        , Members.MemberName
-        , InformationStatuses.InformationStatusName
+            , HelpingOrganizations.HelpingOrganizationName
+            , EducationHelpTypes.HelpTypeName
+            , Members.MemberName
+            , InformationStatuses.InformationStatusName
         FROM dbo.MemberEducationHelps
         LEFT JOIN dbo.EducationHelpTypes
-        ON MemberEducationHelps.EducationHelpTypeCode = EducationHelpTypes.EducationHelpTypeCode
+            ON MemberEducationHelps.EducationHelpTypeCode = EducationHelpTypes.EducationHelpTypeCode
         LEFT JOIN dbo.HelpingOrganizations
-        ON MemberEducationHelps.HelpOrganizationCode = HelpingOrganizations.HelpingOrganizationCode
+            ON MemberEducationHelps.HelpOrganizationCode = HelpingOrganizations.HelpingOrganizationCode
         LEFT JOIN dbo.Members
-        ON MemberEducationHelps.MemberId = Members.MemberId
+            ON MemberEducationHelps.MemberId = Members.MemberId
         LEFT JOIN dbo.InformationStatuses
-        ON MemberEducationHelps.InformationStatusCode = InformationStatuses.InformationStatusCode
+            ON MemberEducationHelps.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE MemberEducationHelps.KhanaId = @KhanaId
 
         --End Main Block
@@ -46,11 +46,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

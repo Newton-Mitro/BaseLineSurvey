@@ -20,16 +20,15 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT FamilyExpenses.* 
-        , ExpenseSources.SourceName
-        , InformationStatuses.InformationStatusName
+        SELECT FamilyExpenses.*
+            , ExpenseSources.SourceName
+            , InformationStatuses.InformationStatusName
         FROM dbo.FamilyExpenses
         LEFT JOIN ExpenseSources
-        ON FamilyExpenses.ExpenseSourceId = ExpenseSources.ExpenseSourceId
+            ON FamilyExpenses.ExpenseSourceId = ExpenseSources.ExpenseSourceId
         LEFT JOIN dbo.InformationStatuses
-        ON FamilyExpenses.InformationStatusCode = InformationStatuses.InformationStatusCode
+            ON FamilyExpenses.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE KhanaId = @KhanaId
-
 
         --End Main Block
         IF @@ROWCOUNT > 0
@@ -41,12 +40,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

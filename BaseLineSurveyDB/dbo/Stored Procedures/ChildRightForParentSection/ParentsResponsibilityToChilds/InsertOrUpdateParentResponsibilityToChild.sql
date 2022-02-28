@@ -20,58 +20,57 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        DECLARE 
-        @ParentsResponsibilityToChildId BIGINT
-        , @ParentResponsibilityQuestionId BIGINT
-        , @ParentResponsibilityOptionId BIGINT
-        , @KhanaId BIGINT
-        , @AnswerGivenById BIGINT
-        , @InformationStatusCode BIGINT
-        , @CreatedBy BIGINT
-        , @UpdatedBy BIGINT
-        , @CreatedAt DATETIME2
-        , @UpdatedAt DATETIME2
-        , @RowCount INT;
+        DECLARE @ParentsResponsibilityToChildId BIGINT
+            , @ParentResponsibilityQuestionId BIGINT
+            , @ParentResponsibilityOptionId BIGINT
+            , @KhanaId BIGINT
+            , @AnswerGivenById BIGINT
+            , @InformationStatusCode BIGINT
+            , @CreatedBy BIGINT
+            , @UpdatedBy BIGINT
+            , @CreatedAt DATETIME2
+            , @UpdatedAt DATETIME2
+            , @RowCount INT;
 
         SET @RowCount = 0;
 
         DECLARE CURSOR_PRODUCT CURSOR
-        FOR SELECT 
-                ParentsResponsibilityToChildId
-                , ParentResponsibilityQuestionId
-                , ParentResponsibilityOptionId
-                , KhanaId
-                , AnswerGivenById
-                , InformationStatusCode
-                , CreatedBy
-                , UpdatedBy
-                , CreatedAt
-                , UpdatedAt
-            FROM 
-                @ParentResponsibilityToChilds;
+        FOR
+        SELECT ParentsResponsibilityToChildId
+            , ParentResponsibilityQuestionId
+            , ParentResponsibilityOptionId
+            , KhanaId
+            , AnswerGivenById
+            , InformationStatusCode
+            , CreatedBy
+            , UpdatedBy
+            , CreatedAt
+            , UpdatedAt
+        FROM @ParentResponsibilityToChilds;
 
         OPEN CURSOR_PRODUCT;
 
-        FETCH NEXT FROM CURSOR_PRODUCT INTO 
-                @ParentsResponsibilityToChildId
-                , @ParentResponsibilityQuestionId
-                , @ParentResponsibilityOptionId
-                , @KhanaId
-                , @AnswerGivenById
-                , @InformationStatusCode
-                , @CreatedBy
-                , @UpdatedBy
-                , @CreatedAt
-                , @UpdatedAt;
+        FETCH NEXT
+        FROM CURSOR_PRODUCT
+        INTO @ParentsResponsibilityToChildId
+            , @ParentResponsibilityQuestionId
+            , @ParentResponsibilityOptionId
+            , @KhanaId
+            , @AnswerGivenById
+            , @InformationStatusCode
+            , @CreatedBy
+            , @UpdatedBy
+            , @CreatedAt
+            , @UpdatedAt;
 
-         DELETE FROM dbo.ParentsResponsibilityToChilds
-                WHERE KhanaId = @KhanaId
-                AND ParentResponsibilityQuestionId = @ParentResponsibilityQuestionId;
+        DELETE
+        FROM dbo.ParentsResponsibilityToChilds
+        WHERE KhanaId = @KhanaId
+            AND ParentResponsibilityQuestionId = @ParentResponsibilityQuestionId;
 
         WHILE @@FETCH_STATUS = 0
-            BEGIN
-                INSERT INTO dbo.ParentsResponsibilityToChilds
-                (
+        BEGIN
+            INSERT INTO dbo.ParentsResponsibilityToChilds (
                 ParentResponsibilityQuestionId
                 , ParentResponsibilityOptionId
                 , KhanaId
@@ -82,8 +81,7 @@ BEGIN
                 , CreatedAt
                 , UpdatedAt
                 )
-                VALUES
-                (
+            VALUES (
                 @ParentResponsibilityQuestionId
                 , @ParentResponsibilityOptionId
                 , @KhanaId
@@ -95,10 +93,11 @@ BEGIN
                 , GETDATE()
                 )
 
-                SET @RowCount = @RowCount + 1;
+            SET @RowCount = @RowCount + 1;
 
-                FETCH NEXT FROM CURSOR_PRODUCT INTO 
-                @ParentsResponsibilityToChildId
+            FETCH NEXT
+            FROM CURSOR_PRODUCT
+            INTO @ParentsResponsibilityToChildId
                 , @ParentResponsibilityQuestionId
                 , @ParentResponsibilityOptionId
                 , @KhanaId
@@ -108,28 +107,24 @@ BEGIN
                 , @UpdatedBy
                 , @CreatedAt
                 , @UpdatedAt;
-            END;
+        END;
 
         CLOSE CURSOR_PRODUCT;
 
         DEALLOCATE CURSOR_PRODUCT;
-       
-       IF @RowCount > 0
+
+        IF @RowCount > 0
             SET @ReturnResult = 'Success'
         ELSE
             SET @ReturnResult = 'Faield to insert or delete.'
-        
 
         --End Main Block
         COMMIT TRANSACTION
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

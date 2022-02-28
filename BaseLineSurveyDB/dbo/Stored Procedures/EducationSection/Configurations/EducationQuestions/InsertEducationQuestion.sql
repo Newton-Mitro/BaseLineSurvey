@@ -22,7 +22,7 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        INSERT INTO dbo.EducationQuestions(
+        INSERT INTO dbo.EducationQuestions (
             QuestionText
             , CreatedAt
             , CreatedBy
@@ -49,12 +49,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

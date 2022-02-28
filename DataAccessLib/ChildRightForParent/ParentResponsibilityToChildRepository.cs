@@ -71,7 +71,7 @@ namespace DataAccessLib.ChildRightForParentSection
                 var options = results.Read<ParentResponsibilityOptionModel>();
                 var selectedOptions = results.Read<ParentResponsibilityToChildModel>();
 
-                OptionAndSelectedOptionModel optionAndSelectedOptionModel = new OptionAndSelectedOptionModel();
+                QuestionOptionAndSelectedOptionModel optionAndSelectedOptionModel = new QuestionOptionAndSelectedOptionModel();
                 optionAndSelectedOptionModel.Options = JsonConvert.SerializeObject(options);
                 optionAndSelectedOptionModel.SelectedOptions = JsonConvert.SerializeObject(selectedOptions);
                 responseObject.Data = JsonConvert.SerializeObject(optionAndSelectedOptionModel);

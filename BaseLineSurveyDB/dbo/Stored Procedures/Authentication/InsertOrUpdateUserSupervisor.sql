@@ -31,8 +31,8 @@ BEGIN
         BEGIN
             UPDATE dbo.UsersSupervisors
             SET SupervisorId = @SupervisorId
-              ,UpdatedBy = @AccessedBy
-              ,UpdatedAt = GETDATE()
+                , UpdatedBy = @AccessedBy
+                , UpdatedAt = GETDATE()
             WHERE UserId = @UserId;
         END
         ELSE
@@ -56,6 +56,7 @@ BEGIN
 
             SET @ScopeId = SCOPE_IDENTITY();
         END
+
         --End Main Block
         IF @@ROWCOUNT > 0
             SET @ReturnResult = 'Success'
@@ -66,11 +67,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;

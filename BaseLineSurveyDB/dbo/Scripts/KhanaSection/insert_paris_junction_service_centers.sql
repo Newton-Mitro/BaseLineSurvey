@@ -245,4 +245,10 @@ BEGIN
         , NULL -- @ScopeId BIGINT = NULL OUTPUT
         , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+    EXEC InsertParishesServicenter @OtherChurch1 --@ParisId BIGINT
+        , @HeadOfficeServiceCenter --@ServiceCenterId BIGINT
+        , NULL -- @ScopeId BIGINT = NULL OUTPUT
+        , NULL -- @ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
 END

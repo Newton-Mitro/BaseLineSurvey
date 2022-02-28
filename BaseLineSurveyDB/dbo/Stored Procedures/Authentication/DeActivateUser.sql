@@ -21,12 +21,11 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        UPDATE dbo.Users 
+        UPDATE dbo.Users
         SET IsActive = 0
             , UpdatedAt = GETDATE()
             , UpdatedBy = @AccessedBy
         WHERE UserId = @UserId;
-
 
         --End Main Block
         IF @@ROWCOUNT > 0
@@ -38,12 +37,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
-

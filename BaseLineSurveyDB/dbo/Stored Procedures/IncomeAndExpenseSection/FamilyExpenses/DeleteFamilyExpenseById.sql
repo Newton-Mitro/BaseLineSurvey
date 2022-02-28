@@ -20,7 +20,8 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        DELETE FROM dbo.FamilyExpenses
+        DELETE
+        FROM dbo.FamilyExpenses
         WHERE FamilyExpenseId = @FamilyExpenseId;
 
         --End Main Block
@@ -33,11 +34,8 @@ BEGIN
     END TRY
 
     BEGIN CATCH
-        IF @@TRANCOUNT > 0
-        BEGIN
-            SET @ReturnResult = 'Failed'
+        SET @ReturnResult = 'Transaction roll back.'
 
-            ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
-        END
+        ROLLBACK TRANSACTION MySavePoint;-- Rollback to MySavePoint
     END CATCH
 END;
