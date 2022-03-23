@@ -20,9 +20,15 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT *
+        SELECT OrganizationWorkForChildrens.*
+        , Villages.VillageName
+        , SocialWorkTypes.WorkTypeText
         FROM dbo.OrganizationWorkForChildrens
-        WHERE VillageId = @VillageId;
+        LEFT JOIN Villages
+        ON OrganizationWorkForChildrens.VillageId = Villages.VillageId
+        LEFT JOIN dbo.SocialWorkTypes
+        ON OrganizationWorkForChildrens.SocialWorkTypeId = SocialWorkTypes.SocialWorkTypeId
+        WHERE OrganizationWorkForChildrens.VillageId = @VillageId ORDER BY OrganizationWorkForChildrenId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

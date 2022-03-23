@@ -65,13 +65,14 @@ namespace DataAccessLib.KhanaSection.Khana
             parameters.Add("@VillageId", khana.VillageId, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReligionId", khana.ReligionId, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@RaceId", khana.RaceId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@KhanaReference", khana.KhanaReference, DbType.String, ParameterDirection.Input);
             parameters.Add("@InformationStatusCode", khana.InformationStatusCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@AccessedBy", khana.CreatedBy, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
-                connetion.Execute(@"InsertKhana", parameters, commandType: CommandType.StoredProcedure);
-                responseObject.Data = "";
+                var khanas = connetion.Query<KhanaViewModel>(@"InsertKhana", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Data = JsonConvert.SerializeObject(khanas);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;
             }
@@ -97,12 +98,38 @@ namespace DataAccessLib.KhanaSection.Khana
             parameters.Add("@VillageId", khana.VillageId, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReligionId", khana.ReligionId, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@RaceId", khana.RaceId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@KhanaReference", khana.KhanaReference, DbType.String, ParameterDirection.Input);
             parameters.Add("@InformationStatusCode", khana.InformationStatusCode, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@AccessedBy", khana.UpdatedBy, DbType.Int64, ParameterDirection.Input);
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
                 connetion.Execute(@"UpdateKhana", parameters, commandType: CommandType.StoredProcedure);
+                responseObject.Data = "";
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 01 March 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 01 March 2022
+        /// Description  : Function for update khana to khana table
+        /// </summary>
+        /// <param name="khana">Receive Khana Data Model</param>
+        /// <returns>ResponseObject</returns>
+        public ResponseObject UpdateKhanaAnswerGiver(KhanaModel khana)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@KhanaId", khana.KhanaId, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@AnswerGivenBy", khana.AnswerGivenBy, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@AccessedBy", khana.UpdatedBy, DbType.Int64, ParameterDirection.Input);
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                connetion.Execute(@"UpdateKhanaAnswerGiver", parameters, commandType: CommandType.StoredProcedure);
                 responseObject.Data = "";
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;

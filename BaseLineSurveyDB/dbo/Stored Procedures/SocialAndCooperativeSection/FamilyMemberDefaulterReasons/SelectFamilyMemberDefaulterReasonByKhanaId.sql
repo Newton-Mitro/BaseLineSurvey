@@ -23,7 +23,7 @@ BEGIN
         SELECT * FROM dbo.FamilyMemberDefaulderReasons
         LEFT JOIN dbo.DefaulderReasons
         ON FamilyMemberDefaulderReasons.DefaulderReasonId = DefaulderReasons.DefaulderReasonId
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY FamilyMemberDefaulderReasonId DESC;
 
 
         IF @@RowCount > 0

@@ -33,7 +33,7 @@ BEGIN
         LEFT JOIN dbo.InformationStatuses
             ON [MemberTorturedReasons].InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE [MemberTorturedReasons].KhanaId = @KhanaId
-            AND [MemberTorturedReasons].MemberId = @MemberId;
+            AND [MemberTorturedReasons].MemberId = @MemberId ORDER BY MemberTorturedReasonId DESC;
 
         IF @@ROWCOUNT > 0
             SET @ReturnResult = 'Success'

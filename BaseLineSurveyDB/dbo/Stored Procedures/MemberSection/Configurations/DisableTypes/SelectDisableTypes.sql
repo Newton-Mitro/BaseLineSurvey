@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM DisabaledTypes;
+        FROM DisabaledTypes ORDER BY DisabledTypeName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM dbo.SocialWorkTypes;
+        FROM dbo.SocialWorkTypes ORDER BY WorkTypeText ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

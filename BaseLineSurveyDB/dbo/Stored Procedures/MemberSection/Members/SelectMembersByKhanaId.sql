@@ -22,7 +22,7 @@ BEGIN
         --Start Main Block
         SELECT *
         FROM dbo.View_Members
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY MemberId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

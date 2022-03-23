@@ -375,7 +375,7 @@
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyExpenses\DeleteFamilyExpenseById.sql" />
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyExpenses\SelectFamilyExpenseByKhanaId.sql" />
     <Build Include="dbo\Functions\GetAgeFromDateOfBirth.sql" />
-    <Build Include="dbo\Functions\GateAgeAndMonthFromBirthDate.sql" />
+    <Build Include="dbo\Functions\GateAgeInMonthFromBirthDate.sql" />
     <Build Include="dbo\Stored Procedures\MemberSection\Members\SelectFamilyMembersByAge.sql" />
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyTreeAssets\InsertFamilyTreeAsset.sql" />
     <Build Include="dbo\Stored Procedures\IncomeAndExpenseSection\FamilyTreeAssets\DeleteFamilyTreeAssetById.sql" />
@@ -479,6 +479,14 @@
     <Build Include="dbo\Stored Procedures\FamilyFishFarmings\InsertFamilyFishFarming.sql" />
     <Build Include="dbo\Stored Procedures\FamilyFishFarmings\SelectFamilyFishFarming.sql" />
     <Build Include="dbo\Stored Procedures\FamilyFishFarmings\UpdateFamilyFishFarming.sql" />
+    <Build Include="dbo\Stored Procedures\MemberIncomeRelatedWorkSection\CheckIfKhanaHasAnyIncomeRelatedEntry.sql" />
+    <Build Include="dbo\Stored Procedures\KhanaSection\Khanas\UpdateKhanaAnswerGiver.sql" />
+    <Build Include="dbo\Stored Procedures\SocialAndCooperativeSection\DefaultFromCooperativeInfo\CheckIfKhanaHasDefaultFromCooperative.sql" />
+    <Build Include="dbo\Views\View_DefaultFromCooperativeInfos.sql" />
+    <Build Include="dbo\Views\View_MemberDiseases.sql" />
+    <Build Include="dbo\Views\View_MemberIncomeRelatedWorks.sql" />
+    <Build Include="dbo\Views\View_MemberTorturedReasons.sql" />
+    <Build Include="dbo\Views\View_SchoolDropouts.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\WaterAndToiletSection\insert_toilet_and_water_source_question_answers.sql" />
@@ -521,8 +529,10 @@
     <None Include="dbo\Scripts\KhanaSection\insert_races.sql" />
     <None Include="dbo\Scripts\Shared\insert_information_statuses.sql" />
     <None Include="dbo\Scripts\EducationSection\insert_education_questions_and_options.sql" />
-    <None Include="BaseLineSurveyDB.publish.xml" />
     <None Include="dbo\Scripts\SocialAndCooperativeSection\insert_cooperative_questions.sql" />
+    <None Include="LocalBaseLineSurveyDB.publish.xml" />
+    <None Include="DevelopmentBaseLineSurveyDB.publish.xml" />
+    <None Include="PublicBaseLineSurveyDB.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

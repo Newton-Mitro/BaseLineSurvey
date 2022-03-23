@@ -23,6 +23,7 @@ BEGIN
         SELECT MemberDiseases.*
             , Diseases.DiseaseName
             , TreatmentCenters.TreatmentCenterName
+            , FirstTreatmentCenters.TreatmentCenterName AS FirstTreatmentCenterName
             , DoctorTypes.DoctorTypeName
             , Members.MemberName
             , InformationStatuses.InformationStatusName
@@ -35,9 +36,11 @@ BEGIN
             ON MemberDiseases.DoctorTypeCode = DoctorTypes.DoctorTypeCode
         LEFT JOIN dbo.Members
             ON MemberDiseases.MemberId = Members.MemberId
+        LEFT JOIN dbo.TreatmentCenters AS FirstTreatmentCenters
+            ON MemberDiseases.TreatmentCenterCode = FirstTreatmentCenters.TreatmentCenterCode
         LEFT JOIN dbo.InformationStatuses
             ON MemberDiseases.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE MemberDiseases.KhanaId = @KhanaId
+        WHERE MemberDiseases.KhanaId = @KhanaId  ORDER BY MemberDiseases.MemberDiseasId DESC
 
         --End Main Block
         IF @@ROWCOUNT > 0

@@ -17,7 +17,9 @@ CREATE TABLE dbo.Khanas (
     , VillageId BIGINT NOT NULL
     , ReligionId BIGINT NOT NULL
     , RaceId BIGINT NOT NULL
+    , KhanaReference VARCHAR(250) NULL
     , InformationStatusCode BIGINT NULL
+    , AnswerGivenBy BIGINT NULL
     , CreatedBy BIGINT NULL
     , UpdatedBy BIGINT NULL
     , CreatedAt DATETIME2 NULL

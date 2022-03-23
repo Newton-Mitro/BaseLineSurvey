@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM Trees;
+        FROM Trees ORDER BY TreeName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

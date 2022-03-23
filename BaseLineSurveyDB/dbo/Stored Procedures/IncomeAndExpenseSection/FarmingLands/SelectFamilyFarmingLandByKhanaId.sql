@@ -31,7 +31,7 @@ BEGIN
             ON FarmingLands.CropTypeId = CropTypes.CropTypeId
         LEFT JOIN dbo.InformationStatuses
             ON FarmingLands.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY FarmingLandId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

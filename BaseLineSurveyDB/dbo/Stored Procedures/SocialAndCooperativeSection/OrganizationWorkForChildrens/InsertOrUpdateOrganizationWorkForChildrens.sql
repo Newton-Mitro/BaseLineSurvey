@@ -57,32 +57,49 @@ BEGIN
             , @CreatedAt
             , @UpdatedAt;
 
-        DELETE
-        FROM dbo.OrganizationWorkForChildrens
-        WHERE VillageId = @VillageId;
+       
 
         WHILE @@FETCH_STATUS = 0
         BEGIN
-            INSERT INTO dbo.OrganizationWorkForChildrens (
-                VillageId
-                , SocialWorkTypeId
-                , InformationStatusCode
-                , CreatedBy
-                , UpdatedBy
-                , CreatedAt
-                , UpdatedAt
-                )
-            VALUES (
-                @VillageId
-                , @SocialWorkTypeId
-                , @InformationStatusCode
-                , @CreatedBy
-                , @UpdatedBy
-                , GETDATE()
-                , GETDATE()
-                )
+            IF NOT EXISTS (
+            SELECT *
+            FROM dbo.OrganizationWorkForChildrens WHERE VillageId = @VillageId AND SocialWorkTypeId = @SocialWorkTypeId
+            )
+            BEGIN
+                INSERT INTO dbo.OrganizationWorkForChildrens (
+                    VillageId
+                    , SocialWorkTypeId
+                    , InformationStatusCode
+                    , CreatedBy
+                    , UpdatedBy
+                    , CreatedAt
+                    , UpdatedAt
+                    )
+                VALUES (
+                    @VillageId
+                    , @SocialWorkTypeId
+                    , @InformationStatusCode
+                    , @CreatedBy
+                    , @UpdatedBy
+                    , GETDATE()
+                    , GETDATE()
+                    )
 
-            SET @RowCount = @RowCount + 1;
+                SET @RowCount = @RowCount + 1;
+            END
+            ELSE
+            BEGIN
+                UPDATE  dbo.OrganizationWorkForChildrens SET
+                    VillageId = @VillageId
+                    , SocialWorkTypeId = @SocialWorkTypeId
+                    , InformationStatusCode = @InformationStatusCode
+                    , UpdatedBy = @UpdatedBy
+                    , UpdatedAt = GETDATE()
+                WHERE VillageId = @VillageId 
+                AND SocialWorkTypeId = @SocialWorkTypeId;
+
+                SET @RowCount = @RowCount + 1;
+            END
 
             FETCH NEXT
             FROM CURSOR_PRODUCT

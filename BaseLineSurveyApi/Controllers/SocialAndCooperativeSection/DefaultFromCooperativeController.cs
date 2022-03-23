@@ -31,5 +31,11 @@ namespace BaseLineSurveyApi.Controllers.SocialAndCooperativeSection
         {
             return defaultFromCooperativeRepository.GetCooperatives();
         }
+
+        [HttpPost]
+        public ResponseObject CheckIfKhanaHasDefaultFromCooperative([FromBody] long KhanaId)
+        {
+            return defaultFromCooperativeRepository.CheckIfKhanaHasDefaultFromCooperative(KhanaId);
+        }
     }
 }

@@ -12,5 +12,7 @@
         public string CreatorName { get; set; }
         public string UpdatorName { get; set; }
         public string InformationStatusName { get; set; }
+        public string AnswerGiverName { get; set; }
+        public string MemberName { get; set; }
     }
 }

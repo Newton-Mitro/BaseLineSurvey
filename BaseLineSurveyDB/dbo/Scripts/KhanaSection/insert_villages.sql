@@ -713,4 +713,39 @@ BEGIN
         , NULL --@ScopeId BIGINT = NULL OUTPUT
         , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+
+    
+
+        
+    EXEC Insertvillages 'Fairakhali' --@VillageName NVARCHAR(250)
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+            EXEC Insertvillages 'Saradey' --@VillageName NVARCHAR(250)
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+
+            EXEC Insertvillages 'Joyramber' --@VillageName NVARCHAR(250)
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+            EXEC Insertvillages 'Chotto Satani' --@VillageName NVARCHAR(250)
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+            EXEC Insertvillages 'Rangamatia' --@VillageName NVARCHAR(250)
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+
+
+
+
 END

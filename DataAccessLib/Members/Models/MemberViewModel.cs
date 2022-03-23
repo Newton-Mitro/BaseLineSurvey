@@ -6,6 +6,8 @@ namespace DataAccessLib.MemberSection.Models
     {
         public string RelationWithFamilyHeadName { get; set; }
         public string GenderName { get; set; }
+        public int Age { get; set; }
+        public int AgeInMonth { get; set; }
         public string FirstProfessionName { get; set; }
         public string SecondProfessionName { get; set; }
         public string MaritalStatusName { get; set; }

@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM EducationHelpTypes;
+        FROM EducationHelpTypes ORDER BY HelpTypeName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

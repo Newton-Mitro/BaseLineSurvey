@@ -27,21 +27,21 @@ BEGIN
             SELECT *
             FROM dbo.View_Members
             WHERE KhanaId = @KhanaId
-                AND dbo.GetAgeFromDateOfBirth(DateOfBirth) = @Age;
+                AND dbo.GetAgeFromDateOfBirth(DateOfBirth) = @Age ORDER BY MemberName ASC;
         END
         ELSE IF (@Condition = 2)
         BEGIN
             SELECT *
             FROM dbo.View_Members
             WHERE KhanaId = @KhanaId
-                AND dbo.GetAgeFromDateOfBirth(DateOfBirth) < @Age;
+                AND dbo.GetAgeFromDateOfBirth(DateOfBirth) < @Age ORDER BY MemberName ASC;
         END
         ELSE IF (@Condition = 3)
         BEGIN
             SELECT *
             FROM dbo.View_Members
             WHERE KhanaId = @KhanaId
-                AND dbo.GetAgeFromDateOfBirth(DateOfBirth) > @Age;
+                AND dbo.GetAgeFromDateOfBirth(DateOfBirth) > @Age ORDER BY MemberName ASC;
         END
 
         --End Main Block

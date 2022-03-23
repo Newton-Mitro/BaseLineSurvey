@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM dbo.View_Users;
+        FROM dbo.View_Users ORDER BY FullName ASC;
 
         SET @ReturnResult = 'Success'
 

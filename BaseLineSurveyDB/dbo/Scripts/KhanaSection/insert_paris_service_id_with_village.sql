@@ -172,6 +172,11 @@ DECLARE @Majidpur1 BIGINT = 137
 DECLARE @Baraihazi1 BIGINT = 138
 DECLARE @Madanpur1 BIGINT = 139
 DECLARE @Narayangonj1 BIGINT = 140
+DECLARE @Fairakhali1 BIGINT = 141
+DECLARE @Saradey1 BIGINT = 142
+DECLARE @Joyramber1 BIGINT = 143
+DECLARE @ChottoSatani1 BIGINT = 144
+DECLARE @Rangamatia1 BIGINT = 145
 
 IF NOT EXISTS (
         SELECT *
@@ -808,9 +813,44 @@ BEGIN
         , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
 
+
+        --Tumulia1
+            EXEC InsertParishServiceCenterVillages @TumiliaParishTumiliaServiceCenter --@ParisesServicentersId BIGINT
+        , @Tumulia1 --@VillageId BIGINT
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+
+
+        --Fairakhali1
+            EXEC InsertParishServiceCenterVillages @TumiliaParishTumiliaServiceCenter --@ParisesServicentersId BIGINT
+        , @Fairakhali1 --@VillageId BIGINT
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+
     --Rangamatia Parish
     EXEC InsertParishServiceCenterVillages @RangamatiaParishTumiliaServiceCenter --@ParisesServicentersId BIGINT
-        , @Tumulia1 --@VillageId BIGINT
+        , @Rangamatia1 --@VillageId BIGINT
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+
+
+            EXEC InsertParishServiceCenterVillages @RangamatiaParishTumiliaServiceCenter --@ParisesServicentersId BIGINT
+        , @Saradey1 --@VillageId BIGINT
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+            EXEC InsertParishServiceCenterVillages @RangamatiaParishTumiliaServiceCenter --@ParisesServicentersId BIGINT
+        , @Joyramber1 --@VillageId BIGINT
+        , NULL --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.
+            EXEC InsertParishServiceCenterVillages @RangamatiaParishTumiliaServiceCenter --@ParisesServicentersId BIGINT
+        , @ChottoSatani1 --@VillageId BIGINT
         , NULL --@ScopeId BIGINT = NULL OUTPUT
         , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure.

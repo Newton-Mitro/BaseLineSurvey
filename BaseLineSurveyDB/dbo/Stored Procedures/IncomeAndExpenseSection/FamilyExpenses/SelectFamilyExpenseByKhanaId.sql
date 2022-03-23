@@ -28,7 +28,7 @@ BEGIN
             ON FamilyExpenses.ExpenseSourceId = ExpenseSources.ExpenseSourceId
         LEFT JOIN dbo.InformationStatuses
             ON FamilyExpenses.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE KhanaId = @KhanaId
+        WHERE KhanaId = @KhanaId ORDER BY FamilyExpenseId DESC
 
         --End Main Block
         IF @@ROWCOUNT > 0

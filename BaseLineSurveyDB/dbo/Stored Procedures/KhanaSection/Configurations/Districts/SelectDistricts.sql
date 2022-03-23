@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM Districts;
+        FROM Districts ORDER BY DistrictName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

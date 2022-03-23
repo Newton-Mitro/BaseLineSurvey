@@ -82,6 +82,7 @@ BEGIN
         , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
 
+
     EXEC InsertParish 'Ramna Cathedral' --@PariseName NVARCHAR(250)
         , @UpazilaId --@UpazilaId BIGINT
         , @ParisId OUTPUT --@ScopeId BIGINT = NULL OUTPUT
@@ -97,6 +98,12 @@ BEGIN
     EXEC InsertUpazila 'DNCC' --@UpazilaName NVARCHAR(250)
         , @DistrictId --@DistrictsId BIGINT
         , @UpazilaId OUTPUT --@ScopeId BIGINT = NULL OUTPUT
+        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
+        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
+
+        EXEC InsertParish 'Mausaid Parish' --@PariseName NVARCHAR(250)
+        , @UpazilaId --@UpazilaId BIGINT
+        , @ParisId OUTPUT --@ScopeId BIGINT = NULL OUTPUT
         , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
 
@@ -237,11 +244,7 @@ BEGIN
         , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
         , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
 
-    EXEC InsertParish 'Mausaid Parish' --@PariseName NVARCHAR(250)
-        , @UpazilaId --@UpazilaId BIGINT
-        , @ParisId OUTPUT --@ScopeId BIGINT = NULL OUTPUT
-        , NULL --@ReturnResult VARCHAR(255) = NULL OUTPUT
-        , 1 --@AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
+
 
     EXEC InsertDistrict 'Munshigonj' --@DistrictsName NVARCHAR(250)
         , @DistrictId OUTPUT --@ScopeId BIGINT = NULL OUTPUT

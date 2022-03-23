@@ -25,7 +25,7 @@ BEGIN
         FROM dbo.FoodSecurities
         LEFT JOIN dbo.InformationStatuses
             ON FoodSecurities.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY FoodSecuritieId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

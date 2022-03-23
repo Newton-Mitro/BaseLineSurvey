@@ -28,7 +28,7 @@ BEGIN
             ON FamilyIncomes.IncomeSourceId = IncomeSources.IncomeSourceId
         LEFT JOIN dbo.InformationStatuses
             ON FamilyIncomes.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY FamilyIncomeId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

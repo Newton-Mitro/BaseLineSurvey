@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM ChildAssetTypes;
+        FROM ChildAssetTypes ORDER BY ChildAssetName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

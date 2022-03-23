@@ -7,6 +7,6 @@ namespace DataAccessLib.SocialAndCooperativeSection.FamilyDefaulderReasons.Model
         public long FamilyMemberDefaulderReasonId { get; set; }
         public long KhanaId { get; set; }
         public long DefaulderReasonId { get; set; }
-        public string DefaulderReasonText { get; set; }
+       
     }
 }

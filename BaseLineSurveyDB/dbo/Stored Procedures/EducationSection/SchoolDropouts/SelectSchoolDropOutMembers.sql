@@ -26,7 +26,7 @@ BEGIN
             AND dbo.GetAgeFromDateOfBirth(DateOfBirth) >= 6
             AND dbo.GetAgeFromDateOfBirth(DateOfBirth) <= 18
             AND EducationalStatusCode > 5
-            AND CurrentlyStudying = 0;
+            AND CurrentlyStudying = 0  ORDER BY MemberName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

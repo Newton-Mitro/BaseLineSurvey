@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM HelpingOrganizations;
+        FROM HelpingOrganizations ORDER BY HelpingOrganizationName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

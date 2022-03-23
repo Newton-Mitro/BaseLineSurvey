@@ -58,7 +58,8 @@ BEGIN
 
         DELETE
         FROM dbo.DefaultFromCooperativeInfos
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId
+        AND MemberId = @MemberId;
 
         WHILE @@FETCH_STATUS = 0
         BEGIN

@@ -20,7 +20,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT * FROM dbo.FamilyFishFarmings
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY FamilyFishFarmingId DESC;
 
         IF @@RowCount > 0
             SET @ReturnResult = 'Success'

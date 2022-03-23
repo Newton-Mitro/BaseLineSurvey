@@ -28,7 +28,7 @@ BEGIN
             ON FoodShortageMonths.MonthId = Months.MonthId
         LEFT JOIN dbo.InformationStatuses
             ON FoodShortageMonths.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY FoodShortageMonthId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

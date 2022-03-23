@@ -31,7 +31,7 @@ BEGIN
             ON FamilyAssets.ParentAssetId = ParentAssetTypes.ParentAssetTypeId
         LEFT JOIN dbo.InformationStatuses
             ON FamilyAssets.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY FamilyAssetId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

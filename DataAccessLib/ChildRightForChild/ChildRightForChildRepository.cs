@@ -62,7 +62,7 @@ namespace DataAccessLib.ChildRightForChild
             {
                 var results = connetion.QueryMultiple(@"SelectChildRightOptionsByQuestionId", parameters, commandType: CommandType.StoredProcedure);
                 var options = results.Read<ChildRightOptionModel>();
-                var selectedOptions = results.Read<ChildRightModel>();
+                var selectedOptions = results.Read<ChildRightReadModel>();
 
                 QuestionOptionAndSelectedOptionModel optionAndSelectedOptionModel = new QuestionOptionAndSelectedOptionModel();
                 optionAndSelectedOptionModel.Options = JsonConvert.SerializeObject(options);

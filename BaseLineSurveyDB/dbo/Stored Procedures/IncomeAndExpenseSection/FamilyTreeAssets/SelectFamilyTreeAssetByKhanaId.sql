@@ -28,7 +28,7 @@ BEGIN
             ON FamilyTreeAssets.TreeId = Trees.TreeId
         LEFT JOIN dbo.InformationStatuses
             ON FamilyTreeAssets.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY FamilyTreeAssetId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

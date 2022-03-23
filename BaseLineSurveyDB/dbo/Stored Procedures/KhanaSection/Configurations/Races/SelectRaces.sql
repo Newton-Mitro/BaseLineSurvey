@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM Races;
+        FROM Races ORDER BY RaceName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

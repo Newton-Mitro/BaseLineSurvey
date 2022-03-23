@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM TorturedReasons;
+        FROM TorturedReasons ORDER BY TorturedReasonText ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

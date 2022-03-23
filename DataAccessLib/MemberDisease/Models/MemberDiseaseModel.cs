@@ -15,6 +15,7 @@ namespace DataAccessLib.MemberDisease.Models
         public long DoctorTypeCode { get; set; }
         public string DoctorTypeName { get; set; }
         public long FirstTreatmentFromCode { get; set; }
+        public string FirstTreatmentCenterName { get; set; }
         public long InformationStatusCode { get; set; }
         public int IfCovid_NumberOfDose { get; set; }
         public string InformationStatusName { get; set; }

@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM dbo.CropTypes;
+        FROM dbo.CropTypes ORDER BY CropTypeName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

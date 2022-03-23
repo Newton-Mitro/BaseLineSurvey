@@ -28,7 +28,7 @@ BEGIN
             ON YesterdaysFoods.FoodId = Foods.FoodId
         LEFT JOIN dbo.InformationStatuses
             ON YesterdaysFoods.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY YesterdaysFoodIdId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

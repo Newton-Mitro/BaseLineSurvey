@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace DataAccessLib.SocialAndCooperativeSection.DefaultFromCooperative
 {
@@ -81,6 +82,29 @@ namespace DataAccessLib.SocialAndCooperativeSection.DefaultFromCooperative
             {
                 var results = connetion.Query<DefaultFromCooperativeReadModel>(@"SelectDefaultFromCooperativeInfosByKhanaAndMemberId", parameters, commandType: CommandType.StoredProcedure);
                 responseObject.Data = JsonConvert.SerializeObject(results);
+                responseObject.Message = parameters.Get<string>("@ReturnResult");
+                return responseObject;
+            }
+        }
+
+
+        /// <summary>
+        /// Developer    : Newton Mitro
+        /// Created At   : 02 March 2022
+        /// Updated By   : Newton Mitro
+        /// Updated At   : 02 March 2022
+        /// Description  : Function for CheckIfKhanaHasDefaultFromCooperative
+        /// </summary>
+        /// <returns>Return ResponseObject</KhanaId>
+        public ResponseObject CheckIfKhanaHasDefaultFromCooperative(long KhanaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@KhanaId", KhanaId, DbType.Int64, direction: ParameterDirection.Input);
+            parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
+            using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
+            {
+                var results = connetion.Query<string>(@"CheckIfKhanaHasDefaultFromCooperative", parameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                responseObject.Data = results;
                 responseObject.Message = parameters.Get<string>("@ReturnResult");
                 return responseObject;
             }

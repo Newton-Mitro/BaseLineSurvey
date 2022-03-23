@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM Diseases
+        FROM Diseases  ORDER BY DiseaseName ASC
 
         --End Main Block
         IF @@ROWCOUNT > 0

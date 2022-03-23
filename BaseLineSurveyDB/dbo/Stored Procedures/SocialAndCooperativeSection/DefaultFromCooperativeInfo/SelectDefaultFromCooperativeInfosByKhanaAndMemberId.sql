@@ -29,7 +29,7 @@ BEGIN
          LEFT JOIN dbo.Members
         ON DefaultFromCooperativeInfos.MemberId = Members.MemberId
         WHERE DefaultFromCooperativeInfos.KhanaId = @KhanaId
-        AND DefaultFromCooperativeInfos.MemberId = @MemberId;
+        AND DefaultFromCooperativeInfos.MemberId = @MemberId ORDER BY CooperativeInfoId DESC;
 
         IF @@RowCount > 0
             SET @ReturnResult = 'Success'

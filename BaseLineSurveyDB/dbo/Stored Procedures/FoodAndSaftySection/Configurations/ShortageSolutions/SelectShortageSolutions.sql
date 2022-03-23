@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM ShortageSolutions;
+        FROM ShortageSolutions ORDER BY SolutionName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

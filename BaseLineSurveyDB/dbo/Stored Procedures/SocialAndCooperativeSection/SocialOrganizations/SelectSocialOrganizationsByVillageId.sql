@@ -22,7 +22,7 @@ BEGIN
         --Start Main Block
         SELECT *
         FROM dbo.SocialOrganizations
-        WHERE VillageId = @VillageId;
+        WHERE VillageId = @VillageId ORDER BY OrganizationName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

@@ -1,6 +1,7 @@
 ﻿using ApplicationDataAccess;
 using Dapper;
 using DataAccessLib.Base;
+using DataAccessLib.ChildRightForParent.Models;
 using DataAccessLib.ChildRightForParentSection.Models;
 using Newtonsoft.Json;
 using System;
@@ -69,7 +70,7 @@ namespace DataAccessLib.ChildRightForParentSection
             {
                 var results = connetion.QueryMultiple(@"SelectParentResponsibilityOptions", parameters, commandType: CommandType.StoredProcedure);
                 var options = results.Read<ParentResponsibilityOptionModel>();
-                var selectedOptions = results.Read<ParentResponsibilityToChildModel>();
+                var selectedOptions = results.Read<ParentResponsibilityToChildReadModel>();
 
                 QuestionOptionAndSelectedOptionModel optionAndSelectedOptionModel = new QuestionOptionAndSelectedOptionModel();
                 optionAndSelectedOptionModel.Options = JsonConvert.SerializeObject(options);

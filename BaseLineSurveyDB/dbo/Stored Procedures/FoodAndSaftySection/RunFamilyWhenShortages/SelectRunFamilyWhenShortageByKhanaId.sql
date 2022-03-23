@@ -28,7 +28,7 @@ BEGIN
             ON RunFamilyWhenShortages.ShortageSolutionId = ShortageSolutions.ShortageSolutionId
         LEFT JOIN dbo.InformationStatuses
             ON RunFamilyWhenShortages.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY RunFamilyWhenShortId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

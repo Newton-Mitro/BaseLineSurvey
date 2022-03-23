@@ -59,7 +59,7 @@ namespace DataAccessLib.SocialAndCooperativeSection.SocialOrganizations
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
-                var results = connetion.Query<OrganizationWorkForChildrenModel>(@"SelectOrganizationWorkForChildrensByVillageId", parameters, commandType: CommandType.StoredProcedure);
+                var results = connetion.Query<OrganizationWorkForChildrenReadModel>(@"SelectOrganizationWorkForChildrensByVillageId", parameters, commandType: CommandType.StoredProcedure);
 
                 responseObject.Data = JsonConvert.SerializeObject(results);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");

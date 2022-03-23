@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM DropOutReasons;
+        FROM DropOutReasons ORDER BY DropOutReasonText ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

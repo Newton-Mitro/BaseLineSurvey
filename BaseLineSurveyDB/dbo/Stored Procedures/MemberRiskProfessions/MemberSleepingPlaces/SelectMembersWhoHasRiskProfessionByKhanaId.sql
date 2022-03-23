@@ -25,12 +25,12 @@ BEGIN
         INNER JOIN dbo.Professions AS FirstProfessions
             ON FirstProfessions.ProfessionCode = View_Members.FirstProfessionCode
         INNER JOIN dbo.Professions AS SecondProfessions
-            ON SecondProfessions.ProfessionCode = View_Members.FirstProfessionCode
-        WHERE FirstProfessions.IsRiskedProfession = 1
-            AND SecondProfessions.IsRiskedProfession = 1
-            AND View_Members.KhanaId = @KhanaId
+            ON SecondProfessions.ProfessionCode = View_Members.SecondProfessionCode
+        WHERE View_Members.KhanaId = @KhanaId
             AND dbo.GetAgeFromDateOfBirth(View_Members.DateOfBirth) >= 6
-            AND dbo.GetAgeFromDateOfBirth(View_Members.DateOfBirth) <= 18;
+            AND dbo.GetAgeFromDateOfBirth(View_Members.DateOfBirth) <= 18 
+            AND (FirstProfessions.IsRiskedProfession = 1
+            OR SecondProfessions.IsRiskedProfession = 1) ORDER BY MemberName ASC;
 
         IF @@ROWCOUNT > 0
             SET @ReturnResult = 'Success'

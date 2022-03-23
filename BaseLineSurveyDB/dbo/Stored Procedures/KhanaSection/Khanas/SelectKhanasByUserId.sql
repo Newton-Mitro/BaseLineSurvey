@@ -29,24 +29,30 @@ BEGIN
 
         IF (@RoleId = 1)
         BEGIN
-            SELECT *
-            FROM View_Khanas;
+            SELECT Members.MemberName, View_Khanas.*
+            FROM View_Khanas 
+            LEFT JOIN dbo.Members
+                ON View_Khanas.KhanaId = Members.KhanaId AND Members.RelationWithFamilyHeadId = 1 ORDER BY View_Khanas.KhanaId DESC;
         END
         ELSE IF (@RoleId = 2)
         BEGIN
-            SELECT View_Khanas.*
+            SELECT Members.MemberName, View_Khanas.*
             FROM dbo.View_Khanas
             INNER JOIN dbo.Users
                 ON Users.UserId = View_Khanas.CreatedBy
             INNER JOIN dbo.UsersSupervisors
                 ON UsersSupervisors.UserId = Users.UserId
-            WHERE UsersSupervisors.SupervisorId = @RoleId;
+            LEFT JOIN dbo.Members
+                ON View_Khanas.KhanaId = Members.KhanaId AND Members.RelationWithFamilyHeadId = 1 
+            WHERE UsersSupervisors.SupervisorId = @UserId;
         END
         ELSE
         BEGIN
-            SELECT *
+            SELECT Members.MemberName, View_Khanas.*
             FROM View_Khanas
-            WHERE CreatedBy = @UserId;
+            LEFT JOIN dbo.Members
+                ON View_Khanas.KhanaId = Members.KhanaId AND Members.RelationWithFamilyHeadId = 1
+            WHERE View_Khanas.CreatedBy = @UserId ORDER BY View_Khanas.KhanaId DESC;
         END
 
         --End Main Block

@@ -83,7 +83,7 @@ namespace DataAccessLib.SocialAndCooperativeSection.CooperativeQuestionOpions
             parameters.Add("@ReturnResult", " ", DbType.String, direction: ParameterDirection.Output);
             using (IDbConnection connetion = new SqlConnection(DBConnection.GetConnectionString()))
             {
-                var results = connetion.Query<CooperativeAnswerModel>(@"SelectCooperativeAnswersByKhanaId", parameters, commandType: CommandType.StoredProcedure);
+                var results = connetion.Query<CooperativeAnswerReadModel>(@"SelectCooperativeAnswersByKhanaId", parameters, commandType: CommandType.StoredProcedure);
 
                 responseObject.Data = JsonConvert.SerializeObject(results);
                 responseObject.Message = parameters.Get<string>("@ReturnResult");

@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM TreatmentCenters;
+        FROM TreatmentCenters  ORDER BY TreatmentCenterName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

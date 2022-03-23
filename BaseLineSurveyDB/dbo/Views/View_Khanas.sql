@@ -10,29 +10,18 @@ Script Description            : This Script will create View_Khanas.
 */
 CREATE VIEW [dbo].[View_Khanas]
 AS
-SELECT KhanaId
-    , Khanas.[DistrictId]
+SELECT Khanas.*
     , Districts.DistrictName
-    , Khanas.UpazilaId
     , Upazilas.UpazilaName
-    , Khanas.ParishId
     , Parishes.ParishName
-    , Khanas.ServiceCenterId
     , ServiceCenters.ServiceCenterName
-    , Khanas.VillageId
     , Villages.VillageName
-    , Khanas.ReligionId
     , Religions.ReligionName
-    , Khanas.RaceId
     , Races.RaceName
-    , Khanas.InformationStatusCode
     , InformationStatuses.InformationStatusName
-    , Khanas.CreatedBy
+    , Members.MemberName AS AnswerGiverName
     , Creator.FullName AS CreatorName
-    , Khanas.UpdatedBy
     , Updator.FullName AS UpdatorName
-    , Khanas.CreatedAt
-    , Khanas.UpdatedAt
 FROM [dbo].Khanas
 LEFT JOIN Districts
     ON Khanas.DistrictId = Districts.DistrictId
@@ -54,3 +43,5 @@ LEFT JOIN Users AS Updator
     ON Khanas.UpdatedBy = Updator.UserId
 LEFT JOIN dbo.InformationStatuses
     ON Khanas.InformationStatusCode = InformationStatuses.InformationStatusCode
+LEFT JOIN dbo.Members
+    ON Khanas.AnswerGivenBy = Members.MemberId

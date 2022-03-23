@@ -26,7 +26,7 @@ BEGIN
         FROM [ParishesServiceCenters]
         LEFT JOIN ServiceCenters
             ON [ParishesServiceCenters].ServiceCenterId = ServiceCenters.ServiceCenterId
-        WHERE [ParishesServiceCenters].ParishId = @ParishId;
+        WHERE [ParishesServiceCenters].ParishId = @ParishId ORDER BY ServiceCenterName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

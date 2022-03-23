@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM DoctorTypes
+        FROM DoctorTypes  ORDER BY DoctorTypeName ASC
 
         --End Main Block
         IF @@ROWCOUNT > 0

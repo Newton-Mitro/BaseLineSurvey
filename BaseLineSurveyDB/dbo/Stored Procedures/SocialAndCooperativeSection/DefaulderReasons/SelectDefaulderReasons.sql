@@ -19,7 +19,7 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT * FROM dbo.DefaulderReasons;
+        SELECT * FROM dbo.DefaulderReasons ORDER BY DefaulderReasonText ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

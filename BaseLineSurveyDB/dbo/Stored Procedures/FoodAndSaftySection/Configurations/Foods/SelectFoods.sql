@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM Foods;
+        FROM Foods ORDER BY FoodName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

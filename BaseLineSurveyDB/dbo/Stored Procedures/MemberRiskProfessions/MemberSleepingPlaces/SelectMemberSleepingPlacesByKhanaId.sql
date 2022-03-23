@@ -31,7 +31,7 @@ BEGIN
             ON MemberSleepingPlaces.SleepingPlaceId = SleepingPlaces.SleepingPlaceId
         LEFT JOIN InformationStatuses
             ON MemberSleepingPlaces.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE MemberSleepingPlaces.KhanaId = @KhanaId;
+        WHERE MemberSleepingPlaces.KhanaId = @KhanaId ORDER BY MemberSleepingPlaceId DESC;
 
         IF @@ROWCOUNT > 0
             SET @ReturnResult = 'Success'

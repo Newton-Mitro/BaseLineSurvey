@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM Relationships;
+        FROM Relationships ORDER BY RelationshipName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

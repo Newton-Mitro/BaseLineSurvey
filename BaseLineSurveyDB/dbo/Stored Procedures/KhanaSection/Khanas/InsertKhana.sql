@@ -16,7 +16,9 @@ CREATE PROCEDURE dbo.InsertKhana (
     , @VillageId BIGINT
     , @ReligionId BIGINT
     , @RaceId BIGINT
+    , @KhanaReference VARCHAR (250) = NULL
     , @InformationStatusCode BIGINT
+    , @AnswerGivenBy BIGINT = NULL
     , @ScopeId BIGINT = NULL OUTPUT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -37,7 +39,9 @@ BEGIN
             , VillageId
             , ReligionId
             , RaceId
+            , KhanaReference
             , InformationStatusCode
+            , AnswerGivenBy
             , CreatedAt
             , CreatedBy
             , UpdatedAt
@@ -51,7 +55,9 @@ BEGIN
             , @VillageId
             , @ReligionId
             , @RaceId
+            , @KhanaReference
             , @InformationStatusCode
+            , @AnswerGivenBy
             , GETDATE()
             , @AccessedBy
             , GETDATE()
@@ -59,6 +65,7 @@ BEGIN
             )
 
         SET @ScopeId = SCOPE_IDENTITY();
+        SELECT * FROM dbo.View_Khanas WHERE KhanaId = @ScopeId;
 
         --End Main Block
         IF @@ROWCOUNT > 0

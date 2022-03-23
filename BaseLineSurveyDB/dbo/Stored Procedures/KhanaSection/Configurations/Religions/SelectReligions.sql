@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM Religions;
+        FROM Religions ORDER BY ReligionName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

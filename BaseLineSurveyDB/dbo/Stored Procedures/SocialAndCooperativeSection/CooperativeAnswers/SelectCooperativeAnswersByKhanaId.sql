@@ -28,7 +28,7 @@ BEGIN
         ON CooperativeAnswers.QuestionId = CooperativeQuestions.QuestionId
         LEFT JOIN dbo.CooperativeOptions
         ON CooperativeAnswers.OptionId = CooperativeOptions.OptionId
-        WHERE KhanaId = @KhanaId;
+        WHERE KhanaId = @KhanaId ORDER BY CooperativeAnswerId DESC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

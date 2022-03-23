@@ -31,7 +31,7 @@ BEGIN
             ON SchoolDropouts.MemberId = Members.MemberId
         LEFT JOIN dbo.InformationStatuses
             ON SchoolDropouts.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE SchoolDropouts.KhanaId = @KhanaId
+        WHERE SchoolDropouts.KhanaId = @KhanaId ORDER BY SchoolDropoutId DESC
 
         --End Main Block
         IF @@ROWCOUNT > 0

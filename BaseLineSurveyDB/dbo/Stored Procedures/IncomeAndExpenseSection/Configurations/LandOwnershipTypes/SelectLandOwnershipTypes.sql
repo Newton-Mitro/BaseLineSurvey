@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM dbo.LandOwnershipTypes;
+        FROM dbo.LandOwnershipTypes ORDER BY LandOwnershipTypeName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

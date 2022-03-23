@@ -11,6 +11,8 @@ Script Description            : This Script will create View_Members.
 CREATE VIEW dbo.View_Members
 AS
 SELECT Members.*
+    , (DATEDIFF(M, Members.DateOfBirth, GETDATE()) / 12) AS Age
+    , (DATEDIFF(M, Members.DateOfBirth, GETDATE())) AS AgeInMonth
     , Relationships.RelationshipName AS RelationWithFamilyHeadName
     , Genders.GenderName
     , FirstProfessions.ProfessionName AS FirstProfessionName
@@ -19,6 +21,14 @@ SELECT Members.*
     , MaritalStatuses.MaritalStatusName
     , DisabaledTypes.DisabledTypeName
     , InformationStatuses.InformationStatusName
+    , View_Khanas.DistrictId
+    , View_Khanas.DistrictName
+    , View_Khanas.ServiceCenterId
+    , View_Khanas.ServiceCenterName
+    , View_Khanas.ParishId
+    , View_Khanas.ParishName
+    , View_Khanas.VillageId
+    , View_Khanas.VillageName
 FROM dbo.Members
 LEFT JOIN Relationships
     ON Members.RelationWithFamilyHeadId = Relationships.RelationshipCode
@@ -36,3 +46,5 @@ LEFT JOIN DisabaledTypes
     ON Members.DisabledTypeCode = DisabaledTypes.DisabledTypeCode
 LEFT JOIN InformationStatuses
     ON Members.InformationStatusCode = InformationStatuses.InformationStatusCode
+LEFT JOIN View_Khanas
+    ON Members.KhanaId = View_Khanas.KhanaId;

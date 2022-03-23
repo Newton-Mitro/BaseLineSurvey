@@ -23,7 +23,7 @@ BEGIN
         --Start Main Block
         SELECT *
         FROM Parishes
-        WHERE UpazilaId = @UpazilaID
+        WHERE UpazilaId = @UpazilaID ORDER BY ParishName ASC
 
         --End Main Block
         IF @@ROWCOUNT > 0

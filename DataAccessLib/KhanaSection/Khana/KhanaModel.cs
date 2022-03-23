@@ -20,7 +20,9 @@ namespace DataAccessLib.KhanaSection.Khana
         public Int64 VillageId { get; set; }
         public Int64 ReligionId { get; set; }
         public Int64 RaceId { get; set; }
+        public string KhanaReference { get; set; }
         public Int64 InformationStatusCode { get; set; }
+        public Int64 AnswerGivenBy { get; set; }
 
     }
 }

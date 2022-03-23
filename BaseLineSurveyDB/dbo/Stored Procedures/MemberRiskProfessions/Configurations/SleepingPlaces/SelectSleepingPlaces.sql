@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM dbo.SleepingPlaces;
+        FROM dbo.SleepingPlaces ORDER BY SleepingPlaceText ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

@@ -19,7 +19,7 @@ BEGIN
 
     BEGIN TRY
         --Start Main Block
-        SELECT * FROM dbo.CooperativeList;
+        SELECT * FROM dbo.CooperativeList ORDER BY CooperativeName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

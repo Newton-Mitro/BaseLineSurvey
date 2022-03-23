@@ -62,9 +62,11 @@
     <Compile Include="ChildRightForChild\Models\ChildRightModel.cs" />
     <Compile Include="ChildRightForChild\Models\ChildRightOptionModel.cs" />
     <Compile Include="ChildRightForChild\Models\ChildRightQuestionModel.cs" />
+    <Compile Include="ChildRightForChild\Models\ChildRightReadModel.cs" />
     <Compile Include="ChildRightForParent\Models\ParentResponsibilityOptionModel.cs" />
     <Compile Include="ChildRightForParent\Models\ParentResponsibilityQuestionModel.cs" />
     <Compile Include="ChildRightForParent\Models\ParentResponsibilityToChildModel.cs" />
+    <Compile Include="ChildRightForParent\Models\ParentResponsibilityToChildReadModel.cs" />
     <Compile Include="ChildRightForParent\ParentResponsibilityToChildRepository.cs" />
     <Compile Include="FamilyAssets\FamilyAssetRepository.cs" />
     <Compile Include="FamilyAssets\Models\ChildAssetModel.cs" />
@@ -152,6 +154,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocialAndCooperativeSection\CooperativeQuestionOpions\CooperativeQuestionOptionRepository.cs" />
     <Compile Include="SocialAndCooperativeSection\CooperativeQuestionOpions\Models\CooperativeAnswerModel.cs" />
+    <Compile Include="SocialAndCooperativeSection\CooperativeQuestionOpions\Models\CooperativeAnswerReadModel.cs" />
     <Compile Include="SocialAndCooperativeSection\CooperativeQuestionOpions\Models\CooperativeOptionModel.cs" />
     <Compile Include="SocialAndCooperativeSection\CooperativeQuestionOpions\Models\CooperativeQuestionModel.cs" />
     <Compile Include="SocialAndCooperativeSection\DefaultFromCooperative\DefaultFromCooperativeRepository.cs" />
@@ -161,7 +164,9 @@
     <Compile Include="SocialAndCooperativeSection\FamilyDefaulderReasons\FamilyDefaulderReasonRepository.cs" />
     <Compile Include="SocialAndCooperativeSection\FamilyDefaulderReasons\Models\DefaulderReasonModel.cs" />
     <Compile Include="SocialAndCooperativeSection\FamilyDefaulderReasons\Models\FamilyMemberDefaulderReasonModel.cs" />
+    <Compile Include="SocialAndCooperativeSection\FamilyDefaulderReasons\Models\FamilyMemberDefaulderReasonReadModel.cs" />
     <Compile Include="SocialAndCooperativeSection\SocialOrganizations\Models\OrganizationWorkForChildrenModel.cs" />
+    <Compile Include="SocialAndCooperativeSection\SocialOrganizations\Models\OrganizationWorkForChildrenReadModel.cs" />
     <Compile Include="SocialAndCooperativeSection\SocialOrganizations\Models\SocialOrganizationModel.cs" />
     <Compile Include="SocialAndCooperativeSection\SocialOrganizations\Models\SocialWorkTypeModel.cs" />
     <Compile Include="SocialAndCooperativeSection\SocialOrganizations\SocialOrganizationRepository.cs" />

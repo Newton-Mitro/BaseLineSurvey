@@ -36,8 +36,9 @@ BEGIN
         LEFT JOIN dbo.InformationStatuses
             ON MemberEducations.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE MemberEducations.KhanaId = @KhanaId
-            AND MemberEducations.EducationQuestionId = @EducationQuestionId;
+            AND MemberEducations.EducationQuestionId = @EducationQuestionId ORDER BY MemberEducations.MemberEducationId DESC;
 
+            
         --End Main Block
         IF @@ROWCOUNT > 0
             SET @ReturnResult = 'Success'

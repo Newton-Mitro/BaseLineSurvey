@@ -1,6 +1,7 @@
 ﻿using DataAccessLib.Base;
 using DataAccessLib.MemberIncomeRelatedWorkSection;
 using DataAccessLib.MemberIncomeRelatedWorkSection.Models;
+using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -24,6 +25,12 @@ namespace BaseLineSurveyApi.Controllers.MemberIncomeRelatedWorkSection
         public ResponseObject GetMemberIncomeRelatedWorkByKhanaAndMemberId([FromBody] MemberIncomeRelatedWorkModel memberIncomeRelatedWorkModel)
         {
             return memberIncomeRelatedWorkRepository.GetMemberIncomeRelatedWorkByKhanaAndMemberId(memberIncomeRelatedWorkModel);
+        }
+
+        [HttpPost]
+        public ResponseObject CheckIfKhanaHasAnyIncomeRelatedEntry([FromBody] Int64 KhanaId)
+        {
+            return memberIncomeRelatedWorkRepository.CheckIfKhanaHasAnyIncomeRelatedEntry(KhanaId);
         }
     }
 }

@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM Professions;
+        FROM Professions ORDER BY ProfessionName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

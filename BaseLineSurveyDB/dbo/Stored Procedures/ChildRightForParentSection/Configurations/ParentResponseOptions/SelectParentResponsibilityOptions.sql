@@ -28,14 +28,17 @@ BEGIN
 
         SELECT *
         FROM ParentResponsibilityOptions
-        WHERE ParentResponsibilityQuestionId = @ParentResponsibilityQuestionId;
+        WHERE ParentResponsibilityQuestionId = @ParentResponsibilityQuestionId  ORDER BY OptionText ASC;
 
         SET @RowCount = @RowCount + @@ROWCOUNT
 
-        SELECT *
+        SELECT ParentsResponsibilityToChilds.*
+        , Members.MemberName AS AnswerGivenByName
         FROM ParentsResponsibilityToChilds
-        WHERE KhanaId = @KhanaId
-            AND ParentResponsibilityQuestionId = @ParentResponsibilityQuestionId;
+        LEFT JOIN dbo.Members
+        ON ParentsResponsibilityToChilds.AnswerGivenById = Members.MemberId
+        WHERE ParentsResponsibilityToChilds.KhanaId = @KhanaId
+            AND ParentResponsibilityQuestionId = @ParentResponsibilityQuestionId  ORDER BY ParentsResponsibilityToChildId DESC;
 
         SET @RowCount = @RowCount + @@ROWCOUNT
 

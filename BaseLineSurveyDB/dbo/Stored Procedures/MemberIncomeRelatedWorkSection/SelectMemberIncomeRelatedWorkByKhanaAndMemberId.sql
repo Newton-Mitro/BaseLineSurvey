@@ -33,7 +33,7 @@ BEGIN
         LEFT JOIN dbo.InformationStatuses
             ON MemberIncomeRelatedWorks.InformationStatusCode = InformationStatuses.InformationStatusCode
         WHERE MemberIncomeRelatedWorks.KhanaId = @KhanaId
-            AND MemberIncomeRelatedWorks.MemberId = @MemberId;
+            AND MemberIncomeRelatedWorks.MemberId = @MemberId ORDER BY MemberIncomeRelatedWorkId DESC;
 
         IF @@ROWCOUNT > 0
             SET @ReturnResult = 'Success'

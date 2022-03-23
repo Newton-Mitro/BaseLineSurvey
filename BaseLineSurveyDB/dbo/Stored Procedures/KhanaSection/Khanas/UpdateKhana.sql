@@ -17,6 +17,7 @@ CREATE PROCEDURE dbo.UpdateKhana (
     , @VillageId BIGINT
     , @ReligionId BIGINT
     , @RaceId BIGINT
+    , @KhanaReference VARCHAR (250) = NULL
     , @InformationStatusCode BIGINT
     , @ReturnResult VARCHAR(255) = NULL OUTPUT
     , @AccessedBy BIGINT = NULL -- Id of user who is accessing this stored procedure. 
@@ -37,7 +38,9 @@ BEGIN
             , VillageId = @VillageId
             , ReligionId = @ReligionId
             , RaceId = @RaceId
+            , KhanaReference = @KhanaReference
             , InformationStatusCode = @InformationStatusCode
+            , AnswerGivenBy = NULL
             , CreatedBy = @AccessedBy
             , UpdatedBy = @AccessedBy
             , CreatedAt = GETDATE()

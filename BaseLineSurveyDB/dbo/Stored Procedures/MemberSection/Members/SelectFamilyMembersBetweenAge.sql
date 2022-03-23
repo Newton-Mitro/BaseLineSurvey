@@ -26,7 +26,7 @@ BEGIN
         FROM dbo.View_Members
         WHERE KhanaId = @KhanaId
             AND dbo.GetAgeFromDateOfBirth(DateOfBirth) >= @FromAge
-            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) <= @ToAge;
+            AND dbo.GetAgeFromDateOfBirth(DateOfBirth) <= @ToAge ORDER BY MemberName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0

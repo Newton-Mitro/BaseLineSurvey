@@ -34,7 +34,7 @@ BEGIN
             ON MemberEducationHelps.MemberId = Members.MemberId
         LEFT JOIN dbo.InformationStatuses
             ON MemberEducationHelps.InformationStatusCode = InformationStatuses.InformationStatusCode
-        WHERE MemberEducationHelps.KhanaId = @KhanaId
+        WHERE MemberEducationHelps.KhanaId = @KhanaId  ORDER BY MemberEducationHelps.MemberEducationHelpId DESC
 
         --End Main Block
         IF @@ROWCOUNT > 0

@@ -19,7 +19,7 @@ BEGIN
         --Start Main Block
         SELECT *
         FROM dbo.View_Users
-        WHERE RoleId = 2;
+        WHERE RoleId = 2 ORDER BY FullName ASC;
 
         SET @ReturnResult = 'Success'
 

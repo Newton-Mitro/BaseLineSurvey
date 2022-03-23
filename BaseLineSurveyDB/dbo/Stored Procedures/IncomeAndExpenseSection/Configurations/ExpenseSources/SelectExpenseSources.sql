@@ -21,7 +21,7 @@ BEGIN
     BEGIN TRY
         --Start Main Block
         SELECT *
-        FROM ExpenseSources;
+        FROM ExpenseSources ORDER BY SourceName ASC;
 
         --End Main Block
         IF @@ROWCOUNT > 0
